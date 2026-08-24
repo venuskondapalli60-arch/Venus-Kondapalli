@@ -1,0 +1,573 @@
+2026-08-24 15:43:05 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-24 15:43:05 [INFO] __main__: Working directory: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX
+2026-08-24 15:43:05 [WARNING] __main__: URL validation DISABLED (--no-validate flag)
+2026-08-24 15:43:05 [INFO] database.db_manager: DatabaseManager initialized: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs.db
+2026-08-24 15:43:05 [INFO] database.db_manager: Run started: run_id=1
+2026-08-24 15:43:05 [INFO] __main__: ======================================================================
+2026-08-24 15:43:05 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-24 15:43:05 [INFO] __main__:   Run ID: 1 | Date: 2026-08-24 15:43:05
+2026-08-24 15:43:05 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre
+2026-08-24 15:43:05 [INFO] __main__: ======================================================================
+2026-08-24 15:43:05 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-24 15:43:05 [INFO] __main__:   Existing jobs in DB: 0
+2026-08-24 15:43:05 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-24 15:43:05 [INFO] __main__:   Scraping: company_pages...
+2026-08-24 15:43:05 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-24 15:43:08 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /
+2026-08-24 15:43:12 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /
+2026-08-24 15:43:20 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /
+2026-08-24 15:43:20 [WARNING] scrapers.base_scraper: Connection error: https://careers.swiggy.com/
+2026-08-24 15:43:21 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:43:25 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:43:33 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:43:33 [WARNING] scrapers.base_scraper: Connection error: https://www.zomato.com/careers
+2026-08-24 15:43:42 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:43:47 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:43:55 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:43:55 [WARNING] scrapers.base_scraper: Connection error: https://www.zeptonow.com/careers
+2026-08-24 15:43:58 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001269D812D40>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /
+2026-08-24 15:44:04 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001269DBBD2A0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /
+2026-08-24 15:44:14 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001269DBBCDC0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /
+2026-08-24 15:44:17 [WARNING] scrapers.base_scraper: Connection error: https://ola.careers/
+2026-08-24 15:44:19 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /company/careers/
+2026-08-24 15:44:23 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /company/careers/
+2026-08-24 15:44:31 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /company/careers/
+2026-08-24 15:44:31 [WARNING] scrapers.base_scraper: Connection error: https://www.freshworks.com/company/careers/
+2026-08-24 15:44:32 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/Careers
+2026-08-24 15:44:36 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/Careers
+2026-08-24 15:44:44 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/Careers
+2026-08-24 15:44:44 [WARNING] scrapers.base_scraper: Connection error: https://careers.zohocorp.com/jobs/Careers
+2026-08-24 15:44:45 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers/
+2026-08-24 15:44:49 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers/
+2026-08-24 15:44:57 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers/
+2026-08-24 15:44:57 [WARNING] scrapers.base_scraper: Connection error: https://byjus.com/careers/
+2026-08-24 15:44:59 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /
+2026-08-24 15:45:03 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /
+2026-08-24 15:45:11 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /
+2026-08-24 15:45:11 [WARNING] scrapers.base_scraper: Connection error: https://careers.nykaa.com/
+2026-08-24 15:45:12 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:45:16 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:45:24 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:45:24 [WARNING] scrapers.base_scraper: Connection error: https://www.urbancompany.com/careers
+2026-08-24 15:45:30 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /joblist
+2026-08-24 15:45:34 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /joblist
+2026-08-24 15:45:42 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /joblist
+2026-08-24 15:45:42 [WARNING] scrapers.base_scraper: Connection error: https://career.infosys.com/joblist
+2026-08-24 15:45:43 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers-home/jobs
+2026-08-24 15:45:47 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers-home/jobs
+2026-08-24 15:45:55 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers-home/jobs
+2026-08-24 15:45:55 [WARNING] scrapers.base_scraper: Connection error: https://careers.wipro.com/careers-home/jobs
+2026-08-24 15:45:56 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:46:00 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:46:09 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:46:09 [WARNING] scrapers.base_scraper: Connection error: https://www.hcltech.com/careers
+2026-08-24 15:46:09 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /
+2026-08-24 15:46:13 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /
+2026-08-24 15:46:22 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /
+2026-08-24 15:46:22 [WARNING] scrapers.base_scraper: Connection error: https://careers.techmahindra.com/
+2026-08-24 15:46:27 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:46:31 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:46:39 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /careers
+2026-08-24 15:46:40 [WARNING] scrapers.base_scraper: Connection error: https://www.dream11.com/careers
+2026-08-24 15:46:43 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:46:43 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-24 15:46:43 [INFO] __main__:   Scraping: linkedin...
+2026-08-24 15:46:43 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-24 15:46:45 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:46:49 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:46:57 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:46:57 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:46:58 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:47:02 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:47:10 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:47:10 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:47:11 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:47:15 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:47:23 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:47:23 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:47:24 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:47:28 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:47:36 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:47:36 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:47:37 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:47:41 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:47:49 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:47:49 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:47:50 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:47:54 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:48:02 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:48:02 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:48:03 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:48:07 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:48:16 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+UX+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:48:16 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:48:17 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:48:21 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:48:29 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+UX+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:48:29 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:48:30 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:48:34 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:48:42 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:48:42 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:48:43 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:48:47 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:48:55 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:48:55 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:48:56 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:49:00 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:49:08 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:49:09 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:49:10 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:49:14 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:49:22 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:49:22 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:49:23 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:49:28 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:49:36 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:49:36 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:49:36 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:49:41 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:49:49 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:49:49 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:49:50 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:49:54 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:50:02 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UX+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:50:02 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:50:04 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:50:08 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:50:16 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UX+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:50:16 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:50:17 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:50:21 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:50:29 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:50:29 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:50:30 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:50:34 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:50:42 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:50:42 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:50:43 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:50:48 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:50:56 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:50:56 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:50:57 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:51:01 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:51:09 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:51:09 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:51:10 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:51:14 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:51:22 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:51:22 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:51:23 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:51:27 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:51:35 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:51:35 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:51:36 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:51:40 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:51:49 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Product+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:51:49 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:51:49 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:51:53 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:52:01 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Product+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:52:02 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:52:03 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:52:08 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:52:16 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:52:16 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:52:17 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:52:21 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:52:29 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:52:29 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:52:30 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:52:34 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:52:42 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:52:42 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:52:43 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:52:47 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:52:55 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:52:55 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:52:57 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:53:01 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:53:09 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:53:09 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:53:10 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:53:11 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-24 15:53:11 [INFO] __main__: Working directory: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX
+2026-08-24 15:53:11 [WARNING] __main__: URL validation DISABLED (--no-validate flag)
+2026-08-24 15:53:11 [INFO] database.db_manager: DatabaseManager initialized: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs.db
+2026-08-24 15:53:11 [INFO] database.db_manager: Run started: run_id=2
+2026-08-24 15:53:11 [INFO] __main__: ======================================================================
+2026-08-24 15:53:11 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-24 15:53:11 [INFO] __main__:   Run ID: 2 | Date: 2026-08-24 15:53:11
+2026-08-24 15:53:11 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre
+2026-08-24 15:53:11 [INFO] __main__: ======================================================================
+2026-08-24 15:53:11 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-24 15:53:11 [INFO] __main__:   Existing jobs in DB: 0
+2026-08-24 15:53:12 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-24 15:53:12 [INFO] __main__:   Scraping: company_pages...
+2026-08-24 15:53:12 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-24 15:53:14 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:53:22 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:53:22 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:53:22 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:53:26 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:53:27 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001CC31DA75E0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /
+2026-08-24 15:53:30 [WARNING] scrapers.base_scraper: Connection error: https://ola.careers/
+2026-08-24 15:53:34 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=UI+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:53:34 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:53:36 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:53:40 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:53:48 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=UI+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:53:48 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:53:49 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:53:53 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:54:01 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:54:01 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:54:02 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:54:06 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:54:11 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='darwinbox.com', port=443): Read timed out. (read timeout=10)")': /careers
+2026-08-24 15:54:14 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=Hyderabad&geoId=105556991&f_TPR=r604800&sortBy=DD
+2026-08-24 15:54:14 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:54:15 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:54:19 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:54:21 [WARNING] scrapers.base_scraper: Connection error: https://darwinbox.com/careers
+2026-08-24 15:54:21 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:54:21 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-24 15:54:21 [INFO] __main__:   Scraping: linkedin...
+2026-08-24 15:54:21 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-24 15:54:27 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:54:27 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:54:29 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:54:33 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:54:41 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=Bangalore&geoId=105214831&f_TPR=r604800&sortBy=DD
+2026-08-24 15:54:42 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:54:42 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:54:46 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:54:51 [INFO] scrapers.base_scraper: LinkedIn: 105 new jobs after dedup (from 200 raw)
+2026-08-24 15:54:51 [INFO] __main__:   linkedin: 105 new jobs
+2026-08-24 15:54:51 [INFO] __main__:   Scraping: naukri...
+2026-08-24 15:54:51 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-24 15:54:55 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=India&geoId=102713980&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:54:55 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:54:56 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:55:00 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:55:05 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-24 15:55:08 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=India&geoId=102713980&f_TPR=r604800&sortBy=DD
+2026-08-24 15:55:08 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:55:09 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:55:11 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-24 15:55:11 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:55:11 [INFO] __main__:   naukri: 0 new jobs
+2026-08-24 15:55:11 [INFO] __main__:   Scraping: wellfound...
+2026-08-24 15:55:11 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-24 15:55:14 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:55:22 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=Interaction+Designer&location=Remote&geoId=&f_TPR=r604800&f_JT=F%2CC%2CP&sortBy=DD&start=0&count=25
+2026-08-24 15:55:22 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPosti
+2026-08-24 15:55:23 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:55:23 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-24 15:55:23 [INFO] __main__:   Scraping: indeed...
+2026-08-24 15:55:23 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-24 15:55:23 [WARNING] urllib3.connectionpool: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:55:27 [WARNING] urllib3.connectionpool: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:55:30 [INFO] scrapers.base_scraper: Indeed: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:55:30 [INFO] __main__:   indeed: 0 new jobs
+2026-08-24 15:55:30 [INFO] __main__:   Scraping: foundit...
+2026-08-24 15:55:30 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-24 15:55:35 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1007)'))': /jobs/search/?keywords=Interaction+Designer&location=Remote&geoId=&f_TPR=r604800&sortBy=DD
+2026-08-24 15:55:35 [WARNING] scrapers.base_scraper: Connection error: https://www.linkedin.com/jobs/search/
+2026-08-24 15:55:35 [INFO] scrapers.base_scraper: LinkedIn: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:55:35 [INFO] __main__:   linkedin: 0 new jobs
+2026-08-24 15:55:35 [INFO] __main__:   Scraping: naukri...
+2026-08-24 15:55:35 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-24 15:55:42 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:55:42 [INFO] __main__:   foundit: 0 new jobs
+2026-08-24 15:55:42 [INFO] __main__:   Scraping: glassdoor...
+2026-08-24 15:55:42 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-24 15:55:48 [INFO] scrapers.base_scraper: Glassdoor: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:55:48 [INFO] __main__:   glassdoor: 0 new jobs
+2026-08-24 15:55:48 [INFO] __main__:   Scraping: instahyre...
+2026-08-24 15:55:48 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-24 15:55:54 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-24 15:55:59 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:55:59 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-24 15:55:59 [INFO] __main__:   Total raw jobs collected: 105
+2026-08-24 15:55:59 [INFO] __main__: Step 3: Computing resume match scores...
+2026-08-24 15:55:59 [INFO] __main__:   Scored 105 jobs
+2026-08-24 15:55:59 [INFO] __main__:   Qualified (≥70%): 12 | Below threshold: 93
+2026-08-24 15:55:59 [INFO] __main__: Step 4: Validating 12 job URLs (multi-threaded)...
+2026-08-24 15:55:59 [INFO] __main__:   Valid: 12 | Invalid: 0 | Expired: 0
+2026-08-24 15:55:59 [INFO] __main__: Step 5: Storing valid jobs in database...
+2026-08-24 15:55:59 [INFO] __main__:   New jobs stored: 12 | Duplicates skipped: 0
+2026-08-24 15:55:59 [INFO] __main__: Step 6: Generating HTML dashboard...
+2026-08-24 15:55:59 [INFO] output.dashboard_generator: Generating dashboard with 12 jobs...
+2026-08-24 15:55:59 [INFO] output.dashboard_generator: Dashboard generated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 15:55:59 [INFO] __main__:   Dashboard: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 15:56:00 [INFO] database.db_manager: Run 2 finished: {'jobs_crawled': 105, 'jobs_validated': 12, 'jobs_rejected': 93, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 12, 'errors': 0}
+2026-08-24 15:56:00 [INFO] __main__: ======================================================================
+2026-08-24 15:56:00 [INFO] __main__:   RUN COMPLETE
+2026-08-24 15:56:00 [INFO] __main__:   Runtime: 168.2s
+2026-08-24 15:56:00 [INFO] __main__:   Jobs Crawled:        105
+2026-08-24 15:56:00 [INFO] __main__:   Jobs Validated:      12
+2026-08-24 15:56:00 [INFO] __main__:   New Jobs Added:      12
+2026-08-24 15:56:00 [INFO] __main__:   Duplicates Removed:  0
+2026-08-24 15:56:00 [INFO] __main__:   Expired Rejected:    0
+2026-08-24 15:56:00 [INFO] __main__:   Invalid Rejected:    93
+2026-08-24 15:56:00 [INFO] __main__:   Errors:              0
+2026-08-24 15:56:00 [INFO] __main__:   Dashboard:           C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 15:56:00 [INFO] __main__: ======================================================================
+2026-08-24 15:56:02 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-24 15:56:02 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:56:02 [INFO] __main__:   naukri: 0 new jobs
+2026-08-24 15:56:02 [INFO] __main__:   Scraping: wellfound...
+2026-08-24 15:56:02 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-24 15:56:07 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:56:07 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-24 15:56:07 [INFO] __main__:   Scraping: indeed...
+2026-08-24 15:56:07 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-24 15:56:15 [INFO] scrapers.base_scraper: Indeed: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:56:15 [INFO] __main__:   indeed: 0 new jobs
+2026-08-24 15:56:15 [INFO] __main__:   Scraping: foundit...
+2026-08-24 15:56:15 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-24 15:56:27 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:56:27 [INFO] __main__:   foundit: 0 new jobs
+2026-08-24 15:56:27 [INFO] __main__:   Scraping: glassdoor...
+2026-08-24 15:56:27 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-24 15:56:35 [INFO] scrapers.base_scraper: Glassdoor: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:56:35 [INFO] __main__:   glassdoor: 0 new jobs
+2026-08-24 15:56:35 [INFO] __main__:   Scraping: instahyre...
+2026-08-24 15:56:35 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-24 15:56:45 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-24 15:56:45 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-24 15:56:45 [INFO] __main__:   Total raw jobs collected: 0
+2026-08-24 15:56:45 [WARNING] __main__: No jobs collected from any source. Check network/scraper logs.
+2026-08-24 15:56:45 [INFO] database.db_manager: Run 1 finished: {'jobs_crawled': 0, 'jobs_validated': 0, 'jobs_rejected': 0, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 0, 'errors': 0}
+2026-08-24 15:56:45 [INFO] __main__: ======================================================================
+2026-08-24 15:56:45 [INFO] __main__:   RUN COMPLETE
+2026-08-24 15:56:45 [INFO] __main__:   Runtime: 819.9s
+2026-08-24 15:56:45 [INFO] __main__:   Jobs Crawled:        0
+2026-08-24 15:56:45 [INFO] __main__:   Jobs Validated:      0
+2026-08-24 15:56:45 [INFO] __main__:   New Jobs Added:      0
+2026-08-24 15:56:45 [INFO] __main__:   Duplicates Removed:  0
+2026-08-24 15:56:45 [INFO] __main__:   Expired Rejected:    0
+2026-08-24 15:56:45 [INFO] __main__:   Invalid Rejected:    0
+2026-08-24 15:56:45 [INFO] __main__:   Errors:              0
+2026-08-24 15:56:45 [INFO] __main__:   Dashboard:           C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 15:56:45 [INFO] __main__: ======================================================================
+2026-08-24 15:56:45 [INFO] database.db_manager: Run 1 finished: {'jobs_crawled': 0, 'jobs_validated': 0, 'jobs_rejected': 0, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 0, 'errors': 0}
+2026-08-24 15:56:45 [INFO] __main__: ======================================================================
+2026-08-24 15:56:45 [INFO] __main__:   RUN COMPLETE
+2026-08-24 15:56:45 [INFO] __main__:   Runtime: 819.9s
+2026-08-24 15:56:45 [INFO] __main__:   Jobs Crawled:        0
+2026-08-24 15:56:45 [INFO] __main__:   Jobs Validated:      0
+2026-08-24 15:56:45 [INFO] __main__:   New Jobs Added:      0
+2026-08-24 15:56:45 [INFO] __main__:   Duplicates Removed:  0
+2026-08-24 15:56:45 [INFO] __main__:   Expired Rejected:    0
+2026-08-24 15:56:45 [INFO] __main__:   Invalid Rejected:    0
+2026-08-24 15:56:45 [INFO] __main__:   Errors:              0
+2026-08-24 15:56:45 [INFO] __main__:   Dashboard:           C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 15:56:45 [INFO] __main__: ======================================================================
+2026-08-24 16:01:02 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-24 16:01:02 [INFO] __main__: Working directory: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX
+2026-08-24 16:01:02 [INFO] __main__: Dashboard-only mode: regenerating from existing database...
+2026-08-24 16:01:02 [INFO] database.db_manager: DatabaseManager initialized: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs.db
+2026-08-24 16:01:02 [INFO] output.dashboard_generator: Generating dashboard with 12 jobs...
+2026-08-24 16:01:02 [INFO] output.dashboard_generator: Dashboard generated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 16:01:02 [INFO] __main__: Dashboard regenerated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 16:17:33 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-24 16:17:33 [INFO] __main__: Working directory: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX
+2026-08-24 16:17:33 [INFO] __main__: Dashboard-only mode: regenerating from existing database...
+2026-08-24 16:17:33 [INFO] database.db_manager: DatabaseManager initialized: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs.db
+2026-08-24 16:17:33 [INFO] output.dashboard_generator: Generating dashboard with 12 jobs...
+2026-08-24 16:17:33 [INFO] output.dashboard_generator: Dashboard generated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 16:17:33 [INFO] __main__: Dashboard regenerated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 16:30:01 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-24 16:30:01 [INFO] __main__: Working directory: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX
+2026-08-24 16:30:01 [INFO] __main__: Dashboard-only mode: regenerating from existing database...
+2026-08-24 16:30:01 [INFO] database.db_manager: DatabaseManager initialized: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs.db
+2026-08-24 16:30:01 [INFO] output.dashboard_generator: Generating dashboard with 12 jobs...
+2026-08-24 16:30:01 [INFO] output.dashboard_generator: Dashboard generated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 16:30:01 [INFO] __main__: Dashboard regenerated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 18:29:19 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-24 18:29:19 [INFO] __main__: Working directory: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX
+2026-08-24 18:29:19 [INFO] db_manager: DatabaseManager initialized: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs.db
+2026-08-24 18:29:19 [INFO] db_manager: Run started: run_id=3
+2026-08-24 18:29:19 [INFO] __main__: ======================================================================
+2026-08-24 18:29:19 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-24 18:29:19 [INFO] __main__:   Run ID: 3 | Date: 2026-08-24 18:29:19
+2026-08-24 18:29:19 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre
+2026-08-24 18:29:19 [INFO] __main__: ======================================================================
+2026-08-24 18:29:19 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-24 18:29:19 [INFO] __main__:   Existing jobs in DB: 12
+2026-08-24 18:29:19 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-24 18:29:19 [INFO] __main__:   Scraping: company_pages...
+2026-08-24 18:29:19 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-24 18:29:36 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000019460A05C00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /
+2026-08-24 18:29:38 [WARNING] scrapers.base_scraper: Connection error: https://ola.careers/
+2026-08-24 18:30:12 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-24 18:30:12 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-24 18:30:12 [INFO] __main__:   Scraping: linkedin...
+2026-08-24 18:30:12 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-24 18:32:30 [INFO] scrapers.base_scraper: LinkedIn: 343 new jobs after dedup (from 759 raw)
+2026-08-24 18:32:30 [INFO] __main__:   linkedin: 343 new jobs
+2026-08-24 18:32:30 [INFO] __main__:   Scraping: naukri...
+2026-08-24 18:32:30 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-24 18:33:32 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-24 18:33:38 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-24 18:33:38 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-24 18:33:38 [INFO] __main__:   naukri: 0 new jobs
+2026-08-24 18:33:38 [INFO] __main__:   Scraping: wellfound...
+2026-08-24 18:33:38 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-24 18:34:30 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-24 18:34:30 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-24 18:34:30 [INFO] __main__:   Scraping: indeed...
+2026-08-24 18:34:30 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-24 18:35:25 [INFO] scrapers.base_scraper: Indeed: 0 new jobs after dedup (from 0 raw)
+2026-08-24 18:35:25 [INFO] __main__:   indeed: 0 new jobs
+2026-08-24 18:35:25 [INFO] __main__:   Scraping: foundit...
+2026-08-24 18:35:25 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-24 18:36:52 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-24 18:36:52 [INFO] __main__:   foundit: 0 new jobs
+2026-08-24 18:36:52 [INFO] __main__:   Scraping: glassdoor...
+2026-08-24 18:36:52 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-24 18:38:11 [INFO] scrapers.base_scraper: Glassdoor: 0 new jobs after dedup (from 0 raw)
+2026-08-24 18:38:11 [INFO] __main__:   glassdoor: 0 new jobs
+2026-08-24 18:38:11 [INFO] __main__:   Scraping: instahyre...
+2026-08-24 18:38:11 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-24 18:38:22 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-24 18:38:22 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-24 18:38:22 [INFO] __main__:   Total raw jobs collected: 343
+2026-08-24 18:38:22 [INFO] __main__: Step 3: Computing resume match scores...
+2026-08-24 18:38:22 [INFO] __main__:   Scored 343 jobs
+2026-08-24 18:38:22 [INFO] __main__:   Qualified (≥60%): 206 | Below threshold: 137
+2026-08-24 18:38:22 [INFO] __main__: Step 4: Validating 206 job URLs (multi-threaded)...
+2026-08-24 18:38:32 [INFO] __main__:   Validation progress: 20/206
+2026-08-24 18:38:36 [INFO] __main__:   Validation progress: 40/206
+2026-08-24 18:38:41 [INFO] __main__:   Validation progress: 60/206
+2026-08-24 18:38:45 [INFO] __main__:   Validation progress: 80/206
+2026-08-24 18:38:49 [INFO] __main__:   Validation progress: 100/206
+2026-08-24 18:38:53 [INFO] __main__:   Validation progress: 120/206
+2026-08-24 18:38:58 [INFO] __main__:   Validation progress: 140/206
+2026-08-24 18:39:03 [INFO] __main__:   Validation progress: 160/206
+2026-08-24 18:39:08 [INFO] __main__:   Validation progress: 180/206
+2026-08-24 18:39:12 [INFO] __main__:   Validation progress: 200/206
+2026-08-24 18:39:17 [INFO] __main__:   Valid: 10 | Invalid: 196 | Expired: 0
+2026-08-24 18:39:17 [INFO] __main__: Step 5: Storing valid jobs in database...
+2026-08-24 18:39:17 [INFO] __main__:   New jobs stored: 10 | Duplicates skipped: 0
+2026-08-24 18:39:17 [INFO] __main__: Step 6: Generating HTML dashboard...
+2026-08-24 18:39:17 [INFO] dashboard_generator: Generating dashboard with 22 jobs...
+2026-08-24 18:39:17 [INFO] dashboard_generator: Dashboard generated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 18:39:17 [INFO] __main__:   Dashboard: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 18:39:17 [INFO] db_manager: Run 3 finished: {'jobs_crawled': 343, 'jobs_validated': 10, 'jobs_rejected': 333, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 10, 'errors': 0}
+2026-08-24 18:39:17 [INFO] __main__: ======================================================================
+2026-08-24 18:39:17 [INFO] __main__:   RUN COMPLETE
+2026-08-24 18:39:17 [INFO] __main__:   Runtime: 598.2s
+2026-08-24 18:39:17 [INFO] __main__:   Jobs Crawled:        343
+2026-08-24 18:39:17 [INFO] __main__:   Jobs Validated:      10
+2026-08-24 18:39:17 [INFO] __main__:   New Jobs Added:      10
+2026-08-24 18:39:17 [INFO] __main__:   Duplicates Removed:  0
+2026-08-24 18:39:17 [INFO] __main__:   Expired Rejected:    0
+2026-08-24 18:39:17 [INFO] __main__:   Invalid Rejected:    333
+2026-08-24 18:39:17 [INFO] __main__:   Errors:              0
+2026-08-24 18:39:17 [INFO] __main__:   Dashboard:           C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 18:39:17 [INFO] __main__: ======================================================================
+2026-08-24 18:45:59 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-24 18:45:59 [INFO] __main__: Working directory: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX
+2026-08-24 18:45:59 [INFO] __main__: Dashboard-only mode: regenerating from existing database...
+2026-08-24 18:45:59 [INFO] db_manager: DatabaseManager initialized: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs.db
+2026-08-24 18:45:59 [INFO] dashboard_generator: Generating dashboard with 22 jobs...
+2026-08-24 18:45:59 [INFO] dashboard_generator: Dashboard generated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 18:45:59 [INFO] __main__: Dashboard regenerated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 18:57:56 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-24 18:57:56 [INFO] __main__: Working directory: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX
+2026-08-24 18:57:56 [INFO] db_manager: DatabaseManager initialized: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs.db
+2026-08-24 18:57:56 [INFO] db_manager: Run started: run_id=4
+2026-08-24 18:57:56 [INFO] __main__: ======================================================================
+2026-08-24 18:57:56 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-24 18:57:56 [INFO] __main__:   Run ID: 4 | Date: 2026-08-24 18:57:56
+2026-08-24 18:57:56 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre, shine, timesjobs
+2026-08-24 18:57:56 [INFO] __main__: ======================================================================
+2026-08-24 18:57:56 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-24 18:57:56 [INFO] __main__:   Existing jobs in DB: 22
+2026-08-24 18:57:56 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-24 18:57:56 [INFO] __main__:   Scraping: company_pages...
+2026-08-24 18:57:56 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-24 18:58:17 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000023E3CC6E980>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /
+2026-08-24 18:58:19 [WARNING] scrapers.base_scraper: Connection error: https://ola.careers/
+2026-08-24 18:59:15 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-24 18:59:15 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-24 18:59:15 [INFO] __main__:   Scraping: linkedin...
+2026-08-24 18:59:15 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-24 19:01:41 [INFO] scrapers.base_scraper: LinkedIn: 279 new jobs after dedup (from 757 raw)
+2026-08-24 19:01:41 [INFO] __main__:   linkedin: 279 new jobs
+2026-08-24 19:01:41 [INFO] __main__:   Scraping: naukri...
+2026-08-24 19:01:41 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-24 19:02:56 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-24 19:03:06 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-24 19:03:06 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-24 19:03:06 [INFO] __main__:   naukri: 0 new jobs
+2026-08-24 19:03:06 [INFO] __main__:   Scraping: wellfound...
+2026-08-24 19:03:06 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-24 19:04:19 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-24 19:04:19 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-24 19:04:19 [INFO] __main__:   Scraping: indeed...
+2026-08-24 19:04:19 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-24 19:05:17 [INFO] scrapers.base_scraper: Indeed: 0 new jobs after dedup (from 0 raw)
+2026-08-24 19:05:17 [INFO] __main__:   indeed: 0 new jobs
+2026-08-24 19:05:17 [INFO] __main__:   Scraping: foundit...
+2026-08-24 19:05:17 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-24 19:06:58 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-24 19:06:58 [INFO] __main__:   foundit: 0 new jobs
+2026-08-24 19:06:58 [INFO] __main__:   Scraping: glassdoor...
+2026-08-24 19:06:58 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-24 19:08:17 [INFO] scrapers.base_scraper: Glassdoor: 0 new jobs after dedup (from 0 raw)
+2026-08-24 19:08:17 [INFO] __main__:   glassdoor: 0 new jobs
+2026-08-24 19:08:17 [INFO] __main__:   Scraping: instahyre...
+2026-08-24 19:08:17 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-24 19:08:28 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-24 19:08:28 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-24 19:08:28 [INFO] __main__:   Scraping: shine...
+2026-08-24 19:08:28 [INFO] scrapers.shine_scraper: Shine: Starting scrape...
+2026-08-24 19:10:13 [INFO] scrapers.base_scraper: Shine: 0 new jobs after dedup (from 0 raw)
+2026-08-24 19:10:13 [INFO] __main__:   shine: 0 new jobs
+2026-08-24 19:10:13 [INFO] __main__:   Scraping: timesjobs...
+2026-08-24 19:10:13 [INFO] scrapers.timesjobs_scraper: TimesJobs: Starting scrape...
+2026-08-24 19:11:02 [INFO] scrapers.base_scraper: TimesJobs: 0 new jobs after dedup (from 0 raw)
+2026-08-24 19:11:02 [INFO] __main__:   timesjobs: 0 new jobs
+2026-08-24 19:11:02 [INFO] __main__:   Total raw jobs collected: 279
+2026-08-24 19:11:02 [INFO] __main__: Step 3: Computing resume match scores...
+2026-08-24 19:11:02 [INFO] __main__:   Scored 279 jobs
+2026-08-24 19:11:02 [INFO] __main__:   Qualified (≥60%): 149 | Below threshold: 130
+2026-08-24 19:11:02 [INFO] __main__: Step 4: Validating 149 job URLs (multi-threaded)...
+2026-08-24 19:11:09 [INFO] __main__:   Validation progress: 20/149
+2026-08-24 19:11:14 [INFO] __main__:   Validation progress: 40/149
+2026-08-24 19:11:18 [INFO] __main__:   Validation progress: 60/149
+2026-08-24 19:11:23 [INFO] __main__:   Validation progress: 80/149
+2026-08-24 19:11:27 [INFO] __main__:   Validation progress: 100/149
+2026-08-24 19:11:31 [INFO] __main__:   Validation progress: 120/149
+2026-08-24 19:11:36 [INFO] __main__:   Validation progress: 140/149
+2026-08-24 19:11:38 [INFO] __main__:   Valid: 11 | Invalid: 138 | Expired: 0
+2026-08-24 19:11:38 [INFO] __main__: Step 5: Storing valid jobs in database...
+2026-08-24 19:11:38 [INFO] __main__:   New jobs stored: 11 | Duplicates skipped: 0
+2026-08-24 19:11:38 [INFO] __main__: Step 6: Generating HTML dashboard...
+2026-08-24 19:11:38 [INFO] dashboard_generator: Generating dashboard with 33 jobs...
+2026-08-24 19:11:38 [INFO] dashboard_generator: Dashboard generated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 19:11:38 [INFO] __main__:   Dashboard: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 19:11:38 [INFO] db_manager: Run 4 finished: {'jobs_crawled': 279, 'jobs_validated': 11, 'jobs_rejected': 268, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 11, 'errors': 0}
+2026-08-24 19:11:38 [INFO] __main__: ======================================================================
+2026-08-24 19:11:38 [INFO] __main__:   RUN COMPLETE
+2026-08-24 19:11:38 [INFO] __main__:   Runtime: 822.2s
+2026-08-24 19:11:38 [INFO] __main__:   Jobs Crawled:        279
+2026-08-24 19:11:38 [INFO] __main__:   Jobs Validated:      11
+2026-08-24 19:11:38 [INFO] __main__:   New Jobs Added:      11
+2026-08-24 19:11:38 [INFO] __main__:   Duplicates Removed:  0
+2026-08-24 19:11:38 [INFO] __main__:   Expired Rejected:    0
+2026-08-24 19:11:38 [INFO] __main__:   Invalid Rejected:    268
+2026-08-24 19:11:38 [INFO] __main__:   Errors:              0
+2026-08-24 19:11:38 [INFO] __main__:   Dashboard:           C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 19:11:38 [INFO] __main__: ======================================================================
+2026-08-24 19:16:46 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-24 19:16:46 [INFO] __main__: Working directory: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX
+2026-08-24 19:16:46 [INFO] __main__: Dashboard-only mode: regenerating from existing database...
+2026-08-24 19:16:46 [INFO] db_manager: DatabaseManager initialized: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs.db
+2026-08-24 19:16:46 [INFO] dashboard_generator: Generating dashboard with 33 jobs...
+2026-08-24 19:16:46 [INFO] dashboard_generator: Dashboard generated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html
+2026-08-24 19:16:46 [INFO] __main__: Dashboard regenerated: C:\Users\djonnala\OneDrive - Qualcomm\Desktop\UIUX\jobs_dashboard.html

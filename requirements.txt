@@ -1,0 +1,32 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# UI/UX Job Search Automation System - Python Dependencies
+# Install with: pip install -r requirements.txt
+# Python 3.8+ required
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── HTTP & Web Scraping ───────────────────────────────────────────────────────
+requests==2.31.0
+urllib3==2.1.0
+beautifulsoup4==4.12.3
+lxml==5.1.0
+html5lib==1.1
+
+# ── Data Processing ───────────────────────────────────────────────────────────
+python-dateutil==2.9.0
+
+# ── Retry & Resilience ────────────────────────────────────────────────────────
+tenacity==8.2.3
+
+# ── Optional: Selenium (for JS-heavy sites) ───────────────────────────────────
+# Uncomment if you want to enable Selenium-based scraping
+# selenium==4.18.1
+# webdriver-manager==4.0.1
+
+# ── Optional: Playwright (modern alternative to Selenium) ─────────────────────
+# Uncomment and run: playwright install chromium
+# playwright==1.42.0
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+certifi==2024.2.2
+charset-normalizer==3.3.2
+idna==3.6

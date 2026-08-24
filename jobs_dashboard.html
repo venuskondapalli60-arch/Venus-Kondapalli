@@ -1,0 +1,2610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Job Tracker — Srikar Jupudi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Tokens ─────────────────────────────────────────────────────────────── */
+:root {
+    --bg:        #0d0d1a;
+    --bg2:       #12122a;
+    --surface:   rgba(255,255,255,0.055);
+    --surface-h: rgba(255,255,255,0.09);
+    --border:    rgba(255,255,255,0.10);
+    --border-h:  rgba(255,255,255,0.22);
+    --text:      #e8e8f0;
+    --text-2:    #9898b8;
+    --text-3:    #5a5a7a;
+
+    --green:  #22d3a0;  --green-dim:  rgba(34,211,160,.15);  --green-glow: rgba(34,211,160,.35);
+    --blue:   #60a5fa;  --blue-dim:   rgba(96,165,250,.15);  --blue-glow:  rgba(96,165,250,.35);
+    --orange: #fb923c;  --orange-dim: rgba(251,146,60,.15);  --orange-glow:rgba(251,146,60,.35);
+    --purple: #a78bfa;  --pink: #f472b6;
+
+    --grad-brand: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+    --grad-card-green:  linear-gradient(135deg, rgba(34,211,160,.08) 0%, transparent 60%);
+    --grad-card-blue:   linear-gradient(135deg, rgba(96,165,250,.08) 0%, transparent 60%);
+    --grad-card-orange: linear-gradient(135deg, rgba(251,146,60,.08) 0%, transparent 60%);
+
+    --radius-sm: 10px; --radius: 16px; --radius-lg: 22px; --radius-xl: 28px;
+    --shadow-card: 0 8px 32px rgba(0,0,0,.45);
+    --shadow-hover: 0 20px 60px rgba(0,0,0,.6);
+    --blur: blur(18px);
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ── Animated Background Orbs ───────────────────────────────────────────── */
+.bg-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); opacity: 0.18;
+    animation: drift 18s ease-in-out infinite alternate;
+}
+.orb-1 { width: 600px; height: 600px; background: #7c3aed; top: -200px; left: -150px; animation-duration: 20s; }
+.orb-2 { width: 500px; height: 500px; background: #ec4899; top: 30%; right: -180px; animation-duration: 25s; animation-delay: -8s; }
+.orb-3 { width: 400px; height: 400px; background: #06b6d4; bottom: -100px; left: 30%; animation-duration: 22s; animation-delay: -4s; }
+.orb-4 { width: 350px; height: 350px; background: #10b981; bottom: 20%; right: 20%; animation-duration: 28s; animation-delay: -12s; }
+@keyframes drift {
+    0%   { transform: translate(0,0) scale(1); }
+    33%  { transform: translate(40px,-30px) scale(1.05); }
+    66%  { transform: translate(-20px,50px) scale(0.97); }
+    100% { transform: translate(30px,20px) scale(1.03); }
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,13,26,0.75);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+}
+.header-inner {
+    max-width: 1400px; margin: 0 auto; padding: 0 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-icon {
+    font-size: 2rem; width: 52px; height: 52px;
+    background: var(--grad-brand);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 24px rgba(168,85,247,.4);
+    flex-shrink: 0;
+}
+.brand-text h1 {
+    font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px;
+    background: var(--grad-brand); -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; background-clip: text;
+}
+.brand-text p { font-size: 0.78rem; color: var(--text-2); margin-top: 2px; }
+
+.header-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.pill-stats {
+    display: flex; align-items: center; gap: 0;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 50px; padding: 6px 18px;
+    backdrop-filter: var(--blur);
+}
+.pill-stat { text-align: center; padding: 0 12px; }
+.pill-num { display: block; font-size: 1.3rem; font-weight: 800; color: var(--text); line-height: 1; }
+.pill-lbl { font-size: 0.65rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.8px; }
+.pill-divider { width: 1px; height: 32px; background: var(--border); }
+.updated-tag { font-size: 0.72rem; color: var(--text-3); }
+
+/* ── Filters ─────────────────────────────────────────────────────────────── */
+.filters-wrap {
+    position: sticky; top: 89px; z-index: 90;
+    background: rgba(13,13,26,0.7);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+}
+.filters-inner {
+    max-width: 1400px; margin: 0 auto; padding: 0 28px;
+    display: flex; flex-direction: column; gap: 10px;
+}
+.search-box {
+    position: relative; width: 100%;
+}
+.search-ico {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    width: 16px; height: 16px; color: var(--text-3);
+}
+.search-box input {
+    width: 100%; padding: 11px 16px 11px 42px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); color: var(--text);
+    font-size: 0.9rem; font-family: inherit; outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-box input::placeholder { color: var(--text-3); }
+.search-box input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(167,139,250,.15);
+}
+.selects-row {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.selects-row select, .btn-reset {
+    padding: 9px 14px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); color: var(--text);
+    font-size: 0.8rem; font-family: inherit; cursor: pointer; outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none; -webkit-appearance: none;
+}
+.selects-row select:focus, .btn-reset:hover {
+    border-color: var(--purple); background: var(--surface-h);
+}
+.btn-reset { color: var(--text-2); letter-spacing: 0.3px; }
+.result-count { font-size: 0.78rem; color: var(--text-3); }
+.result-count strong { color: var(--purple); }
+
+/* ── Main ────────────────────────────────────────────────────────────────── */
+.main {
+    max-width: 1400px; margin: 0 auto; padding: 36px 28px 60px;
+    position: relative; z-index: 1;
+}
+
+/* ── Section ─────────────────────────────────────────────────────────────── */
+.section { margin-bottom: 52px; }
+.section-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px;
+}
+.section-title {
+    display: flex; align-items: center; gap: 10px;
+}
+.section-icon { font-size: 1.3rem; }
+.section-title h2 {
+    font-size: 1.2rem; font-weight: 700; color: var(--text);
+    letter-spacing: -0.3px;
+}
+.score-pill {
+    background: linear-gradient(135deg, rgba(34,211,160,.2), rgba(34,211,160,.05));
+    border: 1px solid rgba(34,211,160,.3);
+    color: var(--green); font-size: 0.72rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px;
+}
+.count-badge {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-2); font-size: 0.78rem; font-weight: 600;
+    padding: 4px 14px; border-radius: 20px;
+}
+
+/* ── Jobs Grid ───────────────────────────────────────────────────────────── */
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+}
+
+/* ── Job Card ────────────────────────────────────────────────────────────── */
+.job-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+    position: relative; overflow: hidden;
+    /* entrance animation applied via JS */
+}
+.job-card::before {
+    content: ''; position: absolute; inset: 0; border-radius: inherit;
+    opacity: 0; transition: opacity 0.3s;
+    pointer-events: none;
+}
+.job-card.score-green  { background: var(--grad-card-green);  border-left: 3px solid var(--green); }
+.job-card.score-blue   { background: var(--grad-card-blue);   border-left: 3px solid var(--blue); }
+.job-card.score-orange { background: var(--grad-card-orange); border-left: 3px solid var(--orange); }
+
+.job-card.score-green::before  { background: radial-gradient(ellipse at top left, var(--green-glow), transparent 70%); }
+.job-card.score-blue::before   { background: radial-gradient(ellipse at top left, var(--blue-glow),  transparent 70%); }
+.job-card.score-orange::before { background: radial-gradient(ellipse at top left, var(--orange-glow),transparent 70%); }
+
+.job-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-h);
+}
+.job-card.score-green:hover  { box-shadow: var(--shadow-hover), 0 0 40px var(--green-glow); }
+.job-card.score-blue:hover   { box-shadow: var(--shadow-hover), 0 0 40px var(--blue-glow); }
+.job-card.score-orange:hover { box-shadow: var(--shadow-hover), 0 0 40px var(--orange-glow); }
+.job-card:hover::before { opacity: 1; }
+
+.job-card.highlight {
+    background: linear-gradient(135deg, rgba(34,211,160,.1), rgba(96,165,250,.06), transparent);
+}
+.job-card.is-new { animation: card-pulse 2.5s ease-in-out 2; }
+@keyframes card-pulse {
+    0%,100% { box-shadow: var(--shadow-card); }
+    50%      { box-shadow: var(--shadow-card), 0 0 30px rgba(34,211,160,.4); }
+}
+
+/* Card internals */
+.card-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 14px; margin-bottom: 14px;
+}
+.card-title-wrap { flex: 1; }
+.card-title {
+    font-size: 0.97rem; font-weight: 600; color: var(--text);
+    line-height: 1.45; margin-top: 4px;
+}
+
+/* Score ring */
+.score-ring {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 10px 14px; border-radius: var(--radius);
+    min-width: 76px; text-align: center; flex-shrink: 0;
+    border: 1px solid transparent;
+}
+.score-ring.score-green  { background: var(--green-dim);  border-color: rgba(34,211,160,.25); }
+.score-ring.score-blue   { background: var(--blue-dim);   border-color: rgba(96,165,250,.25); }
+.score-ring.score-orange { background: var(--orange-dim); border-color: rgba(251,146,60,.25); }
+.ring-num {
+    font-size: 1.25rem; font-weight: 800; line-height: 1;
+}
+.score-ring.score-green  .ring-num { color: var(--green); }
+.score-ring.score-blue   .ring-num { color: var(--blue); }
+.score-ring.score-orange .ring-num { color: var(--orange); }
+.ring-lbl {
+    font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.4px; margin-top: 3px; color: var(--text-2);
+}
+
+/* NEW badge */
+.badge-new {
+    display: inline-block;
+    background: linear-gradient(135deg, #22d3a0, #06b6d4);
+    color: #000; font-size: 0.6rem; font-weight: 800;
+    padding: 2px 9px; border-radius: 20px; letter-spacing: 0.8px;
+    text-transform: uppercase; margin-bottom: 5px;
+    animation: glow-new 1.8s ease-in-out infinite alternate;
+}
+@keyframes glow-new {
+    from { box-shadow: 0 0 6px rgba(34,211,160,.5); }
+    to   { box-shadow: 0 0 16px rgba(34,211,160,.9), 0 0 30px rgba(34,211,160,.3); }
+}
+
+/* Tags */
+.card-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+.tag {
+    font-size: 0.74rem; padding: 4px 11px; border-radius: 20px;
+    border: 1px solid var(--border); color: var(--text-2);
+    background: rgba(255,255,255,.04);
+    transition: background 0.2s, border-color 0.2s;
+}
+.job-card:hover .tag { background: rgba(255,255,255,.07); }
+.tag-src { border-color: rgba(167,139,250,.3); color: var(--purple); background: rgba(167,139,250,.08); }
+
+/* Score breakdown */
+.card-breakdown {
+    font-size: 0.68rem; color: var(--text-3); margin-bottom: 14px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    background: rgba(255,255,255,.03); border: 1px solid var(--border);
+    padding: 7px 12px; border-radius: var(--radius-sm);
+    letter-spacing: 0.3px;
+}
+
+/* Action buttons */
+.card-actions { display: flex; gap: 10px; margin-top: 16px; }
+.btn-apply {
+    flex: 1; padding: 11px 18px; text-align: center;
+    background: var(--grad-brand);
+    color: white; text-decoration: none; border-radius: var(--radius-sm);
+    font-size: 0.84rem; font-weight: 700; letter-spacing: 0.2px;
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(168,85,247,.3);
+}
+.btn-apply:hover {
+    opacity: 0.9; transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(168,85,247,.5);
+}
+.btn-view {
+    padding: 11px 18px; text-align: center;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-2); text-decoration: none; border-radius: var(--radius-sm);
+    font-size: 0.84rem; font-weight: 500;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.btn-view:hover { background: var(--surface-h); border-color: var(--border-h); color: var(--text); }
+
+/* ── Empty State ─────────────────────────────────────────────────────────── */
+.empty-state {
+    text-align: center; padding: 56px 24px;
+    background: var(--surface); border: 1px dashed var(--border);
+    border-radius: var(--radius-lg);
+}
+.empty-icon { font-size: 2.8rem; margin-bottom: 14px; opacity: 0.5; }
+.empty-state p { font-size: 0.9rem; color: var(--text-3); }
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.footer {
+    text-align: center; padding: 28px;
+    border-top: 1px solid var(--border);
+    color: var(--text-3); font-size: 0.78rem; line-height: 2;
+    position: relative; z-index: 1;
+}
+.footer-sources { font-size: 0.72rem; opacity: 0.6; margin-top: 4px; }
+
+/* ── Custom Dropdown ─────────────────────────────────────────────────────── */
+.cdd {
+    position: relative; display: inline-block;
+}
+.cdd-btn {
+    display: flex; align-items: center; gap: 8px;
+    padding: 9px 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--text); font-size: 0.82rem; font-family: inherit;
+    cursor: pointer; outline: none; white-space: nowrap;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    min-width: 130px;
+}
+.cdd-btn:hover {
+    border-color: var(--purple);
+    background: rgba(167,139,250,0.12);
+    box-shadow: 0 0 0 3px rgba(167,139,250,0.1);
+}
+.cdd.open .cdd-btn {
+    border-color: var(--purple);
+    background: rgba(167,139,250,0.15);
+    box-shadow: 0 0 0 3px rgba(167,139,250,0.15);
+}
+.cdd-lbl { flex: 1; text-align: left; font-weight: 500; }
+.cdd-arrow {
+    width: 10px; height: 6px; flex-shrink: 0; color: var(--text-2);
+    transition: transform 0.25s ease;
+}
+.cdd.open .cdd-arrow { transform: rotate(180deg); }
+
+.cdd-panel {
+    display: none;
+    position: absolute; top: calc(100% + 6px); left: 0;
+    min-width: 100%; max-width: 260px;
+    background: #1a1a30;
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: var(--radius);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(167,139,250,0.1);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 200;
+    overflow: hidden;
+    max-height: 280px; overflow-y: auto;
+    animation: dd-in 0.18s ease;
+}
+.cdd.open .cdd-panel { display: block; }
+
+@keyframes dd-in {
+    from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cdd-opt {
+    padding: 10px 16px;
+    font-size: 0.82rem; color: var(--text-2);
+    cursor: pointer; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background 0.15s, color 0.15s;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.cdd-opt:last-child { border-bottom: none; }
+.cdd-opt:hover {
+    background: rgba(167,139,250,0.15);
+    color: var(--text);
+}
+.cdd-opt.selected {
+    background: rgba(167,139,250,0.2);
+    color: var(--purple);
+    font-weight: 600;
+}
+
+/* Scrollbar for dropdown panel */
+.cdd-panel::-webkit-scrollbar { width: 4px; }
+.cdd-panel::-webkit-scrollbar-track { background: transparent; }
+.cdd-panel::-webkit-scrollbar-thumb { background: rgba(167,139,250,0.3); border-radius: 4px; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .header-inner { flex-direction: column; align-items: flex-start; }
+    .header-meta  { align-items: flex-start; }
+    .jobs-grid    { grid-template-columns: 1fr; }
+    .selects-row  { flex-direction: column; }
+    .cdd, .cdd-btn { width: 100%; }
+    .btn-reset { width: 100%; }
+    .main { padding: 24px 16px 48px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── ANIMATED BACKGROUND ORBS ──────────────────────────────────────────── -->
+<div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+</div>
+
+<!-- ── HEADER ─────────────────────────────────────────────────────────────── -->
+<header class="header">
+    <div class="header-inner">
+        <div class="brand">
+            <div class="brand-icon">🎨</div>
+            <div class="brand-text">
+                <h1>UI/UX Job Tracker</h1>
+                <p>Srikar Jupudi &nbsp;·&nbsp; 4+ Years &nbsp;·&nbsp; Hyderabad</p>
+            </div>
+        </div>
+        <div class="header-meta">
+            <div class="pill-stats">
+                <div class="pill-stat">
+                    <span class="pill-num">33</span>
+                    <span class="pill-lbl">Jobs</span>
+                </div>
+                <div class="pill-divider"></div>
+                <div class="pill-stat">
+                    <span class="pill-num">11</span>
+                    <span class="pill-lbl">Today</span>
+                </div>
+                <div class="pill-divider"></div>
+                <div class="pill-stat">
+                    <span class="pill-num">0</span>
+                    <span class="pill-lbl">Top</span>
+                </div>
+            </div>
+            <div class="updated-tag">🕐 August 24, 2026 at 07:16 PM</div>
+        </div>
+    </div>
+</header>
+
+<!-- ── FILTERS ─────────────────────────────────────────────────────────────── -->
+<div class="filters-wrap">
+    <div class="filters-inner">
+        <div class="search-box">
+            <svg class="search-ico" viewBox="0 0 20 20" fill="none">
+                <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search jobs, companies, skills…" oninput="applyFilters()">
+        </div>
+        <div class="selects-row">
+            
+<div class="cdd" id="companyFilter-wrap">
+    <button type="button" class="cdd-btn" onclick="toggleDd('companyFilter')">
+        <span class="cdd-lbl" id="companyFilter-lbl">🏢 All Companies</span>
+        <svg class="cdd-arrow" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <input type="hidden" id="companyFilter" value="">
+    <div class="cdd-panel" id="companyFilter-panel">
+        <div class="cdd-opt" data-val="" onclick="selectDd('companyFilter','',this)">All Companies</div>
+<div class="cdd-opt" data-val="Adobe" onclick="selectDd('companyFilter','Adobe',this)">Adobe</div>
+<div class="cdd-opt" data-val="AiDASH" onclick="selectDd('companyFilter','AiDASH',this)">AiDASH</div>
+<div class="cdd-opt" data-val="Amazon" onclick="selectDd('companyFilter','Amazon',this)">Amazon</div>
+<div class="cdd-opt" data-val="Arrise Solutions (India) Pvt. Ltd." onclick="selectDd('companyFilter','Arrise Solutions (India) Pvt. Ltd.',this)">Arrise Solutions (India) Pvt. Ltd.</div>
+<div class="cdd-opt" data-val="Aspora" onclick="selectDd('companyFilter','Aspora',this)">Aspora</div>
+<div class="cdd-opt" data-val="Botpress" onclick="selectDd('companyFilter','Botpress',this)">Botpress</div>
+<div class="cdd-opt" data-val="Cradlewise" onclick="selectDd('companyFilter','Cradlewise',this)">Cradlewise</div>
+<div class="cdd-opt" data-val="Eloelo" onclick="selectDd('companyFilter','Eloelo',this)">Eloelo</div>
+<div class="cdd-opt" data-val="Emirates NBD" onclick="selectDd('companyFilter','Emirates NBD',this)">Emirates NBD</div>
+<div class="cdd-opt" data-val="Fam" onclick="selectDd('companyFilter','Fam',this)">Fam</div>
+<div class="cdd-opt" data-val="Google" onclick="selectDd('companyFilter','Google',this)">Google</div>
+<div class="cdd-opt" data-val="Healthify" onclick="selectDd('companyFilter','Healthify',this)">Healthify</div>
+<div class="cdd-opt" data-val="Hexagon R&amp;D India" onclick="selectDd('companyFilter','Hexagon R&amp;D India',this)">Hexagon R&amp;D India</div>
+<div class="cdd-opt" data-val="HotelHub" onclick="selectDd('companyFilter','HotelHub',this)">HotelHub</div>
+<div class="cdd-opt" data-val="MakeMyTrip" onclick="selectDd('companyFilter','MakeMyTrip',this)">MakeMyTrip</div>
+<div class="cdd-opt" data-val="Moorepay" onclick="selectDd('companyFilter','Moorepay',this)">Moorepay</div>
+<div class="cdd-opt" data-val="Navan" onclick="selectDd('companyFilter','Navan',this)">Navan</div>
+<div class="cdd-opt" data-val="Okta" onclick="selectDd('companyFilter','Okta',this)">Okta</div>
+<div class="cdd-opt" data-val="Optum India" onclick="selectDd('companyFilter','Optum India',this)">Optum India</div>
+<div class="cdd-opt" data-val="Rubrik" onclick="selectDd('companyFilter','Rubrik',this)">Rubrik</div>
+<div class="cdd-opt" data-val="Saviynt" onclick="selectDd('companyFilter','Saviynt',this)">Saviynt</div>
+<div class="cdd-opt" data-val="Scapia" onclick="selectDd('companyFilter','Scapia',this)">Scapia</div>
+<div class="cdd-opt" data-val="Sense" onclick="selectDd('companyFilter','Sense',this)">Sense</div>
+<div class="cdd-opt" data-val="ServiceTitan" onclick="selectDd('companyFilter','ServiceTitan',this)">ServiceTitan</div>
+<div class="cdd-opt" data-val="Sharp Brains" onclick="selectDd('companyFilter','Sharp Brains',this)">Sharp Brains</div>
+<div class="cdd-opt" data-val="Sketch Brahma Technologies" onclick="selectDd('companyFilter','Sketch Brahma Technologies',this)">Sketch Brahma Technologies</div>
+<div class="cdd-opt" data-val="TeamViewer" onclick="selectDd('companyFilter','TeamViewer',this)">TeamViewer</div>
+<div class="cdd-opt" data-val="Tricog Health" onclick="selectDd('companyFilter','Tricog Health',this)">Tricog Health</div>
+<div class="cdd-opt" data-val="Uplers" onclick="selectDd('companyFilter','Uplers',this)">Uplers</div>
+<div class="cdd-opt" data-val="Vjal Institute" onclick="selectDd('companyFilter','Vjal Institute',this)">Vjal Institute</div>
+<div class="cdd-opt" data-val="WATER®" onclick="selectDd('companyFilter','WATER®',this)">WATER®</div>
+
+    </div>
+</div>
+            
+<div class="cdd" id="locationFilter-wrap">
+    <button type="button" class="cdd-btn" onclick="toggleDd('locationFilter')">
+        <span class="cdd-lbl" id="locationFilter-lbl">📍 All Locations</span>
+        <svg class="cdd-arrow" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <input type="hidden" id="locationFilter" value="">
+    <div class="cdd-panel" id="locationFilter-panel">
+        <div class="cdd-opt" data-val="" onclick="selectDd('locationFilter','',this)">All Locations</div>
+<div class="cdd-opt" data-val="Bengaluru" onclick="selectDd('locationFilter','Bengaluru',this)">Bengaluru</div>
+<div class="cdd-opt" data-val="Bengaluru East" onclick="selectDd('locationFilter','Bengaluru East',this)">Bengaluru East</div>
+<div class="cdd-opt" data-val="Gurugram" onclick="selectDd('locationFilter','Gurugram',this)">Gurugram</div>
+<div class="cdd-opt" data-val="Hyderabad" onclick="selectDd('locationFilter','Hyderabad',this)">Hyderabad</div>
+<div class="cdd-opt" data-val="India" onclick="selectDd('locationFilter','India',this)">India</div>
+<div class="cdd-opt" data-val="Manchester" onclick="selectDd('locationFilter','Manchester',this)">Manchester</div>
+<div class="cdd-opt" data-val="Montreal" onclick="selectDd('locationFilter','Montreal',this)">Montreal</div>
+<div class="cdd-opt" data-val="Porto" onclick="selectDd('locationFilter','Porto',this)">Porto</div>
+
+    </div>
+</div>
+            
+<div class="cdd" id="sourceFilter-wrap">
+    <button type="button" class="cdd-btn" onclick="toggleDd('sourceFilter')">
+        <span class="cdd-lbl" id="sourceFilter-lbl">🔗 All Sources</span>
+        <svg class="cdd-arrow" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <input type="hidden" id="sourceFilter" value="">
+    <div class="cdd-panel" id="sourceFilter-panel">
+        <div class="cdd-opt" data-val="" onclick="selectDd('sourceFilter','',this)">All Sources</div>
+<div class="cdd-opt" data-val="LinkedIn" onclick="selectDd('sourceFilter','LinkedIn',this)">LinkedIn</div>
+
+    </div>
+</div>
+            
+<div class="cdd" id="scoreFilter-wrap">
+    <button type="button" class="cdd-btn" onclick="toggleDd('scoreFilter')">
+        <span class="cdd-lbl" id="scoreFilter-lbl">⭐ All Scores</span>
+        <svg class="cdd-arrow" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <input type="hidden" id="scoreFilter" value="0">
+    <div class="cdd-panel" id="scoreFilter-panel">
+        <div class="cdd-opt" data-val="0" onclick="selectDd('scoreFilter','0',this)">All Scores</div>
+<div class="cdd-opt" data-val="90" onclick="selectDd('scoreFilter','90',this)">90%+ Excellent</div>
+<div class="cdd-opt" data-val="80" onclick="selectDd('scoreFilter','80',this)">80%+ Strong</div>
+<div class="cdd-opt" data-val="70" onclick="selectDd('scoreFilter','70',this)">70%+ Good</div>
+
+    </div>
+</div>
+            
+<div class="cdd" id="dateFilter-wrap">
+    <button type="button" class="cdd-btn" onclick="toggleDd('dateFilter')">
+        <span class="cdd-lbl" id="dateFilter-lbl">📅 Last 7 Days</span>
+        <svg class="cdd-arrow" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <input type="hidden" id="dateFilter" value="7">
+    <div class="cdd-panel" id="dateFilter-panel">
+        <div class="cdd-opt" data-val="7" onclick="selectDd('dateFilter','7',this)">Last 7 Days</div>
+<div class="cdd-opt" data-val="1" onclick="selectDd('dateFilter','1',this)">Today Only</div>
+<div class="cdd-opt" data-val="3" onclick="selectDd('dateFilter','3',this)">Last 3 Days</div>
+
+    </div>
+</div>
+            
+<div class="cdd" id="sortBy-wrap">
+    <button type="button" class="cdd-btn" onclick="toggleDd('sortBy')">
+        <span class="cdd-lbl" id="sortBy-lbl">🏆 Best Match</span>
+        <svg class="cdd-arrow" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <input type="hidden" id="sortBy" value="score">
+    <div class="cdd-panel" id="sortBy-panel">
+        <div class="cdd-opt" data-val="score" onclick="selectDd('sortBy','score',this)">Best Match</div>
+<div class="cdd-opt" data-val="date" onclick="selectDd('sortBy','date',this)">Newest First</div>
+<div class="cdd-opt" data-val="company" onclick="selectDd('sortBy','company',this)">Company A–Z</div>
+
+    </div>
+</div>
+            <button class="btn-reset" onclick="resetFilters()">↺ Reset</button>
+        </div>
+        <div class="result-count">
+            Showing <strong id="visibleCount">33</strong> of 33 jobs
+        </div>
+    </div>
+</div>
+
+<!-- ── MAIN ────────────────────────────────────────────────────────────────── -->
+<main class="main">
+
+    <!-- TOP MATCHES -->
+    <section class="section" id="section-top">
+        <div class="section-head">
+            <div class="section-title">
+                <span class="section-icon">🏆</span>
+                <h2>Top Matches</h2>
+                <span class="score-pill">90%+</span>
+            </div>
+            <span class="count-badge">0</span>
+        </div>
+        <div class="jobs-grid" id="grid-top">
+            
+        </div>
+        
+        <div class="empty-state">
+            <div class="empty-icon">📭</div>
+            <p>No 90%+ matches yet — run the scraper to find top jobs.</p>
+        </div>
+    </section>
+
+    <!-- TODAY -->
+    <section class="section" id="section-today">
+        <div class="section-head">
+            <div class="section-title">
+                <span class="section-icon">🔥</span>
+                <h2>Today's Fresh Jobs</h2>
+            </div>
+            <span class="count-badge">11</span>
+        </div>
+        <div class="jobs-grid" id="grid-today">
+            
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UI/UX Designer || 2+ Years || Sketch Brahma Technologies || Bangalore</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Sketch Brahma Technologies</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 Today</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456888221/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456888221/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">User Experience Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 WATER®</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 Today</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455885122/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455885122/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UI/UX Designer (2026)</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Arrise Solutions (India) Pvt. Ltd.</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 Yesterday</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4430725047/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4430725047/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Cradlewise</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 2d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456605968/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456605968/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UI/UX Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 HotelHub</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4454187836/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4454187836/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UI/UX Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Tricog Health</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4454185934/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4454185934/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">Sr. UX Designer, Amazon Customer Service</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Amazon</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455917282/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455917282/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">Brand &amp; Digital Experience Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Hexagon R&amp;D India</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 7d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4452257750/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4452257750/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">User Interface Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">66.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Sharp Brains</span>
+                <span class="tag tag-loc">📍 India</span>
+                <span class="tag tag-date">📅 Today</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455840979/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455840979/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UX/Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">66.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Moorepay</span>
+                <span class="tag tag-loc">📍 Manchester</span>
+                <span class="tag tag-date">📅 Today</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456867884/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456867884/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">Web Designer &amp; Developer (Wordpress) - Gurgaon</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">60.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Vjal Institute</span>
+                <span class="tag tag-loc">📍 Gurugram</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4454100302/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4454100302/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+        </div>
+        
+    </section>
+
+    <!-- LAST 3 DAYS -->
+    <section class="section" id="section-3days">
+        <div class="section-head">
+            <div class="section-title">
+                <span class="section-icon">📅</span>
+                <h2>Last 3 Days</h2>
+            </div>
+            <span class="count-badge">8</span>
+        </div>
+        <div class="jobs-grid" id="grid-3days">
+            
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Interaction Designer, Android Developer Experience</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Google</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 2d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4447144292/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4447144292/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Eloelo</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 2d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4457803721/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4457803721/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Staff Product Designer, Platform</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Adobe</span>
+                <span class="tag tag-loc">📍 Bengaluru East</span>
+                <span class="tag tag-date">📅 2d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4419028540/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4419028540/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Fam</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456219049/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456219049/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 ServiceTitan</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456222137/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456222137/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 AiDASH</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4457092986/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4457092986/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Staff Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Okta</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4445032889/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4445032889/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Designer produit sénior (Senior Product Designer)</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">67.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Botpress</span>
+                <span class="tag tag-loc">📍 Montreal</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456269153/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456269153/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+        </div>
+        
+    </section>
+
+    <!-- LAST 7 DAYS -->
+    <section class="section" id="section-7days">
+        <div class="section-head">
+            <div class="section-title">
+                <span class="section-icon">📆</span>
+                <h2>Last 7 Days</h2>
+            </div>
+            <span class="count-badge">14</span>
+        </div>
+        <div class="jobs-grid" id="grid-7days">
+            
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Uplers</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456770994/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456770994/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior UX Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 MakeMyTrip</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456759187/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456759187/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior UX/UI Designer - Hyderabad, Bangalore, Chennai, Pune, Noida</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Optum India</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4457014379/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4457014379/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Staff UX Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Saviynt</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4429557164/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4429557164/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Staff Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Navan</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456150927/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456150927/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior UX Designer, Amazon Customer Service</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Amazon</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455775873/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455775873/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Healthify</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456140594/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456140594/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Sense</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4453425441/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4453425441/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Emirates NBD</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4453407922/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4453407922/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior UX designer, RBS</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Amazon</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455794253/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455794253/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Lead Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Scapia</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4453571440/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4453571440/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer II</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Rubrik</span>
+                <span class="tag tag-loc">📍 Bengaluru East</span>
+                <span class="tag tag-date">📅 6d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455979629/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455979629/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Aspora</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 6d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4428813846/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4428813846/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer, DEX</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">67.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 TeamViewer</span>
+                <span class="tag tag-loc">📍 Porto</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4429798529/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4429798529/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+        </div>
+        
+    </section>
+
+    <!-- HIDDEN: all jobs for JS filtering -->
+    <section class="section" id="section-all" style="display:none;">
+        <div class="jobs-grid" id="grid-all">
+            
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Interaction Designer, Android Developer Experience</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Google</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 2d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4447144292/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4447144292/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Eloelo</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 2d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4457803721/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4457803721/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Staff Product Designer, Platform</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Adobe</span>
+                <span class="tag tag-loc">📍 Bengaluru East</span>
+                <span class="tag tag-date">📅 2d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4419028540/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4419028540/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Fam</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456219049/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456219049/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 ServiceTitan</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456222137/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456222137/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 AiDASH</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4457092986/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4457092986/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Staff Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Okta</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4445032889/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4445032889/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Uplers</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456770994/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456770994/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior UX Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 MakeMyTrip</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456759187/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456759187/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior UX/UI Designer - Hyderabad, Bangalore, Chennai, Pune, Noida</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Optum India</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4457014379/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4457014379/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Staff UX Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Saviynt</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4429557164/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4429557164/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Staff Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Navan</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456150927/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456150927/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior UX Designer, Amazon Customer Service</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Amazon</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455775873/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455775873/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Healthify</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456140594/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456140594/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Sense</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4453425441/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4453425441/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Emirates NBD</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4453407922/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4453407922/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior UX designer, RBS</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Amazon</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455794253/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455794253/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Lead Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Scapia</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4453571440/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4453571440/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer II</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Rubrik</span>
+                <span class="tag tag-loc">📍 Bengaluru East</span>
+                <span class="tag tag-date">📅 6d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455979629/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455979629/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">70.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Aspora</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 6d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4428813846/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4428813846/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UI/UX Designer || 2+ Years || Sketch Brahma Technologies || Bangalore</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Sketch Brahma Technologies</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 Today</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456888221/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456888221/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">User Experience Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 WATER®</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 Today</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455885122/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455885122/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UI/UX Designer (2026)</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Arrise Solutions (India) Pvt. Ltd.</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 Yesterday</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4430725047/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4430725047/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Cradlewise</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 2d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456605968/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456605968/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UI/UX Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 HotelHub</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4454187836/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4454187836/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UI/UX Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Tricog Health</span>
+                <span class="tag tag-loc">📍 Bengaluru</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4454185934/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4454185934/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">Sr. UX Designer, Amazon Customer Service</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Amazon</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 5d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455917282/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455917282/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">Brand &amp; Digital Experience Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">69.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Hexagon R&amp;D India</span>
+                <span class="tag tag-loc">📍 Hyderabad</span>
+                <span class="tag tag-date">📅 7d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4452257750/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4452257750/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Designer produit sénior (Senior Product Designer)</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">67.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Botpress</span>
+                <span class="tag tag-loc">📍 Montreal</span>
+                <span class="tag tag-date">📅 3d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456269153/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456269153/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  ">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    
+                    <h3 class="card-title">Senior Product Designer, DEX</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">67.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 TeamViewer</span>
+                <span class="tag tag-loc">📍 Porto</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4429798529/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4429798529/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">User Interface Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">66.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Sharp Brains</span>
+                <span class="tag tag-loc">📍 India</span>
+                <span class="tag tag-date">📅 Today</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4455840979/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4455840979/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">UX/Product Designer</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">66.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Moorepay</span>
+                <span class="tag tag-loc">📍 Manchester</span>
+                <span class="tag tag-date">📅 Today</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4456867884/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4456867884/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+
+        <div class="job-card score-orange  is-new">
+            <div class="card-top">
+                <div class="card-title-wrap">
+                    <span class="badge-new">NEW</span>
+                    <h3 class="card-title">Web Designer &amp; Developer (Wordpress) - Gurgaon</h3>
+                </div>
+                <div class="score-ring score-orange">
+                    <span class="ring-num">60.0%</span>
+                    <span class="ring-lbl">Good Match</span>
+                </div>
+            </div>
+            <div class="card-meta">
+                <span class="tag tag-company">🏢 Vjal Institute</span>
+                <span class="tag tag-loc">📍 Gurugram</span>
+                <span class="tag tag-date">📅 4d ago</span>
+                <span class="tag tag-src">🔗 LinkedIn</span>
+            </div>
+            
+            <div class="card-actions">
+                <a href="https://www.linkedin.com/jobs/view/4454100302/" target="_blank" rel="noopener noreferrer"
+                   class="btn-apply">Apply Now →</a>
+                <a href="https://www.linkedin.com/jobs/view/4454100302/" target="_blank" rel="noopener noreferrer"
+                   class="btn-view">View</a>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- FILTERED RESULTS -->
+    <section class="section" id="section-filtered" style="display:none;">
+        <div class="section-head">
+            <div class="section-title">
+                <span class="section-icon">🔎</span>
+                <h2>Filtered Results</h2>
+            </div>
+            <span class="count-badge" id="filteredCount">0</span>
+        </div>
+        <div class="jobs-grid" id="grid-filtered"></div>
+    </section>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<footer class="footer">
+    <p>UI/UX Job Tracker &nbsp;·&nbsp; Built for Srikar Jupudi &nbsp;·&nbsp; Auto-refreshes daily</p>
+    <p class="footer-sources">LinkedIn · Naukri · Indeed · Foundit · Glassdoor · Wellfound · Instahyre · Company Pages</p>
+</footer>
+
+<!-- ── JAVASCRIPT ─────────────────────────────────────────────────────────── -->
+<script>
+const ALL_JOBS = [{"id": 12, "job_id": "linkedin_4447144292", "title": "Senior Interaction Designer, Android Developer Experience", "company": "Google", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4447144292/", "apply_url": "https://www.linkedin.com/jobs/view/4447144292/", "source": "LinkedIn", "posted_date": "2026-08-22", "posted_date_raw": "2026-08-22", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 18, "job_id": "linkedin_4457803721", "title": "Senior Product Designer", "company": "Eloelo", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4457803721/", "apply_url": "https://www.linkedin.com/jobs/view/4457803721/", "source": "LinkedIn", "posted_date": "2026-08-22", "posted_date_raw": "2026-08-22", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 19, "job_id": "linkedin_4419028540", "title": "Staff Product Designer, Platform", "company": "Adobe", "location": "Bengaluru East, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4419028540/", "apply_url": "https://www.linkedin.com/jobs/view/4419028540/", "source": "LinkedIn", "posted_date": "2026-08-22", "posted_date_raw": "2026-08-22", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 4, "job_id": "linkedin_4456219049", "title": "Senior Product Designer", "company": "Fam", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4456219049/", "apply_url": "https://www.linkedin.com/jobs/view/4456219049/", "source": "LinkedIn", "posted_date": "2026-08-21", "posted_date_raw": "2026-08-21", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 9, "job_id": "linkedin_4456222137", "title": "Senior Product Designer", "company": "ServiceTitan", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4456222137/", "apply_url": "https://www.linkedin.com/jobs/view/4456222137/", "source": "LinkedIn", "posted_date": "2026-08-21", "posted_date_raw": "2026-08-21", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 11, "job_id": "linkedin_4457092986", "title": "Senior Product Designer", "company": "AiDASH", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4457092986/", "apply_url": "https://www.linkedin.com/jobs/view/4457092986/", "source": "LinkedIn", "posted_date": "2026-08-21", "posted_date_raw": "2026-08-21", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 13, "job_id": "linkedin_4445032889", "title": "Staff Product Designer", "company": "Okta", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4445032889/", "apply_url": "https://www.linkedin.com/jobs/view/4445032889/", "source": "LinkedIn", "posted_date": "2026-08-21", "posted_date_raw": "2026-08-21", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 5, "job_id": "linkedin_4456770994", "title": "Senior Product Designer", "company": "Uplers", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4456770994/", "apply_url": "https://www.linkedin.com/jobs/view/4456770994/", "source": "LinkedIn", "posted_date": "2026-08-20", "posted_date_raw": "2026-08-20", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 7, "job_id": "linkedin_4456759187", "title": "Senior UX Designer", "company": "MakeMyTrip", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4456759187/", "apply_url": "https://www.linkedin.com/jobs/view/4456759187/", "source": "LinkedIn", "posted_date": "2026-08-20", "posted_date_raw": "2026-08-20", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 10, "job_id": "linkedin_4457014379", "title": "Senior UX/UI Designer - Hyderabad, Bangalore, Chennai, Pune, Noida", "company": "Optum India", "location": "Hyderabad, Telangana, India", "url": "https://www.linkedin.com/jobs/view/4457014379/", "apply_url": "https://www.linkedin.com/jobs/view/4457014379/", "source": "LinkedIn", "posted_date": "2026-08-20", "posted_date_raw": "2026-08-20", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 20, "job_id": "linkedin_4429557164", "title": "Staff UX Designer", "company": "Saviynt", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4429557164/", "apply_url": "https://www.linkedin.com/jobs/view/4429557164/", "source": "LinkedIn", "posted_date": "2026-08-20", "posted_date_raw": "2026-08-20", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 2, "job_id": "linkedin_4456150927", "title": "Staff Product Designer", "company": "Navan", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4456150927/", "apply_url": "https://www.linkedin.com/jobs/view/4456150927/", "source": "LinkedIn", "posted_date": "2026-08-19", "posted_date_raw": "2026-08-19", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 3, "job_id": "linkedin_4455775873", "title": "Senior UX Designer, Amazon Customer Service", "company": "Amazon", "location": "Hyderabad, Telangana, India", "url": "https://www.linkedin.com/jobs/view/4455775873/", "apply_url": "https://www.linkedin.com/jobs/view/4455775873/", "source": "LinkedIn", "posted_date": "2026-08-19", "posted_date_raw": "2026-08-19", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 6, "job_id": "linkedin_4456140594", "title": "Senior Product Designer", "company": "Healthify", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4456140594/", "apply_url": "https://www.linkedin.com/jobs/view/4456140594/", "source": "LinkedIn", "posted_date": "2026-08-19", "posted_date_raw": "2026-08-19", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 8, "job_id": "linkedin_4453425441", "title": "Senior Product Designer", "company": "Sense", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4453425441/", "apply_url": "https://www.linkedin.com/jobs/view/4453425441/", "source": "LinkedIn", "posted_date": "2026-08-19", "posted_date_raw": "2026-08-19", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 14, "job_id": "linkedin_4453407922", "title": "Senior Product Designer", "company": "Emirates NBD", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4453407922/", "apply_url": "https://www.linkedin.com/jobs/view/4453407922/", "source": "LinkedIn", "posted_date": "2026-08-19", "posted_date_raw": "2026-08-19", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 15, "job_id": "linkedin_4455794253", "title": "Senior UX designer, RBS", "company": "Amazon", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4455794253/", "apply_url": "https://www.linkedin.com/jobs/view/4455794253/", "source": "LinkedIn", "posted_date": "2026-08-19", "posted_date_raw": "2026-08-19", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 16, "job_id": "linkedin_4453571440", "title": "Lead Product Designer", "company": "Scapia", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4453571440/", "apply_url": "https://www.linkedin.com/jobs/view/4453571440/", "source": "LinkedIn", "posted_date": "2026-08-19", "posted_date_raw": "2026-08-19", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 1, "job_id": "linkedin_4455979629", "title": "Senior Product Designer II", "company": "Rubrik", "location": "Bengaluru East, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4455979629/", "apply_url": "https://www.linkedin.com/jobs/view/4455979629/", "source": "LinkedIn", "posted_date": "2026-08-18", "posted_date_raw": "2026-08-18", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 15:55:59", "last_seen": "2026-08-24 15:55:59", "run_id": 2, "created_at": "2026-08-24 15:55:59"}, {"id": 17, "job_id": "linkedin_4428813846", "title": "Senior Product Designer", "company": "Aspora", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4428813846/", "apply_url": "https://www.linkedin.com/jobs/view/4428813846/", "source": "LinkedIn", "posted_date": "2026-08-18", "posted_date_raw": "2026-08-18", "description": "", "match_score": 70.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 24, "job_id": "linkedin_4456888221", "title": "UI/UX Designer || 2+ Years || Sketch Brahma Technologies || Bangalore", "company": "Sketch Brahma Technologies", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4456888221/", "apply_url": "https://www.linkedin.com/jobs/view/4456888221/", "source": "LinkedIn", "posted_date": "2026-08-24", "posted_date_raw": "2026-08-24", "description": "", "match_score": 69.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 25, "job_id": "linkedin_4455885122", "title": "User Experience Designer", "company": "WATER®", "location": "Hyderabad, Telangana, India", "url": "https://www.linkedin.com/jobs/view/4455885122/", "apply_url": "https://www.linkedin.com/jobs/view/4455885122/", "source": "LinkedIn", "posted_date": "2026-08-24", "posted_date_raw": "2026-08-24", "description": "", "match_score": 69.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 28, "job_id": "linkedin_4430725047", "title": "UI/UX Designer (2026)", "company": "Arrise Solutions (India) Pvt. Ltd.", "location": "Hyderabad, Telangana, India", "url": "https://www.linkedin.com/jobs/view/4430725047/", "apply_url": "https://www.linkedin.com/jobs/view/4430725047/", "source": "LinkedIn", "posted_date": "2026-08-23", "posted_date_raw": "2026-08-23", "description": "", "match_score": 69.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 30, "job_id": "linkedin_4456605968", "title": "Product Designer", "company": "Cradlewise", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4456605968/", "apply_url": "https://www.linkedin.com/jobs/view/4456605968/", "source": "LinkedIn", "posted_date": "2026-08-22", "posted_date_raw": "2026-08-22", "description": "", "match_score": 69.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 27, "job_id": "linkedin_4454187836", "title": "UI/UX Designer", "company": "HotelHub", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4454187836/", "apply_url": "https://www.linkedin.com/jobs/view/4454187836/", "source": "LinkedIn", "posted_date": "2026-08-21", "posted_date_raw": "2026-08-21", "description": "", "match_score": 69.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 29, "job_id": "linkedin_4454185934", "title": "UI/UX Designer", "company": "Tricog Health", "location": "Bengaluru, Karnataka, India", "url": "https://www.linkedin.com/jobs/view/4454185934/", "apply_url": "https://www.linkedin.com/jobs/view/4454185934/", "source": "LinkedIn", "posted_date": "2026-08-21", "posted_date_raw": "2026-08-21", "description": "", "match_score": 69.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 23, "job_id": "linkedin_4455917282", "title": "Sr. UX Designer, Amazon Customer Service", "company": "Amazon", "location": "Hyderabad, Telangana, India", "url": "https://www.linkedin.com/jobs/view/4455917282/", "apply_url": "https://www.linkedin.com/jobs/view/4455917282/", "source": "LinkedIn", "posted_date": "2026-08-19", "posted_date_raw": "2026-08-19", "description": "", "match_score": 69.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 26, "job_id": "linkedin_4452257750", "title": "Brand & Digital Experience Designer", "company": "Hexagon R&D India", "location": "Hyderabad, Telangana, India", "url": "https://www.linkedin.com/jobs/view/4452257750/", "apply_url": "https://www.linkedin.com/jobs/view/4452257750/", "source": "LinkedIn", "posted_date": "2026-08-17", "posted_date_raw": "2026-08-17", "description": "", "match_score": 69.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 200, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 22, "job_id": "linkedin_4456269153", "title": "Designer produit sénior (Senior Product Designer)", "company": "Botpress", "location": "Montreal, Quebec, Canada", "url": "https://www.linkedin.com/jobs/view/4456269153/", "apply_url": "https://www.linkedin.com/jobs/view/4456269153/", "source": "LinkedIn", "posted_date": "2026-08-21", "posted_date_raw": "2026-08-21", "description": "", "match_score": 67.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 429, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 21, "job_id": "linkedin_4429798529", "title": "Senior Product Designer, DEX", "company": "TeamViewer", "location": "Porto, Porto, Portugal", "url": "https://www.linkedin.com/jobs/view/4429798529/", "apply_url": "https://www.linkedin.com/jobs/view/4429798529/", "source": "LinkedIn", "posted_date": "2026-08-20", "posted_date_raw": "2026-08-20", "description": "", "match_score": 67.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 85.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 429, "is_new": 0, "first_seen": "2026-08-24 18:39:17", "last_seen": "2026-08-24 18:39:17", "run_id": 3, "created_at": "2026-08-24 18:39:17"}, {"id": 31, "job_id": "linkedin_4455840979", "title": "User Interface Designer", "company": "Sharp Brains", "location": "India", "url": "https://www.linkedin.com/jobs/view/4455840979/", "apply_url": "https://www.linkedin.com/jobs/view/4455840979/", "source": "LinkedIn", "posted_date": "2026-08-24", "posted_date_raw": "2026-08-24", "description": "", "match_score": 66.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 429, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 32, "job_id": "linkedin_4456867884", "title": "UX/Product Designer", "company": "Moorepay", "location": "Manchester, England, United Kingdom", "url": "https://www.linkedin.com/jobs/view/4456867884/", "apply_url": "https://www.linkedin.com/jobs/view/4456867884/", "source": "LinkedIn", "posted_date": "2026-08-24", "posted_date_raw": "2026-08-24", "description": "", "match_score": 66.0, "skill_match": 50.0, "role_match": 95.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 429, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}, {"id": 33, "job_id": "linkedin_4454100302", "title": "Web Designer & Developer (Wordpress) - Gurgaon", "company": "Vjal Institute", "location": "Gurugram, Haryana, India", "url": "https://www.linkedin.com/jobs/view/4454100302/", "apply_url": "https://www.linkedin.com/jobs/view/4454100302/", "source": "LinkedIn", "posted_date": "2026-08-20", "posted_date_raw": "2026-08-20", "description": "", "match_score": 60.0, "skill_match": 50.0, "role_match": 75.0, "experience_match": 75.0, "tool_match": 50.0, "domain_match": 50.0, "validation_status": "VALID", "http_status_code": 429, "is_new": 1, "first_seen": "2026-08-24 19:11:38", "last_seen": "2026-08-24 19:11:38", "run_id": 4, "created_at": "2026-08-24 19:11:38"}];
+
+function applyFilters() {
+    const search   = document.getElementById('searchInput').value.toLowerCase();
+    const company  = document.getElementById('companyFilter').value.toLowerCase();
+    const location = document.getElementById('locationFilter').value.toLowerCase();
+    const source   = document.getElementById('sourceFilter').value.toLowerCase();
+    const minScore = parseFloat(document.getElementById('scoreFilter').value) || 0;
+    const days     = parseInt(document.getElementById('dateFilter').value) || 7;
+    const sortBy   = document.getElementById('sortBy').value;
+
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - days);
+    const cutoffStr = cutoff.toISOString().split('T')[0];
+
+    const hasFilters = search || company || location || source || minScore > 0;
+
+    let filtered = ALL_JOBS.filter(j => {
+        const t = (j.title||'').toLowerCase(), c2 = (j.company||'').toLowerCase(),
+              d = (j.description||'').toLowerCase(), l = (j.location||'').toLowerCase();
+        return (!search  || t.includes(search) || c2.includes(search) || d.includes(search) || l.includes(search))
+            && (!company  || c2.includes(company))
+            && (!location || l.includes(location))
+            && (!source   || (j.source||'').toLowerCase().includes(source))
+            && (j.match_score||0) >= minScore
+            && (!j.posted_date || j.posted_date >= cutoffStr);
+    });
+
+    filtered.sort((a,b) => {
+        if (sortBy==='score')   return (b.match_score||0)-(a.match_score||0);
+        if (sortBy==='date')    return (b.posted_date||'').localeCompare(a.posted_date||'');
+        if (sortBy==='company') return (a.company||'').localeCompare(b.company||'');
+        return 0;
+    });
+
+    document.getElementById('visibleCount').textContent = filtered.length;
+    document.getElementById('filteredCount').textContent = filtered.length;
+
+    if (hasFilters) {
+        ['section-top','section-today','section-3days','section-7days'].forEach(id =>
+            document.getElementById(id).style.display = 'none');
+        const sec = document.getElementById('section-filtered');
+        sec.style.display = 'block';
+        document.getElementById('grid-filtered').innerHTML =
+            filtered.map(j => renderCard(j)).join('');
+        animateCards('#grid-filtered .job-card');
+    } else {
+        document.getElementById('section-filtered').style.display = 'none';
+        ['section-top','section-today','section-3days','section-7days'].forEach(id =>
+            document.getElementById(id).style.display = 'block');
+    }
+}
+
+// ── Custom Dropdown Logic ─────────────────────────────────────────────────
+function toggleDd(fieldId) {
+    const wrap = document.getElementById(fieldId + '-wrap');
+    const isOpen = wrap.classList.contains('open');
+    // Close all open dropdowns first
+    document.querySelectorAll('.cdd.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) wrap.classList.add('open');
+}
+
+function selectDd(fieldId, value, optEl) {
+    // Update hidden input
+    document.getElementById(fieldId).value = value;
+    // Update label text
+    document.getElementById(fieldId + '-lbl').textContent = optEl.textContent;
+    // Mark selected option
+    const panel = document.getElementById(fieldId + '-panel');
+    panel.querySelectorAll('.cdd-opt').forEach(o => o.classList.remove('selected'));
+    optEl.classList.add('selected');
+    // Close dropdown
+    document.getElementById(fieldId + '-wrap').classList.remove('open');
+    // Trigger filter
+    applyFilters();
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.cdd')) {
+        document.querySelectorAll('.cdd.open').forEach(el => el.classList.remove('open'));
+    }
+});
+
+function resetFilters() {
+    document.getElementById('searchInput').value = '';
+    // Reset each custom dropdown to its first option
+    [
+        ['companyFilter', '🏢 All Companies', ''],
+        ['locationFilter', '📍 All Locations', ''],
+        ['sourceFilter',  '🔗 All Sources',   ''],
+        ['scoreFilter',   '⭐ All Scores',     '0'],
+        ['dateFilter',    '📅 Last 7 Days',    '7'],
+        ['sortBy',        '🏆 Best Match',     'score'],
+    ].forEach(([id, label, val]) => {
+        document.getElementById(id).value = val;
+        document.getElementById(id + '-lbl').textContent = label;
+        const panel = document.getElementById(id + '-panel');
+        if (panel) panel.querySelectorAll('.cdd-opt').forEach(o => o.classList.remove('selected'));
+    });
+    applyFilters();
+}
+
+function renderCard(j) {
+    const score = j.match_score || 0;
+    let cls = 'orange', lbl = 'Good Match';
+    if (score >= 90) { cls = 'green'; lbl = 'Excellent'; }
+    else if (score >= 80) { cls = 'blue'; lbl = 'Strong Match'; }
+    const isNew = j.is_new === 1;
+    const newBadge = isNew ? '<span class="badge-new">NEW</span>' : '';
+    const applyUrl = j.apply_url || j.url || '#';
+    const bd = j.score_breakdown || '';
+    return `
+    <div class="job-card score-${cls} ${isNew?'is-new':''}">
+        <div class="card-top">
+            <div class="card-title-wrap">${newBadge}<h3 class="card-title">${esc(j.title||'')}</h3></div>
+            <div class="score-ring score-${cls}">
+                <span class="ring-num">${score}%</span>
+                <span class="ring-lbl">${lbl}</span>
+            </div>
+        </div>
+        <div class="card-meta">
+            <span class="tag tag-company">🏢 ${esc(j.company||'')}</span>
+            <span class="tag tag-loc">📍 ${esc((j.location||'India').split(',')[0])}</span>
+            <span class="tag tag-date">📅 ${esc(j.posted_date||'Recently')}</span>
+            <span class="tag tag-src">🔗 ${esc(j.source||'')}</span>
+        </div>
+        ${bd ? `<div class="card-breakdown">${esc(bd)}</div>` : ''}
+        <div class="card-actions">
+            <a href="${applyUrl}" target="_blank" rel="noopener" class="btn-apply">Apply Now →</a>
+            <a href="${j.url||'#'}" target="_blank" rel="noopener" class="btn-view">View</a>
+        </div>
+    </div>`;
+}
+
+function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function animateCards(sel) {
+    document.querySelectorAll(sel).forEach((el,i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+        setTimeout(() => {
+            el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, i * 60);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    animateCards('.job-card');
+    document.getElementById('visibleCount').textContent = ALL_JOBS.length;
+});
+</script>
+</body>
+</html>
