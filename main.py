@@ -165,7 +165,7 @@ class JobSearchPipeline:
                               if j.get("match_score", 0) >= config.MIN_MATCH_SCORE]
             low_score_count = len(scored_jobs) - len(qualified_jobs)
             logger.info(
-                f"  Qualified (≥{config.MIN_MATCH_SCORE}%): {len(qualified_jobs)} "
+                f"  Qualified (>={config.MIN_MATCH_SCORE}%): {len(qualified_jobs)} "
                 f"| Below threshold: {low_score_count}"
             )
             self.stats["jobs_rejected"] += low_score_count
@@ -517,7 +517,7 @@ def main():
 
     # Print summary to console
     print("\n" + "=" * 60)
-    print("  ✅ UI/UX JOB SEARCH COMPLETE")
+    print("  [OK] UI/UX JOB SEARCH COMPLETE")
     print("=" * 60)
     print(f"  Jobs Crawled:       {stats['jobs_crawled']}")
     print(f"  Valid Jobs:         {stats['jobs_validated']}")
@@ -526,8 +526,8 @@ def main():
     print(f"  Expired Rejected:   {stats['expired_rejected']}")
     print(f"  Invalid Rejected:   {stats['jobs_rejected']}")
     print("=" * 60)
-    print(f"  📊 Dashboard: {config.DASHBOARD_FILE}")
-    print(f"  📋 Log:       {config.LOG_FILE}")
+    print(f"  Dashboard: {config.DASHBOARD_FILE}")
+    print(f"  Log:       {config.LOG_FILE}")
     print("=" * 60)
 
 

@@ -1,0 +1,1543 @@
+2026-08-25 15:16:00 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-25 15:16:00 [INFO] __main__: Working directory: D:\ai\tracker\UI-UX-Job_Hunt
+2026-08-25 15:16:00 [INFO] db_manager: DatabaseManager initialized: D:\ai\tracker\UI-UX-Job_Hunt\jobs.db
+2026-08-25 15:16:00 [INFO] db_manager: Run started: run_id=5
+2026-08-25 15:16:00 [INFO] __main__: ======================================================================
+2026-08-25 15:16:00 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-25 15:16:00 [INFO] __main__:   Run ID: 5 | Date: 2026-08-25 15:16:00
+2026-08-25 15:16:00 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre, shine, timesjobs
+2026-08-25 15:16:00 [INFO] __main__: ======================================================================
+2026-08-25 15:16:00 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-25 15:16:00 [INFO] __main__:   Existing jobs in DB: 33
+2026-08-25 15:16:00 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-25 15:16:00 [INFO] __main__:   Scraping: company_pages...
+2026-08-25 15:16:00 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-25 15:16:41 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:16:41 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-25 15:16:41 [INFO] __main__:   Scraping: linkedin...
+2026-08-25 15:16:41 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-25 15:18:34 [INFO] scrapers.base_scraper: LinkedIn: 333 new jobs after dedup (from 759 raw)
+2026-08-25 15:18:34 [INFO] __main__:   linkedin: 333 new jobs
+2026-08-25 15:18:34 [INFO] __main__:   Scraping: naukri...
+2026-08-25 15:18:34 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-25 15:19:24 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-25 15:19:30 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-25 15:19:30 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:19:30 [INFO] __main__:   naukri: 0 new jobs
+2026-08-25 15:19:30 [INFO] __main__:   Scraping: wellfound...
+2026-08-25 15:19:30 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-25 15:20:26 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:20:26 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-25 15:20:26 [INFO] __main__:   Scraping: indeed...
+2026-08-25 15:20:26 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-25 15:21:20 [INFO] scrapers.base_scraper: Indeed: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:21:20 [INFO] __main__:   indeed: 0 new jobs
+2026-08-25 15:21:20 [INFO] __main__:   Scraping: foundit...
+2026-08-25 15:21:20 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-25 15:22:25 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:22:25 [INFO] __main__:   foundit: 0 new jobs
+2026-08-25 15:22:25 [INFO] __main__:   Scraping: glassdoor...
+2026-08-25 15:22:25 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-25 15:23:47 [INFO] scrapers.base_scraper: Glassdoor: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:23:47 [INFO] __main__:   glassdoor: 0 new jobs
+2026-08-25 15:23:47 [INFO] __main__:   Scraping: instahyre...
+2026-08-25 15:23:47 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-25 15:23:57 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:23:57 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-25 15:23:57 [INFO] __main__:   Scraping: shine...
+2026-08-25 15:23:57 [INFO] scrapers.shine_scraper: Shine: Starting scrape...
+2026-08-25 15:25:20 [INFO] scrapers.base_scraper: Shine: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:25:20 [INFO] __main__:   shine: 0 new jobs
+2026-08-25 15:25:20 [INFO] __main__:   Scraping: timesjobs...
+2026-08-25 15:25:20 [INFO] scrapers.timesjobs_scraper: TimesJobs: Starting scrape...
+2026-08-25 15:26:05 [INFO] scrapers.base_scraper: TimesJobs: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:26:05 [INFO] __main__:   timesjobs: 0 new jobs
+2026-08-25 15:26:05 [INFO] __main__:   Total raw jobs collected: 333
+2026-08-25 15:26:05 [INFO] __main__: Step 3: Computing resume match scores...
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'AI Product Designer_ Q2 27': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer, Google Maps': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer - Web': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer II': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/ UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer &#8211; Product Experience &amp; Design Systems': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer ( Product Design)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior User Experience / User Interface Designer (m/f/d)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer - Product': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Experience Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX DESIGNER L3': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'User Experience Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX DESIGNER B2E H/F': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer (Specialist Product)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX/UI Designer & Researcher': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Visual Designer II': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX/UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'We're Hiring: AI Graphic Designer / UI Designer (Figma + Front-End)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI UX Designer(Mumbai Candidate only)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Graphic User Interface Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI / Visual Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UI Designer (Figma) - Remote Work': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Industrial Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Sr Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer (AIR)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer (AIR)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer - Credit': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Qualitative UX Researcher, Youtube': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Researcher': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Principal UX Researcher': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Software Engineer - UX Designer_102518': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Associate UX Researcher': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Staff Mixed-Methods UX Researcher, Google Lens': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Researcher': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Researcher (f/m/x)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Researcher (f/m/x)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Sr. UX Researcher': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Sr. UX Researcher, Amazon Delivery Customer Experiences': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Researcher, Applied AI Solution': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'User Experience Designer / Product Designer - Senior': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer, AI App': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer (UX), HCI': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer - Digital Experience Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'User Experience Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX/UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Interaction Designer, Prime Video Experience Design (PVXD)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'CREATIVE DESIGNER – GRAPHICS, VIDEO & WEB': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job '("Graphic Designer" OR "Visual Designer") AND ("Video Editor" OR "Motion") AND ("Behance" OR "por...': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Creative Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Creative Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Visual Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Visual Designer for One of the largest E-commerce conglomerate in the world': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Sr Visual Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Visual Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Visual Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Visual Designer [AQ-14652]': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Visual Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Design Lead , GSS': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Interior design Lead': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'RTL Design Lead/Manager .': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'RTL Design Lead': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'RTL Design Leader': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Design Lead (Design Systems, Usability, B2C) - GB06': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Design Lead– B2C Digital Products': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Graphic Design Lead': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Design Lead (Primary) - Substation (Electrical)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Lead Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Lead Product Designer - Consumer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Design Lead - Account Hub': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Design Lead': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Design Lead, Consumer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Creative Designer and Developer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Digital Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Web Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI designer (websites)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Graphic Web Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Web Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Web Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Web & Digital Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Graphic/Web Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Web Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Web & UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Web Designer / Intégrateur WordPress': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Web Designer (Figma + HTML/CSS) - Hybrid': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'User Interface Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Web Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UI Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer : Digital Products & Member Experience': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer (India)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer - Design Systems': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'AI Product and Visual Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer - Design Systems': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Design system designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Staff Product Designer, Design Systems': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Staff Design System Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Staff Design System Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Staff Product Designer, Design Systems': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'User Experience Designer – 12 + Years of Experience IRC300811': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Interaction Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'User Experience Designer 2 (TS/SCI Clearance with Active Polygraph required)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer & User Researcher H/F - Lille': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer - Researcher - FR': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Ux designer H/F': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer - Researcher - NL': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Ux designer H/F': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Principal UX / UI Designer - Gurgaon, Chennai, Noida, Bangalore, Pune, Hyderabad': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'User Experience Designer SME': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Cleared Senior UI/UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Interaction Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UI/UX Designer - TS/SCI with Polygraph': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Consultant - User Experience Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Lead UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior User Experience Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Lead UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'User Experience Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior User Experience Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer / UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer Mobile App': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer / UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer App H/F': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer, Marketplace Global App': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer (Mobile App)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer, Marketplace Global App': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Staff Product Designer — AX & Growth (DLG)': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer II': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'GoHighLevel - Lead Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Product Designer B2B SaaS': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Staff Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Staff Product Designer, Modern Compute': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Staff Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer II': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Digital Designer - Technician': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Product Designer II': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'Senior Digital Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'User Experience Designer': name 'config' is not defined
+2026-08-25 15:26:05 [ERROR] scoring_engine: Scoring error for job 'UX Designer': name 'config' is not defined
+2026-08-25 15:26:05 [INFO] __main__:   Scored 333 jobs
+2026-08-25 15:26:05 [INFO] __main__:   Qualified (≥60%): 0 | Below threshold: 333
+2026-08-25 15:26:05 [WARNING] __main__: No jobs passed the minimum score threshold.
+2026-08-25 15:26:05 [INFO] db_manager: Run 5 finished: {'jobs_crawled': 333, 'jobs_validated': 0, 'jobs_rejected': 333, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 0, 'errors': 0}
+2026-08-25 15:26:05 [INFO] __main__: ======================================================================
+2026-08-25 15:26:05 [INFO] __main__:   RUN COMPLETE
+2026-08-25 15:26:05 [INFO] __main__:   Runtime: 605.0s
+2026-08-25 15:26:05 [INFO] __main__:   Jobs Crawled:        333
+2026-08-25 15:26:05 [INFO] __main__:   Jobs Validated:      0
+2026-08-25 15:26:05 [INFO] __main__:   New Jobs Added:      0
+2026-08-25 15:26:05 [INFO] __main__:   Duplicates Removed:  0
+2026-08-25 15:26:05 [INFO] __main__:   Expired Rejected:    0
+2026-08-25 15:26:05 [INFO] __main__:   Invalid Rejected:    333
+2026-08-25 15:26:05 [INFO] __main__:   Errors:              0
+2026-08-25 15:26:05 [INFO] __main__:   Dashboard:           D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 15:26:05 [INFO] __main__: ======================================================================
+2026-08-25 15:26:05 [INFO] db_manager: Run 5 finished: {'jobs_crawled': 333, 'jobs_validated': 0, 'jobs_rejected': 333, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 0, 'errors': 0}
+2026-08-25 15:26:05 [INFO] __main__: ======================================================================
+2026-08-25 15:26:05 [INFO] __main__:   RUN COMPLETE
+2026-08-25 15:26:05 [INFO] __main__:   Runtime: 605.0s
+2026-08-25 15:26:05 [INFO] __main__:   Jobs Crawled:        333
+2026-08-25 15:26:05 [INFO] __main__:   Jobs Validated:      0
+2026-08-25 15:26:05 [INFO] __main__:   New Jobs Added:      0
+2026-08-25 15:26:05 [INFO] __main__:   Duplicates Removed:  0
+2026-08-25 15:26:05 [INFO] __main__:   Expired Rejected:    0
+2026-08-25 15:26:05 [INFO] __main__:   Invalid Rejected:    333
+2026-08-25 15:26:05 [INFO] __main__:   Errors:              0
+2026-08-25 15:26:05 [INFO] __main__:   Dashboard:           D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 15:26:05 [INFO] __main__: ======================================================================
+2026-08-25 15:53:39 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-25 15:53:39 [INFO] __main__: Working directory: D:\ai\tracker\UI-UX-Job_Hunt
+2026-08-25 15:53:39 [INFO] db_manager: DatabaseManager initialized: D:\ai\tracker\UI-UX-Job_Hunt\jobs.db
+2026-08-25 15:53:39 [INFO] db_manager: Run started: run_id=6
+2026-08-25 15:53:39 [INFO] __main__: ======================================================================
+2026-08-25 15:53:39 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-25 15:53:39 [INFO] __main__:   Run ID: 6 | Date: 2026-08-25 15:53:39
+2026-08-25 15:53:39 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre, shine, timesjobs
+2026-08-25 15:53:39 [INFO] __main__: ======================================================================
+2026-08-25 15:53:39 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-25 15:53:39 [INFO] __main__:   Existing jobs in DB: 33
+2026-08-25 15:53:39 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-25 15:53:39 [INFO] __main__:   Scraping: company_pages...
+2026-08-25 15:53:39 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-25 15:55:05 [WARNING] urllib3.connectionpool: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<HTTPSConnection(host='careers.hcltech.com', port=443) at 0x1e720c0b9d0>, 'Connection to careers.hcltech.com timed out. (connect timeout=10)')': /
+2026-08-25 15:55:55 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:55:55 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-25 15:55:55 [INFO] __main__:   Scraping: linkedin...
+2026-08-25 15:55:55 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-25 15:57:57 [INFO] scrapers.base_scraper: LinkedIn: 271 new jobs after dedup (from 757 raw)
+2026-08-25 15:57:57 [INFO] __main__:   linkedin: 271 new jobs
+2026-08-25 15:57:57 [INFO] __main__:   Scraping: naukri...
+2026-08-25 15:57:57 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-25 15:58:48 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-25 15:58:54 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-25 15:58:54 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:58:54 [INFO] __main__:   naukri: 0 new jobs
+2026-08-25 15:58:54 [INFO] __main__:   Scraping: wellfound...
+2026-08-25 15:58:54 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-25 15:59:53 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-25 15:59:53 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-25 15:59:53 [INFO] __main__:   Scraping: indeed...
+2026-08-25 15:59:53 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-25 16:00:46 [INFO] scrapers.base_scraper: Indeed: 0 new jobs after dedup (from 0 raw)
+2026-08-25 16:00:46 [INFO] __main__:   indeed: 0 new jobs
+2026-08-25 16:00:46 [INFO] __main__:   Scraping: foundit...
+2026-08-25 16:00:46 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-25 16:01:50 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-25 16:01:50 [INFO] __main__:   foundit: 0 new jobs
+2026-08-25 16:01:50 [INFO] __main__:   Scraping: glassdoor...
+2026-08-25 16:01:50 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-25 16:02:44 [INFO] scrapers.base_scraper: Glassdoor: 0 new jobs after dedup (from 0 raw)
+2026-08-25 16:02:44 [INFO] __main__:   glassdoor: 0 new jobs
+2026-08-25 16:02:44 [INFO] __main__:   Scraping: instahyre...
+2026-08-25 16:02:44 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-25 16:02:53 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-25 16:02:53 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-25 16:02:53 [INFO] __main__:   Scraping: shine...
+2026-08-25 16:02:53 [INFO] scrapers.shine_scraper: Shine: Starting scrape...
+2026-08-25 16:03:46 [INFO] scrapers.base_scraper: Shine: 0 new jobs after dedup (from 0 raw)
+2026-08-25 16:03:46 [INFO] __main__:   shine: 0 new jobs
+2026-08-25 16:03:46 [INFO] __main__:   Scraping: timesjobs...
+2026-08-25 16:03:46 [INFO] scrapers.timesjobs_scraper: TimesJobs: Starting scrape...
+2026-08-25 16:04:29 [INFO] scrapers.base_scraper: TimesJobs: 0 new jobs after dedup (from 0 raw)
+2026-08-25 16:04:29 [INFO] __main__:   timesjobs: 0 new jobs
+2026-08-25 16:04:29 [INFO] __main__:   Total raw jobs collected: 271
+2026-08-25 16:04:29 [INFO] __main__: Step 3: Computing resume match scores...
+2026-08-25 16:04:29 [INFO] __main__:   Scored 271 jobs
+2026-08-25 16:04:29 [INFO] __main__:   Qualified (>=60%): 143 | Below threshold: 128
+2026-08-25 16:04:29 [INFO] __main__: Step 4: Validating 143 job URLs (multi-threaded)...
+2026-08-25 16:04:33 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456175271/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:34 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4446419536/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:34 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455701992/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:34 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4452596026/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:34 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456889226/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:34 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455882135/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:34 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4449296761/ hit anti-bot protection — accepted as VALID
+2026-08-25 16:04:34 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4456176299/ hit anti-bot protection — accepted as VALID
+2026-08-25 16:04:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4429244267/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454938841/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455473591/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456173986/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:35 [INFO] __main__:   Validation progress: 20/143
+2026-08-25 16:04:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4417930150/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456166868/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456707831/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4375995588/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4446894111/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456497209/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:36 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4458226854/ hit anti-bot protection — accepted as VALID
+2026-08-25 16:04:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456848910/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455474244/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4429903512/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458229514/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458217219/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454749419/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456496106/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455725701/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453447137/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4432788526/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457381158/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455893229/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455488451/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:38 [INFO] __main__:   Validation progress: 40/143
+2026-08-25 16:04:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457177028/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456469210/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454918004/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456621361/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455623214/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455698744/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4443428622/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4444106529/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:39 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454960267/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:39 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453488273/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:39 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455886554/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:39 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457083592/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:39 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447044345/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:39 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456497059/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:39 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454742803/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:40 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457304313/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:40 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456394350/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:40 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454981713/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:40 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4444976258/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:40 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4316259868/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:40 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456214603/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:40 [INFO] __main__:   Validation progress: 60/143
+2026-08-25 16:04:41 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457393121/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:41 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447557661/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:41 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456872427/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:41 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454153632/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:41 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4457801072/ hit anti-bot protection — accepted as VALID
+2026-08-25 16:04:41 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456579887/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:41 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456200516/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457396062/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456348058/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4448109806/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4430727614/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455918423/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4426245404/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4422688622/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4445183246/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456591202/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456345397/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4411250699/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454987540/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] __main__:   Validation progress: 80/143
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455795912/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457464288/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4422135311/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455844712/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457177747/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455876157/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458523136/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453443185/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455694511/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456010376/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457462395/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4446835400/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454775858/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457330525/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457566111/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456790630/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458289786/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458295667/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457444697/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453897864/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:46 [INFO] __main__:   Validation progress: 100/143
+2026-08-25 16:04:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456729855/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454761443/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456430300/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455262699/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456574528/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457077567/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447252806/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456157691/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455264617/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447600448/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456229404/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457453339/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453877484/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453411459/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456586717/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457099549/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456813766/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455904334/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:49 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454987279/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:49 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456884478/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:49 [INFO] __main__:   Validation progress: 120/143
+2026-08-25 16:04:49 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454980944/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:49 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455275551/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:49 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4438879710/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:49 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4430930316/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:49 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457301475/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:50 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4377269355/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:50 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447165962/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:50 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456392342/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:50 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455863433/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:50 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4430119831/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:50 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455042034/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:51 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456842650/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:51 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4418848980/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:51 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4447747010/ hit anti-bot protection — accepted as VALID
+2026-08-25 16:04:51 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457461836/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:51 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456818308/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:51 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457441264/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:51 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456190700/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:51 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454963433/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:52 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457113050/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:52 [INFO] __main__:   Validation progress: 140/143
+2026-08-25 16:04:52 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4430119832/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:52 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455831944/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:52 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456896705/ received HTTP 429 — accepted as VALID
+2026-08-25 16:04:52 [INFO] __main__:   Valid: 143 | Invalid: 0 | Expired: 0
+2026-08-25 16:04:52 [INFO] __main__: Step 5: Storing valid jobs in database...
+2026-08-25 16:04:54 [INFO] __main__:   New jobs stored: 143 | Duplicates skipped: 0
+2026-08-25 16:04:54 [INFO] __main__: Step 6: Generating HTML dashboard...
+2026-08-25 16:04:54 [INFO] dashboard_generator: Generating dashboard with 175 jobs...
+2026-08-25 16:04:54 [INFO] dashboard_generator: Dashboard generated: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 16:04:54 [INFO] __main__:   Dashboard: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 16:04:54 [INFO] db_manager: Run 6 finished: {'jobs_crawled': 271, 'jobs_validated': 143, 'jobs_rejected': 128, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 143, 'errors': 0}
+2026-08-25 16:04:54 [INFO] __main__: ======================================================================
+2026-08-25 16:04:54 [INFO] __main__:   RUN COMPLETE
+2026-08-25 16:04:54 [INFO] __main__:   Runtime: 674.7s
+2026-08-25 16:04:54 [INFO] __main__:   Jobs Crawled:        271
+2026-08-25 16:04:54 [INFO] __main__:   Jobs Validated:      143
+2026-08-25 16:04:54 [INFO] __main__:   New Jobs Added:      143
+2026-08-25 16:04:54 [INFO] __main__:   Duplicates Removed:  0
+2026-08-25 16:04:54 [INFO] __main__:   Expired Rejected:    0
+2026-08-25 16:04:54 [INFO] __main__:   Invalid Rejected:    128
+2026-08-25 16:04:54 [INFO] __main__:   Errors:              0
+2026-08-25 16:04:54 [INFO] __main__:   Dashboard:           D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 16:04:54 [INFO] __main__: ======================================================================
+2026-08-25 16:55:53 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-25 16:55:53 [INFO] __main__: Working directory: D:\ai\tracker\UI-UX-Job_Hunt
+2026-08-25 16:55:53 [INFO] db_manager: DatabaseManager initialized: D:\ai\tracker\UI-UX-Job_Hunt\jobs.db
+2026-08-25 16:55:53 [INFO] db_manager: Run started: run_id=7
+2026-08-25 16:55:53 [INFO] __main__: ======================================================================
+2026-08-25 16:55:53 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-25 16:55:53 [INFO] __main__:   Run ID: 7 | Date: 2026-08-25 16:55:53
+2026-08-25 16:55:53 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre, shine, timesjobs
+2026-08-25 16:55:53 [INFO] __main__: ======================================================================
+2026-08-25 16:55:53 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-25 16:55:53 [INFO] __main__:   Existing jobs in DB: 176
+2026-08-25 16:55:53 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-25 16:55:53 [INFO] __main__:   Scraping: company_pages...
+2026-08-25 16:55:53 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-25 16:56:31 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-25 16:56:31 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-25 16:56:31 [INFO] __main__:   Scraping: linkedin...
+2026-08-25 16:56:31 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-25 16:58:28 [INFO] scrapers.base_scraper: LinkedIn: 234 new jobs after dedup (from 758 raw)
+2026-08-25 16:58:28 [INFO] __main__:   linkedin: 234 new jobs
+2026-08-25 16:58:28 [INFO] __main__:   Scraping: naukri...
+2026-08-25 16:58:28 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-25 16:59:30 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-25 16:59:47 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-25 16:59:47 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-25 16:59:47 [INFO] __main__:   naukri: 0 new jobs
+2026-08-25 16:59:47 [INFO] __main__:   Scraping: wellfound...
+2026-08-25 16:59:47 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-25 17:00:52 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:00:52 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-25 17:00:52 [INFO] __main__:   Scraping: indeed...
+2026-08-25 17:00:52 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-25 17:00:53 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Hyderabad, Telangana: 0 jobs fetched
+2026-08-25 17:00:54 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Bangalore, Karnataka: 0 jobs fetched
+2026-08-25 17:00:55 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Remote: 0 jobs fetched
+2026-08-25 17:00:56 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Hyderabad, Telangana: 0 jobs fetched
+2026-08-25 17:00:57 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Bangalore, Karnataka: 0 jobs fetched
+2026-08-25 17:00:58 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Remote: 0 jobs fetched
+2026-08-25 17:00:59 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Hyderabad, Telangana: 0 jobs fetched
+2026-08-25 17:00:59 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Bangalore, Karnataka: 0 jobs fetched
+2026-08-25 17:01:00 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Remote: 0 jobs fetched
+2026-08-25 17:01:00 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Hyderabad, Telangana: 0 jobs fetched
+2026-08-25 17:01:01 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Bangalore, Karnataka: 0 jobs fetched
+2026-08-25 17:01:02 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Remote: 0 jobs fetched
+2026-08-25 17:01:03 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Hyderabad, Telangana: 0 jobs fetched
+2026-08-25 17:01:04 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Bangalore, Karnataka: 0 jobs fetched
+2026-08-25 17:01:05 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Remote: 0 jobs fetched
+2026-08-25 17:01:05 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Hyderabad, Telangana: 0 jobs fetched
+2026-08-25 17:01:06 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Bangalore, Karnataka: 0 jobs fetched
+2026-08-25 17:01:07 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Remote: 0 jobs fetched
+2026-08-25 17:01:08 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Hyderabad, Telangana: 0 jobs fetched
+2026-08-25 17:01:09 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Bangalore, Karnataka: 0 jobs fetched
+2026-08-25 17:01:09 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Remote: 0 jobs fetched
+2026-08-25 17:01:09 [INFO] scrapers.base_scraper: Indeed: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:01:09 [INFO] __main__:   indeed: 0 new jobs
+2026-08-25 17:01:09 [INFO] __main__:   Scraping: foundit...
+2026-08-25 17:01:09 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-25 17:02:23 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:02:23 [INFO] __main__:   foundit: 0 new jobs
+2026-08-25 17:02:23 [INFO] __main__:   Scraping: glassdoor...
+2026-08-25 17:02:23 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-25 17:02:55 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-25 17:02:55 [INFO] __main__: Working directory: D:\ai\tracker\UI-UX-Job_Hunt
+2026-08-25 17:02:55 [INFO] db_manager: DatabaseManager initialized: D:\ai\tracker\UI-UX-Job_Hunt\jobs.db
+2026-08-25 17:02:55 [INFO] db_manager: Run started: run_id=8
+2026-08-25 17:02:55 [INFO] __main__: ======================================================================
+2026-08-25 17:02:55 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-25 17:02:55 [INFO] __main__:   Run ID: 8 | Date: 2026-08-25 17:02:55
+2026-08-25 17:02:55 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre, shine, timesjobs
+2026-08-25 17:02:55 [INFO] __main__: ======================================================================
+2026-08-25 17:02:55 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-25 17:02:55 [INFO] __main__:   Existing jobs in DB: 176
+2026-08-25 17:02:55 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-25 17:02:55 [INFO] __main__:   Scraping: company_pages...
+2026-08-25 17:02:55 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-25 17:03:28 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:03:28 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-25 17:03:28 [INFO] __main__:   Scraping: linkedin...
+2026-08-25 17:03:28 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-25 17:04:31 [INFO] scrapers.base_scraper: Glassdoor: 340 new jobs after dedup (from 1146 raw)
+2026-08-25 17:04:31 [INFO] __main__:   glassdoor: 340 new jobs
+2026-08-25 17:04:31 [INFO] __main__:   Scraping: instahyre...
+2026-08-25 17:04:31 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-25 17:04:40 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:04:40 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-25 17:04:40 [INFO] __main__:   Scraping: shine...
+2026-08-25 17:04:40 [INFO] scrapers.shine_scraper: Shine: Starting scrape...
+2026-08-25 17:04:44 [INFO] scrapers.base_scraper: Shine: 57 new jobs after dedup (from 180 raw)
+2026-08-25 17:04:44 [INFO] __main__:   shine: 57 new jobs
+2026-08-25 17:04:44 [INFO] __main__:   Scraping: timesjobs...
+2026-08-25 17:04:44 [INFO] scrapers.timesjobs_scraper: TimesJobs: Starting scrape...
+2026-08-25 17:05:25 [INFO] scrapers.base_scraper: LinkedIn: 245 new jobs after dedup (from 759 raw)
+2026-08-25 17:05:25 [INFO] __main__:   linkedin: 245 new jobs
+2026-08-25 17:05:25 [INFO] __main__:   Scraping: naukri...
+2026-08-25 17:05:25 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-25 17:05:29 [INFO] scrapers.base_scraper: TimesJobs: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:05:29 [INFO] __main__:   timesjobs: 0 new jobs
+2026-08-25 17:05:29 [INFO] __main__:   Total raw jobs collected: 631
+2026-08-25 17:05:29 [INFO] __main__: Step 3: Computing resume match scores...
+2026-08-25 17:05:29 [INFO] __main__:   Scored 631 jobs
+2026-08-25 17:05:29 [INFO] __main__:   Qualified (>=60%): 269 | Below threshold: 362
+2026-08-25 17:05:29 [INFO] __main__: Step 4: Validating 269 job URLs (multi-threaded)...
+2026-08-25 17:05:33 [INFO] __main__:   Validation progress: 20/269
+2026-08-25 17:05:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458160246/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458165978/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:35 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4439957826/ hit anti-bot protection — accepted as VALID
+2026-08-25 17:05:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4436856716/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456512250/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456559390/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447660399/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4437353086/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455894474/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4452857625/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:36 [INFO] __main__:   Validation progress: 40/269
+2026-08-25 17:05:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457019403/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4446130693/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457850818/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4405837423/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4438933831/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454754562/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4411187832/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447295475/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4446852590/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454759404/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:39 [INFO] __main__:   Validation progress: 60/269
+2026-08-25 17:05:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4437031084/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:42 [INFO] __main__:   Validation progress: 80/269
+2026-08-25 17:05:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455700120/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457502155/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456824539/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456880115/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456903264/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456877148/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458242629/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457086424/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458116113/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457392897/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456907315/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457177415/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4449780908/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456882979/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455984664/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4439153453/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456278128/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455973811/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458210195/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:44 [INFO] __main__:   Validation progress: 100/269
+2026-08-25 17:05:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455674666/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456479439/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455231475/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456471535/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458182931/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454149591/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4429975051/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454747708/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4452821056/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456186368/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456165489/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:46 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4458283861/ hit anti-bot protection — accepted as VALID
+2026-08-25 17:05:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457150930/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456859280/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:47 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4455427152/ hit anti-bot protection — accepted as VALID
+2026-08-25 17:05:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457366409/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457343377/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4418832228/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447040309/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:47 [INFO] __main__:   Validation progress: 120/269
+2026-08-25 17:05:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447078575/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4446101695/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456241390/ received HTTP 429 — accepted as VALID
+2026-08-25 17:05:50 [INFO] __main__:   Validation progress: 140/269
+2026-08-25 17:05:52 [INFO] __main__:   Validation progress: 160/269
+2026-08-25 17:05:55 [INFO] __main__:   Validation progress: 180/269
+2026-08-25 17:05:58 [INFO] __main__:   Validation progress: 200/269
+2026-08-25 17:06:00 [INFO] __main__:   Validation progress: 220/269
+2026-08-25 17:06:01 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456880032/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:01 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456916499/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:01 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455814524/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:03 [INFO] __main__:   Validation progress: 240/269
+2026-08-25 17:06:03 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4415505228/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:04 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454969699/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:04 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457097401/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:04 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455882031/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:04 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456240178/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:05 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/3703689515/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:05 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458244289/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:05 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455619339/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:05 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456848737/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:06 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4438530974/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:06 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4455418738/ hit anti-bot protection — accepted as VALID
+2026-08-25 17:06:06 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456582707/ received HTTP 429 — accepted as VALID
+2026-08-25 17:06:06 [INFO] __main__:   Validation progress: 260/269
+2026-08-25 17:06:07 [INFO] __main__:   Valid: 81 | Invalid: 188 | Expired: 0
+2026-08-25 17:06:07 [INFO] __main__: Step 5: Storing valid jobs in database...
+2026-08-25 17:06:08 [INFO] __main__:   New jobs stored: 81 | Duplicates skipped: 0
+2026-08-25 17:06:08 [INFO] __main__: Step 6: Generating HTML dashboard...
+2026-08-25 17:06:08 [INFO] dashboard_generator: Generating dashboard with 256 jobs...
+2026-08-25 17:06:08 [INFO] dashboard_generator: Dashboard generated: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:06:08 [INFO] __main__:   Dashboard: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:06:08 [INFO] db_manager: Run 7 finished: {'jobs_crawled': 631, 'jobs_validated': 81, 'jobs_rejected': 550, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 81, 'errors': 0}
+2026-08-25 17:06:08 [INFO] __main__: ======================================================================
+2026-08-25 17:06:08 [INFO] __main__:   RUN COMPLETE
+2026-08-25 17:06:08 [INFO] __main__:   Runtime: 615.1s
+2026-08-25 17:06:08 [INFO] __main__:   Jobs Crawled:        631
+2026-08-25 17:06:08 [INFO] __main__:   Jobs Validated:      81
+2026-08-25 17:06:08 [INFO] __main__:   New Jobs Added:      81
+2026-08-25 17:06:08 [INFO] __main__:   Duplicates Removed:  0
+2026-08-25 17:06:08 [INFO] __main__:   Expired Rejected:    0
+2026-08-25 17:06:08 [INFO] __main__:   Invalid Rejected:    550
+2026-08-25 17:06:08 [INFO] __main__:   Errors:              0
+2026-08-25 17:06:08 [INFO] __main__:   Dashboard:           D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:06:08 [INFO] __main__: ======================================================================
+2026-08-25 17:06:21 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-25 17:06:28 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-25 17:06:28 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:06:28 [INFO] __main__:   naukri: 0 new jobs
+2026-08-25 17:06:28 [INFO] __main__:   Scraping: wellfound...
+2026-08-25 17:06:28 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-25 17:07:24 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:07:24 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-25 17:07:24 [INFO] __main__:   Scraping: indeed...
+2026-08-25 17:07:24 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-25 17:07:25 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:07:27 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:07:28 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Remote: 15 jobs fetched
+2026-08-25 17:07:30 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:07:32 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:07:33 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Remote: 15 jobs fetched
+2026-08-25 17:07:35 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:07:37 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:07:39 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Remote: 15 jobs fetched
+2026-08-25 17:07:41 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:07:43 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:07:44 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Remote: 15 jobs fetched
+2026-08-25 17:07:46 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:07:47 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:07:49 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Remote: 15 jobs fetched
+2026-08-25 17:07:51 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:07:53 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:07:54 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Remote: 15 jobs fetched
+2026-08-25 17:07:56 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:07:58 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:08:00 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Remote: 15 jobs fetched
+2026-08-25 17:08:00 [INFO] scrapers.base_scraper: Indeed: 128 new jobs after dedup (from 315 raw)
+2026-08-25 17:08:00 [INFO] __main__:   indeed: 128 new jobs
+2026-08-25 17:08:00 [INFO] __main__:   Scraping: foundit...
+2026-08-25 17:08:00 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-25 17:09:13 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:09:13 [INFO] __main__:   foundit: 0 new jobs
+2026-08-25 17:09:13 [INFO] __main__:   Scraping: glassdoor...
+2026-08-25 17:09:13 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-25 17:11:29 [INFO] scrapers.base_scraper: Glassdoor: 337 new jobs after dedup (from 1146 raw)
+2026-08-25 17:11:29 [INFO] __main__:   glassdoor: 337 new jobs
+2026-08-25 17:11:29 [INFO] __main__:   Scraping: instahyre...
+2026-08-25 17:11:29 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-25 17:11:40 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:11:40 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-25 17:11:40 [INFO] __main__:   Scraping: shine...
+2026-08-25 17:11:40 [INFO] scrapers.shine_scraper: Shine: Starting scrape...
+2026-08-25 17:11:43 [INFO] scrapers.base_scraper: Shine: 57 new jobs after dedup (from 180 raw)
+2026-08-25 17:11:43 [INFO] __main__:   shine: 57 new jobs
+2026-08-25 17:11:43 [INFO] __main__:   Scraping: timesjobs...
+2026-08-25 17:11:43 [INFO] scrapers.timesjobs_scraper: TimesJobs: Starting scrape...
+2026-08-25 17:12:28 [INFO] scrapers.base_scraper: TimesJobs: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:12:28 [INFO] __main__:   timesjobs: 0 new jobs
+2026-08-25 17:12:28 [INFO] __main__:   Total raw jobs collected: 767
+2026-08-25 17:12:28 [INFO] __main__: Step 3: Computing resume match scores...
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Codelabs': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer (Project Revenue Sharing Basis)' @ 'Alpha Realty': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer DNUIUXB09' @ 'Digital Nest Info Media': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Flyira': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI and UX Designer' @ 'Swayam Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Code Connex': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'VIRTUOSO APPS': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Apex Web Services and Online Education': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Pixelstat eSolutions Development': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Turing Systems': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Excel Soft Services (India) Pvt. Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer' @ 'Apple': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'Airbus India Private Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'BEIING': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'HotelHub': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Kyndryl': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer – Interactive Applications' @ 'Ctrl Alt Experience': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI and UX designer Fresher' @ 'BiCSoM Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer Internship' @ 'iVoyant': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Junior UI/UX Designer' @ 'Trawex': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Leader IT': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI UX Designer' @ 'Uvation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI & UX Designer' @ 'FuGenTex Solutions Pvt . Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'SFJ Business solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'VeerIT Solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer - Fully Remote/WFH' @ 'Silverfern Digital': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'DronaHQ': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer Intern' @ 'ashley technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer (Intern)' @ 'Nablasol': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI / UX Designer' @ 'Innovins': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX/UI Designer - Hyderabad, Bangalore, Chennai, Pune, Noida' @ 'Optum': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'IntouchCX': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Sr. Associate – UX Designer – Design Systems-DS' @ 'Amgen': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'Bosch Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'iVoyant': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX DESIGNER L3' @ 'Wipro Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'Nuchange Informatics': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'A&CD - UX Designer (Contract)' @ 'ALSTOM': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Experience Designer' @ 'Hewlett Packard Enterprise': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer - LoanIQ' @ 'Finastra': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'WovV Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'iPrism Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'I Ridge Technology Services': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'Yagna Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'SeeyonAnimation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer - Bangalore, India' @ 'Photon': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'BrandStory': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'Cerulean Information Technology': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Web Designer' @ 'Citta Solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Web Designer' @ 'Limish': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Web Designer' @ 'Vanilla Networks': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Seismic': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead Product Designer' @ 'Keka Technologies Pvt. Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Principal Product Designer' @ 'Epicor': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'AI Product Designer_ Q2 27' @ 'Infosys Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'TOPNOTCH SOFTTSOL': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Product Designer _Q227' @ 'Infosys Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer (Industrial Design Experience)' @ 'VROUTES': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Val-Ed Initiatives': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product designer' @ 'Ema': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Highbizz': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer (India)' @ 'Coram AI': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product designer' @ 'Homes under Budget': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Sarvam': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Atomicwork Inc': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'OriginUX Studio': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer - Nek' @ 'Changejar Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Product Designer' @ 'Value at Void': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Staff Product Designer' @ 'Netomi': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead Product Designer' @ 'HighLevel': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Product Designer' @ 'FinalQuadrant SuiteCase': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead Product Designer - Builder' @ 'HighLevel': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'Nexgile': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer (Mid – Senior)' @ 'Tech Outs': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer, AVP' @ 'State Street': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer - Senior Executive' @ 'Winfo Solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer, Customer Engagement' @ 'Google': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Sr. UI / UX Designer' @ 'Bhukya Software Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'ALSTOM': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'Ideapoke': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Standard Chartered': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Briskon': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'Recruiterflow': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI UX Designer' @ 'Tarento Technologies Pvt. Ltd.': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Talview': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'IntelliSource Tech': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Designer' @ 'Venturit': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Developer' @ 'upstream': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Reinvision': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead UX Interaction Designer' @ 'Bosch Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UIUX Designer' @ 'Ekshvaku Tech Innovation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Looking for a rockstar Visual Designer' @ 'Yellowpages.in': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Visual Designer' @ 'nFaktor Solutions Pvt Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:12:28 [INFO] __main__:   Scored 767 jobs
+2026-08-25 17:12:28 [INFO] __main__:   Qualified (>=60%): 382 | Below threshold: 385
+2026-08-25 17:12:28 [INFO] __main__: Step 4: Validating 382 job URLs (multi-threaded)...
+2026-08-25 17:12:32 [INFO] __main__:   Validation progress: 20/382
+2026-08-25 17:12:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456893531/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4389696851/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4452840351/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458160246/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:35 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4445525767/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455894474/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456512250/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456559390/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4436856716/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4437353086/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:36 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4458165978/ hit anti-bot protection — accepted as VALID
+2026-08-25 17:12:36 [INFO] __main__:   Validation progress: 40/382
+2026-08-25 17:12:36 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457019403/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447660399/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4426777788/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4405837423/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457850818/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454544852/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:37 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455636289/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4411187832/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4438933831/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454754562/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:38 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4446852590/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:38 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4448461988/ hit anti-bot protection — accepted as VALID
+2026-08-25 17:12:39 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447295475/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:39 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454759404/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:39 [INFO] __main__:   Validation progress: 60/382
+2026-08-25 17:12:42 [INFO] __main__:   Validation progress: 80/382
+2026-08-25 17:12:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456880115/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457392897/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:42 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456848662/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456877148/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458267303/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456901102/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456259191/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456599101/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:43 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457311703/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457086424/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458116113/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456903264/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4452843118/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458242629/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:44 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456907315/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457177415/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4449780908/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:45 [INFO] __main__:   Validation progress: 100/382
+2026-08-25 17:12:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456882979/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455973811/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455984664/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4439153453/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456278128/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:45 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455674666/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4437031084/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456479439/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458210195/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458182931/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456471535/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:46 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455231475/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458283861/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456186368/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456165489/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454747708/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456859280/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457150930/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457366409/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:47 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4418832228/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:47 [INFO] __main__:   Validation progress: 120/382
+2026-08-25 17:12:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447078575/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457343377/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4447040309/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4446101695/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:48 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456241390/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:49 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457502155/ received HTTP 429 — accepted as VALID
+2026-08-25 17:12:50 [INFO] __main__:   Validation progress: 140/382
+2026-08-25 17:12:52 [INFO] __main__:   Validation progress: 160/382
+2026-08-25 17:12:55 [INFO] __main__:   Validation progress: 180/382
+2026-08-25 17:12:57 [INFO] __main__:   Validation progress: 200/382
+2026-08-25 17:12:59 [INFO] __main__:   Validation progress: 220/382
+2026-08-25 17:13:01 [INFO] __main__:   Validation progress: 240/382
+2026-08-25 17:13:03 [INFO] __main__:   Validation progress: 260/382
+2026-08-25 17:13:04 [INFO] __main__:   Validation progress: 280/382
+2026-08-25 17:13:05 [INFO] __main__:   Validation progress: 300/382
+2026-08-25 17:13:07 [INFO] __main__:   Validation progress: 320/382
+2026-08-25 17:13:08 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456916499/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:08 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456880032/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:09 [INFO] __main__:   Validation progress: 340/382
+2026-08-25 17:13:09 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455416664/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:10 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457049134/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:10 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458271195/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:10 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456789629/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:10 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4429386990/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:10 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4441502877/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:10 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4415505228/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:11 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454663754/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:11 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455916573/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:11 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455602281/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:11 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454666692/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:11 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453469714/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:12 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454969699/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:12 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4457097401/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:12 [INFO] __main__:   Validation progress: 360/382
+2026-08-25 17:13:12 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458244289/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:12 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455433046/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:12 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4454798468/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:12 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458736396/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:12 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455436134/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:13 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453806832/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:13 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453487541/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:13 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455619339/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:13 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456582707/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:14 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4438530974/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:14 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456848737/ received HTTP 429 — accepted as VALID
+2026-08-25 17:13:14 [INFO] link_validator: Validator: Job board content fetch https://www.linkedin.com/jobs/view/4456535045/ hit anti-bot protection — accepted as VALID
+2026-08-25 17:13:14 [INFO] __main__:   Validation progress: 380/382
+2026-08-25 17:13:15 [INFO] __main__:   Valid: 104 | Invalid: 278 | Expired: 0
+2026-08-25 17:13:15 [INFO] __main__: Step 5: Storing valid jobs in database...
+2026-08-25 17:13:15 [INFO] __main__:   New jobs stored: 39 | Duplicates skipped: 65
+2026-08-25 17:13:15 [INFO] __main__: Step 6: Generating HTML dashboard...
+2026-08-25 17:13:15 [INFO] dashboard_generator: Generating dashboard with 295 jobs...
+2026-08-25 17:13:15 [INFO] dashboard_generator: Dashboard generated: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:13:15 [INFO] __main__:   Dashboard: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:13:15 [INFO] db_manager: Run 8 finished: {'jobs_crawled': 767, 'jobs_validated': 104, 'jobs_rejected': 663, 'duplicates_removed': 65, 'expired_rejected': 0, 'new_jobs_added': 39, 'errors': 0}
+2026-08-25 17:13:15 [INFO] __main__: ======================================================================
+2026-08-25 17:13:15 [INFO] __main__:   RUN COMPLETE
+2026-08-25 17:13:15 [INFO] __main__:   Runtime: 619.8s
+2026-08-25 17:13:15 [INFO] __main__:   Jobs Crawled:        767
+2026-08-25 17:13:15 [INFO] __main__:   Jobs Validated:      104
+2026-08-25 17:13:15 [INFO] __main__:   New Jobs Added:      39
+2026-08-25 17:13:15 [INFO] __main__:   Duplicates Removed:  65
+2026-08-25 17:13:15 [INFO] __main__:   Expired Rejected:    0
+2026-08-25 17:13:15 [INFO] __main__:   Invalid Rejected:    663
+2026-08-25 17:13:15 [INFO] __main__:   Errors:              0
+2026-08-25 17:13:15 [INFO] __main__:   Dashboard:           D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:13:15 [INFO] __main__: ======================================================================
+2026-08-25 17:19:49 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-25 17:19:49 [INFO] __main__: Working directory: D:\ai\tracker\UI-UX-Job_Hunt
+2026-08-25 17:19:49 [INFO] db_manager: DatabaseManager initialized: D:\ai\tracker\UI-UX-Job_Hunt\jobs.db
+2026-08-25 17:19:49 [INFO] db_manager: Run started: run_id=9
+2026-08-25 17:19:49 [INFO] __main__: ======================================================================
+2026-08-25 17:19:49 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-25 17:19:49 [INFO] __main__:   Run ID: 9 | Date: 2026-08-25 17:19:49
+2026-08-25 17:19:49 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre, shine, timesjobs
+2026-08-25 17:19:49 [INFO] __main__: ======================================================================
+2026-08-25 17:19:49 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-25 17:19:49 [INFO] __main__:   Existing jobs in DB: 296
+2026-08-25 17:19:49 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-25 17:19:49 [INFO] __main__:   Scraping: company_pages...
+2026-08-25 17:19:49 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-25 17:20:24 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:20:24 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-25 17:20:24 [INFO] __main__:   Scraping: linkedin...
+2026-08-25 17:20:24 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-25 17:22:13 [INFO] scrapers.base_scraper: LinkedIn: 164 new jobs after dedup (from 758 raw)
+2026-08-25 17:22:13 [INFO] __main__:   linkedin: 164 new jobs
+2026-08-25 17:22:13 [INFO] __main__:   Scraping: naukri...
+2026-08-25 17:22:13 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-25 17:23:08 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-25 17:23:15 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-25 17:23:15 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:23:15 [INFO] __main__:   naukri: 0 new jobs
+2026-08-25 17:23:15 [INFO] __main__:   Scraping: wellfound...
+2026-08-25 17:23:15 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-25 17:24:14 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:24:14 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-25 17:24:14 [INFO] __main__:   Scraping: indeed...
+2026-08-25 17:24:14 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-25 17:24:16 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:24:18 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:24:19 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Remote: 15 jobs fetched
+2026-08-25 17:24:21 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:24:23 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:24:25 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Remote: 15 jobs fetched
+2026-08-25 17:24:27 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:24:29 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:24:31 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Remote: 15 jobs fetched
+2026-08-25 17:24:33 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:24:35 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:24:37 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Remote: 15 jobs fetched
+2026-08-25 17:24:39 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:24:41 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:24:43 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Remote: 15 jobs fetched
+2026-08-25 17:24:45 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:24:47 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:24:48 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Remote: 15 jobs fetched
+2026-08-25 17:24:50 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:24:51 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:24:53 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Remote: 15 jobs fetched
+2026-08-25 17:24:53 [INFO] scrapers.base_scraper: Indeed: 123 new jobs after dedup (from 315 raw)
+2026-08-25 17:24:53 [INFO] __main__:   indeed: 123 new jobs
+2026-08-25 17:24:53 [INFO] __main__:   Scraping: foundit...
+2026-08-25 17:24:53 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-25 17:26:08 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:26:08 [INFO] __main__:   foundit: 0 new jobs
+2026-08-25 17:26:08 [INFO] __main__:   Scraping: glassdoor...
+2026-08-25 17:26:08 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-25 17:28:25 [INFO] scrapers.base_scraper: Glassdoor: 361 new jobs after dedup (from 1116 raw)
+2026-08-25 17:28:25 [INFO] __main__:   glassdoor: 361 new jobs
+2026-08-25 17:28:25 [INFO] __main__:   Scraping: instahyre...
+2026-08-25 17:28:25 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-25 17:28:35 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:28:35 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-25 17:28:35 [INFO] __main__:   Scraping: shine...
+2026-08-25 17:28:35 [INFO] scrapers.shine_scraper: Shine: Starting scrape...
+2026-08-25 17:28:39 [INFO] scrapers.base_scraper: Shine: 57 new jobs after dedup (from 180 raw)
+2026-08-25 17:28:39 [INFO] __main__:   shine: 57 new jobs
+2026-08-25 17:28:39 [INFO] __main__:   Scraping: timesjobs...
+2026-08-25 17:28:39 [INFO] scrapers.timesjobs_scraper: TimesJobs: Starting scrape...
+2026-08-25 17:29:28 [INFO] scrapers.base_scraper: TimesJobs: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:29:28 [INFO] __main__:   timesjobs: 0 new jobs
+2026-08-25 17:29:28 [INFO] __main__:   Total raw jobs collected: 705
+2026-08-25 17:29:28 [INFO] __main__: Step 3: Computing resume match scores...
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Codelabs': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer (Project Revenue Sharing Basis)' @ 'Alpha Realty': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer DNUIUXB09' @ 'Digital Nest Info Media': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Flyira': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI and UX Designer' @ 'Swayam Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Code Connex': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'VIRTUOSO APPS': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Apex Web Services and Online Education': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Pixelstat eSolutions Development': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Turing Systems': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Nexlifie Pvt. Ltd.': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer' @ 'Apple': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'Airbus India Private Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'BEIING': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'HotelHub': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Kyndryl': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI and UX designer Fresher' @ 'BiCSoM Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer – Interactive Applications' @ 'Ctrl Alt Experience': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer Internship' @ 'iVoyant': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Junior UI/UX Designer' @ 'Trawex': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Freelance UI/UX Designer' @ 'Bondspe': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Leader IT': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI UX Designer' @ 'Uvation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer & Frontend Developer Intern' @ 'IPage Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI & UX Designer' @ 'FuGenTex Solutions Pvt . Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'SFJ Business solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'VeerIT Solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer - Fully Remote/WFH' @ 'Silverfern Digital': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'DronaHQ': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX/UI Designer - Hyderabad, Bangalore, Chennai, Pune, Noida' @ 'Optum': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'IntouchCX': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Sr. Associate – UX Designer – Design Systems-DS' @ 'Amgen': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'Bosch Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'iVoyant': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX DESIGNER L3' @ 'Wipro Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'Nuchange Informatics': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'A&CD - UX Designer (Contract)' @ 'ALSTOM': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Experience Designer' @ 'Hewlett Packard Enterprise': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'WovV Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'iPrism Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'I Ridge Technology Services': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'Yagna Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'SeeyonAnimation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer - Bangalore, India' @ 'Photon': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'BrandStory': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'Cerulean Information Technology': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Web Designer' @ 'Citta Solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Seismic': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead Product Designer' @ 'Keka Technologies Pvt. Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Principal Product Designer' @ 'Epicor': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'AI Product Designer_ Q2 27' @ 'Infosys Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'TOPNOTCH SOFTTSOL': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Product Designer _Q227' @ 'Infosys Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer (Industrial Design Experience)' @ 'VROUTES': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Val-Ed Initiatives': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product designer' @ 'Ema': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Highbizz': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer (India)' @ 'Coram AI': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product designer' @ 'Homes under Budget': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Sarvam': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Atomicwork Inc': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'OriginUX Studio': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer - Nek' @ 'Changejar Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Product Designer' @ 'Value at Void': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Staff Product Designer' @ 'Netomi': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead Product Designer' @ 'HighLevel': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Product Designer' @ 'FinalQuadrant SuiteCase': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead Product Designer - Builder' @ 'HighLevel': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'Nexgile': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer (Mid – Senior)' @ 'Tech Outs': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer, AVP' @ 'State Street': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer - Senior Executive' @ 'Winfo Solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer, Customer Engagement' @ 'Google': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'ALSTOM': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'Ideapoke': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Standard Chartered': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Briskon': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'Recruiterflow': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI UX Designer' @ 'Tarento Technologies Pvt. Ltd.': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Talview': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Aura Plantation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'IntelliSource Tech': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Designer' @ 'Venturit': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead UX Interaction Designer' @ 'Bosch Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Web Designer' @ 'Limish': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UIUX Designer' @ 'Ekshvaku Tech Innovation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Looking for a rockstar Visual Designer' @ 'Yellowpages.in': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Visual Designer' @ 'nFaktor Solutions Pvt Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:29:28 [INFO] __main__:   Scored 705 jobs
+2026-08-25 17:29:28 [INFO] __main__:   Qualified (>=60%): 292 | Below threshold: 413
+2026-08-25 17:29:28 [INFO] __main__: Step 4: Validating 292 job URLs (multi-threaded)...
+2026-08-25 17:29:30 [INFO] __main__:   Validation progress: 20/292
+2026-08-25 17:29:34 [INFO] __main__:   Validation progress: 40/292
+2026-08-25 17:29:36 [INFO] __main__:   Validation progress: 60/292
+2026-08-25 17:29:38 [INFO] __main__:   Validation progress: 80/292
+2026-08-25 17:29:41 [INFO] __main__:   Validation progress: 100/292
+2026-08-25 17:29:44 [INFO] __main__:   Validation progress: 120/292
+2026-08-25 17:29:45 [INFO] __main__:   Validation progress: 140/292
+2026-08-25 17:29:47 [INFO] __main__:   Validation progress: 160/292
+2026-08-25 17:29:49 [INFO] __main__:   Validation progress: 180/292
+2026-08-25 17:29:50 [INFO] __main__:   Validation progress: 200/292
+2026-08-25 17:29:52 [INFO] __main__:   Validation progress: 220/292
+2026-08-25 17:29:53 [INFO] __main__:   Validation progress: 240/292
+2026-08-25 17:29:56 [INFO] __main__:   Validation progress: 260/292
+2026-08-25 17:29:58 [INFO] __main__:   Validation progress: 280/292
+2026-08-25 17:29:59 [INFO] __main__:   Valid: 5 | Invalid: 287 | Expired: 0
+2026-08-25 17:29:59 [INFO] __main__: Step 5: Storing valid jobs in database...
+2026-08-25 17:30:00 [INFO] __main__:   New jobs stored: 5 | Duplicates skipped: 0
+2026-08-25 17:30:00 [INFO] __main__: Step 6: Generating HTML dashboard...
+2026-08-25 17:30:00 [INFO] dashboard_generator: Generating dashboard with 300 jobs...
+2026-08-25 17:30:00 [INFO] dashboard_generator: Dashboard generated: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:30:00 [INFO] __main__:   Dashboard: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:30:00 [INFO] db_manager: Run 9 finished: {'jobs_crawled': 705, 'jobs_validated': 5, 'jobs_rejected': 700, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 5, 'errors': 0}
+2026-08-25 17:30:00 [INFO] __main__: ======================================================================
+2026-08-25 17:30:00 [INFO] __main__:   RUN COMPLETE
+2026-08-25 17:30:00 [INFO] __main__:   Runtime: 611.0s
+2026-08-25 17:30:00 [INFO] __main__:   Jobs Crawled:        705
+2026-08-25 17:30:00 [INFO] __main__:   Jobs Validated:      5
+2026-08-25 17:30:00 [INFO] __main__:   New Jobs Added:      5
+2026-08-25 17:30:00 [INFO] __main__:   Duplicates Removed:  0
+2026-08-25 17:30:00 [INFO] __main__:   Expired Rejected:    0
+2026-08-25 17:30:00 [INFO] __main__:   Invalid Rejected:    700
+2026-08-25 17:30:00 [INFO] __main__:   Errors:              0
+2026-08-25 17:30:00 [INFO] __main__:   Dashboard:           D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:30:00 [INFO] __main__: ======================================================================
+2026-08-25 17:30:35 [INFO] __main__: UI/UX Job Search Automation System v1.0
+2026-08-25 17:30:35 [INFO] __main__: Working directory: D:\ai\tracker\UI-UX-Job_Hunt
+2026-08-25 17:30:35 [INFO] db_manager: DatabaseManager initialized: D:\ai\tracker\UI-UX-Job_Hunt\jobs.db
+2026-08-25 17:30:35 [INFO] db_manager: Run started: run_id=10
+2026-08-25 17:30:35 [INFO] __main__: ======================================================================
+2026-08-25 17:30:35 [INFO] __main__:   UI/UX JOB SEARCH AUTOMATION — STARTING RUN
+2026-08-25 17:30:35 [INFO] __main__:   Run ID: 10 | Date: 2026-08-25 17:30:35
+2026-08-25 17:30:35 [INFO] __main__:   Sources: company_pages, linkedin, naukri, wellfound, indeed, foundit, glassdoor, instahyre, shine, timesjobs
+2026-08-25 17:30:35 [INFO] __main__: ======================================================================
+2026-08-25 17:30:35 [INFO] __main__: Step 1: Loading existing job data for deduplication...
+2026-08-25 17:30:35 [INFO] __main__:   Existing jobs in DB: 301
+2026-08-25 17:30:35 [INFO] __main__: Step 2: Scraping job listings from all sources...
+2026-08-25 17:30:35 [INFO] __main__:   Scraping: company_pages...
+2026-08-25 17:30:35 [INFO] scrapers.company_pages_scraper: Company Pages: Starting scrape...
+2026-08-25 17:31:23 [INFO] scrapers.base_scraper: Company Career Pages: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:31:23 [INFO] __main__:   company_pages: 0 new jobs
+2026-08-25 17:31:23 [INFO] __main__:   Scraping: linkedin...
+2026-08-25 17:31:23 [INFO] scrapers.linkedin_scraper: LinkedIn: Starting scrape...
+2026-08-25 17:33:05 [INFO] scrapers.base_scraper: LinkedIn: 163 new jobs after dedup (from 758 raw)
+2026-08-25 17:33:05 [INFO] __main__:   linkedin: 163 new jobs
+2026-08-25 17:33:05 [INFO] __main__:   Scraping: naukri...
+2026-08-25 17:33:05 [INFO] scrapers.naukri_scraper: Naukri: Starting scrape...
+2026-08-25 17:34:07 [INFO] scrapers.naukri_scraper: Naukri: API failed, trying HTML scraping...
+2026-08-25 17:34:15 [INFO] scrapers.naukri_scraper: Naukri HTML: 0 raw jobs fetched
+2026-08-25 17:34:15 [INFO] scrapers.base_scraper: Naukri: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:34:15 [INFO] __main__:   naukri: 0 new jobs
+2026-08-25 17:34:15 [INFO] __main__:   Scraping: wellfound...
+2026-08-25 17:34:15 [INFO] scrapers.wellfound_scraper: Wellfound: Starting scrape...
+2026-08-25 17:35:15 [INFO] scrapers.base_scraper: Wellfound: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:35:15 [INFO] __main__:   wellfound: 0 new jobs
+2026-08-25 17:35:15 [INFO] __main__:   Scraping: indeed...
+2026-08-25 17:35:15 [INFO] scrapers.indeed_scraper: Indeed: Starting scrape...
+2026-08-25 17:35:17 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:35:19 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:35:21 [INFO] scrapers.indeed_scraper: Indeed: 'UI UX Designer' in Remote: 15 jobs fetched
+2026-08-25 17:35:23 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:35:24 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:35:25 [INFO] scrapers.indeed_scraper: Indeed: 'UX Designer' in Remote: 15 jobs fetched
+2026-08-25 17:35:27 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:35:29 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:35:30 [INFO] scrapers.indeed_scraper: Indeed: 'UI Designer' in Remote: 15 jobs fetched
+2026-08-25 17:35:32 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:35:34 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:35:35 [INFO] scrapers.indeed_scraper: Indeed: 'Product Designer' in Remote: 15 jobs fetched
+2026-08-25 17:35:37 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:35:38 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:35:40 [INFO] scrapers.indeed_scraper: Indeed: 'Senior UX Designer' in Remote: 15 jobs fetched
+2026-08-25 17:35:42 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:35:43 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:35:45 [INFO] scrapers.indeed_scraper: Indeed: 'Interaction Designer' in Remote: 15 jobs fetched
+2026-08-25 17:35:46 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Hyderabad, Telangana: 15 jobs fetched
+2026-08-25 17:35:48 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Bangalore, Karnataka: 15 jobs fetched
+2026-08-25 17:35:50 [INFO] scrapers.indeed_scraper: Indeed: 'Visual Designer' in Remote: 15 jobs fetched
+2026-08-25 17:35:50 [INFO] scrapers.base_scraper: Indeed: 118 new jobs after dedup (from 315 raw)
+2026-08-25 17:35:50 [INFO] __main__:   indeed: 118 new jobs
+2026-08-25 17:35:50 [INFO] __main__:   Scraping: foundit...
+2026-08-25 17:35:50 [INFO] scrapers.foundit_scraper: Foundit: Starting scrape...
+2026-08-25 17:37:03 [INFO] scrapers.base_scraper: Foundit: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:37:03 [INFO] __main__:   foundit: 0 new jobs
+2026-08-25 17:37:03 [INFO] __main__:   Scraping: glassdoor...
+2026-08-25 17:37:03 [INFO] scrapers.glassdoor_scraper: Glassdoor: Starting scrape...
+2026-08-25 17:39:13 [INFO] scrapers.base_scraper: Glassdoor: 331 new jobs after dedup (from 1146 raw)
+2026-08-25 17:39:13 [INFO] __main__:   glassdoor: 331 new jobs
+2026-08-25 17:39:13 [INFO] __main__:   Scraping: instahyre...
+2026-08-25 17:39:13 [INFO] scrapers.instahyre_scraper: Instahyre: Starting scrape...
+2026-08-25 17:39:22 [INFO] scrapers.base_scraper: Instahyre: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:39:22 [INFO] __main__:   instahyre: 0 new jobs
+2026-08-25 17:39:22 [INFO] __main__:   Scraping: shine...
+2026-08-25 17:39:22 [INFO] scrapers.shine_scraper: Shine: Starting scrape...
+2026-08-25 17:39:25 [INFO] scrapers.base_scraper: Shine: 57 new jobs after dedup (from 180 raw)
+2026-08-25 17:39:25 [INFO] __main__:   shine: 57 new jobs
+2026-08-25 17:39:25 [INFO] __main__:   Scraping: timesjobs...
+2026-08-25 17:39:25 [INFO] scrapers.timesjobs_scraper: TimesJobs: Starting scrape...
+2026-08-25 17:40:10 [INFO] scrapers.base_scraper: TimesJobs: 0 new jobs after dedup (from 0 raw)
+2026-08-25 17:40:10 [INFO] __main__:   timesjobs: 0 new jobs
+2026-08-25 17:40:10 [INFO] __main__:   Total raw jobs collected: 669
+2026-08-25 17:40:10 [INFO] __main__: Step 3: Computing resume match scores...
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Codelabs': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer (Project Revenue Sharing Basis)' @ 'Alpha Realty': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer DNUIUXB09' @ 'Digital Nest Info Media': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Flyira': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI and UX Designer' @ 'Swayam Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Code Connex': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'VIRTUOSO APPS': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Apex Web Services and Online Education': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Pixelstat eSolutions Development': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Turing Systems': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Nexlifie Pvt. Ltd.': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer' @ 'Apple': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'Airbus India Private Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'BEIING': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'HotelHub': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Kyndryl': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI and UX designer Fresher' @ 'BiCSoM Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer – Interactive Applications' @ 'Ctrl Alt Experience': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer Internship' @ 'iVoyant': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'HR Huddle': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Freelance UI/UX Designer' @ 'Bondspe': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'Leader IT': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI UX Designer' @ 'Uvation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer & Frontend Developer Intern' @ 'IPage Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI & UX Designer' @ 'FuGenTex Solutions Pvt . Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'SFJ Business solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer Intern' @ 'IPage Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer' @ 'VeerIT Solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX/UI Designer - Hyderabad, Bangalore, Chennai, Pune, Noida' @ 'Optum': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'IntouchCX': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Sr. Associate – UX Designer – Design Systems-DS' @ 'Amgen': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'Bosch Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'iVoyant': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX DESIGNER L3' @ 'Wipro Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Designer' @ 'Nuchange Informatics': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'A&CD - UX Designer (Contract)' @ 'ALSTOM': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX Experience Designer' @ 'Hewlett Packard Enterprise': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'WovV Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'iPrism Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'I Ridge Technology Services': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'Yagna Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'SeeyonAnimation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer - Bangalore, India' @ 'Photon': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'BrandStory': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI Designer' @ 'Cerulean Information Technology': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Web Designer' @ 'Citta Solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Seismic': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead Product Designer' @ 'Keka Technologies Pvt. Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Principal Product Designer' @ 'Epicor': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'AI Product Designer_ Q2 27' @ 'Infosys Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'TOPNOTCH SOFTTSOL': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Product Designer _Q227' @ 'Infosys Limited': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer (Industrial Design Experience)' @ 'VROUTES': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Val-Ed Initiatives': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product designer' @ 'Ema': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Highbizz': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer (India)' @ 'Coram AI': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product designer' @ 'Homes under Budget': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Sarvam': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'Atomicwork Inc': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer' @ 'OriginUX Studio': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Product Designer - Nek' @ 'Changejar Technologies': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Product Designer' @ 'Value at Void': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Staff Product Designer' @ 'Netomi': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead Product Designer' @ 'HighLevel': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'Nexgile': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UX/UI Designer (Mid – Senior)' @ 'Tech Outs': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer, AVP' @ 'State Street': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UI/UX Designer - Senior Executive' @ 'Winfo Solutions': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer, Customer Engagement' @ 'Google': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'ALSTOM': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'Ideapoke': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Standard Chartered': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Briskon': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UX Designer' @ 'Recruiterflow': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI UX Designer' @ 'Tarento Technologies Pvt. Ltd.': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'Talview': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior UI/UX Designer' @ 'IntelliSource Tech': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Senior Designer' @ 'Venturit': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Lead UX Interaction Designer' @ 'Bosch Group': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Web Designer' @ 'Limish': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'UIUX Designer' @ 'Ekshvaku Tech Innovation': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Looking for a rockstar Visual Designer' @ 'Yellowpages.in': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] scoring_engine: SCORE BYPASS granted for Indeed job 'Visual Designer' @ 'nFaktor Solutions Pvt Ltd': elevated score to 65.0% (Bypassed: Role & Location Match)
+2026-08-25 17:40:10 [INFO] __main__:   Scored 669 jobs
+2026-08-25 17:40:10 [INFO] __main__:   Qualified (>=60%): 284 | Below threshold: 385
+2026-08-25 17:40:10 [INFO] __main__: Step 4: Validating 284 job URLs (multi-threaded)...
+2026-08-25 17:40:11 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/senior-ux-designer-bangalore-indi — accepted as VALID
+2026-08-25 17:40:13 [INFO] __main__:   Validation progress: 20/284
+2026-08-25 17:40:13 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/associate-ux-designer-hyderabad/r — accepted as VALID
+2026-08-25 17:40:13 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-intern-immediate-j — accepted as VALID
+2026-08-25 17:40:13 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/associate-ux-designer-telangana/s — accepted as VALID
+2026-08-25 17:40:14 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456209341/ — accepted as VALID
+2026-08-25 17:40:14 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4456568696/ — accepted as VALID
+2026-08-25 17:40:14 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4445533837/ — accepted as VALID
+2026-08-25 17:40:15 [INFO] __main__:   Validation progress: 40/284
+2026-08-25 17:40:16 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/senior-ux-designer/tlnt/19308133 — accepted as VALID
+2026-08-25 17:40:17 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/senior-ui-ux-designer/absyz-inc/1 — accepted as VALID
+2026-08-25 17:40:17 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/senior-specialist-ux-designer/msd — accepted as VALID
+2026-08-25 17:40:17 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/senior-ux-designer-ic/unitedhealt — accepted as VALID
+2026-08-25 17:40:17 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/senior-ui-ux-designer/esp-enginee — accepted as VALID
+2026-08-25 17:40:17 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4455955985/ — accepted as VALID
+2026-08-25 17:40:17 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4445746835/ — accepted as VALID
+2026-08-25 17:40:18 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4458725440/ — accepted as VALID
+2026-08-25 17:40:18 [INFO] __main__:   Validation progress: 60/284
+2026-08-25 17:40:18 [INFO] link_validator: Validator: Job board link https://www.linkedin.com/jobs/view/4453051237/ — accepted as VALID
+2026-08-25 17:40:19 [INFO] __main__:   Validation progress: 80/284
+2026-08-25 17:40:22 [INFO] __main__:   Validation progress: 100/284
+2026-08-25 17:40:24 [INFO] __main__:   Validation progress: 120/284
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ux-designer/drucare/19308187 — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ux-designer-tools-automation-and- — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ux-designer-tools-automation-and- — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-secunderabad/reinv — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/product-ux-designer/cyberu/193317 — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-designer-hyderabad-india/yagna — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-telangana/star-des — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ux-designer-native-mobile-app/cog — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ux-designer-tools-automation-and- — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-designers/fugenx-technologies/ — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ux-designer-tools-automation-and- — accepted as VALID
+2026-08-25 17:40:25 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/asst-ui-ux-designer/originux-stud — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/urgent-requirement-for-ui-ux-desi — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/sr-ux-designer/eightfold/19270948 — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-full-stack-develop — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-designer-bangalore-rural/scout — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-multi-disciplinary — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/website-ui-designer/supercode/193 — accepted as VALID
+2026-08-25 17:40:26 [INFO] __main__:   Validation progress: 140/284
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-india/saffo-soluti — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-designer/scoutit/19393983 — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer/makeo/19176260 — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/game-ui-designer-bengaluru/playda — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ux-designer-bengaluru/akraya/1935 — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-whitefield/birlaso — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/visual-and-ui-designer/goldenpi-t — accepted as VALID
+2026-08-25 17:40:26 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designers/holistic-learning — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-india/brain-invent — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/visual-ui-ux-designer-bavdhan/5p- — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/gis-web-developer-reactjs-reactjs — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/business-technologist-ui-ux-desig — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer/a-c-agarwal-share- — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-jaipur/snehvin-bus — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-ahmedabad/webtech- — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer/brain-inventory/19 — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/sr-ui-ux-designer/schbang-digital — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/frontend-ui-ux-designer-kolkata-m — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/graphic-ui-ux-designer/sko-system — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer/rusk-media/1939400 — accepted as VALID
+2026-08-25 17:40:27 [INFO] __main__:   Validation progress: 160/284
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/business-technologist-ui-ux-desig — accepted as VALID
+2026-08-25 17:40:27 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/business-technologist-ui-ux-desig — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-ai-native/tech-it/ — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=9d793ee77cd6afbe — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=08677bdc09f9b34b — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=8b08704a732081bb — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=53e12cf1807a03f6 — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=4e3c17e68bf7f304 — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=e96fd1339ccba354 — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=4f76296e10a734d8 — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=dc0544a62a1e884f — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=be51cbb360cc55c2 — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=3b7fa1a0f74b3ddf — accepted as VALID
+2026-08-25 17:40:28 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=c62b9d2bd0ad8f95 — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=93737851de2d8ffb — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=41e974902cc25ab7 — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=5c52b1e25236fc3b — accepted as VALID
+2026-08-25 17:40:29 [INFO] __main__:   Validation progress: 180/284
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=fb3f0f88a19ed4f9 — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=400a7b3dc494676a — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=d8cc843cdc61eb53 — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=fedf1073225bd673 — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=7684bfd740b7b7c2 — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=bcc3ef8b70c9e52f — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=549bf89925da8cd0 — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=e9c92826264fea02 — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=13ff868bd2834b88 — accepted as VALID
+2026-08-25 17:40:29 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=7cc7f1d212927844 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=c9633450dcca50a0 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=cf3991329200c49e — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=1b62793caa92c243 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=0ad88156a8d18d95 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=75e8e053a239de13 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=4e9b73aef44f0cb7 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=720157b17a674d56 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=7de0877f52878d45 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=faeaf56030ef943f — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=a907b8eebda672f5 — accepted as VALID
+2026-08-25 17:40:30 [INFO] __main__:   Validation progress: 200/284
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=2cb1560284178756 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=6f50afbac128ce2a — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=3ee4c9aee034a1f3 — accepted as VALID
+2026-08-25 17:40:30 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=8947c7e92da57c3e — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=8b8a19028dcc1baf — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=b1247707c3e3feac — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=412ddbcf4682f607 — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=b3e7564d4e189a09 — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=63fde9d3cce61957 — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=fd72a4a7be16b654 — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=409c8b29e4bb14b8 — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=d430180ec5b19d2e — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=11a47752ff984bec — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=5ee3542a20356cbb — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=063d2077f95011a3 — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=5b85fdb9e1bd6060 — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=34520db2499535cb — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=d75a733fbda36f4d — accepted as VALID
+2026-08-25 17:40:31 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=46d0a6900bf21dd5 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=cc90bc97c95f093c — accepted as VALID
+2026-08-25 17:40:32 [INFO] __main__:   Validation progress: 220/284
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=dce162eeac42e944 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=f5e6a2608c7edd63 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=49e4684ba0fdffea — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=84f119007b5a1365 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=07f16fcd466876a5 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=97aea83e6196a880 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=9976b74e64edad43 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=63b14948ff331670 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=63c9e426881ac265 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=b60404eab36050cb — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=f6efaf5ea00aee2c — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=a2d322ce585ed9c5 — accepted as VALID
+2026-08-25 17:40:32 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=48f7943dfc23709a — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=e524fbc4c03ada6a — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=ac524c6398869e74 — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=d1326ec990e75b4f — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=49190575ce8dfc8f — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=e7dbe94aa711c173 — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=5a2ed07a7a5eda27 — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=f6929b4361a8d252 — accepted as VALID
+2026-08-25 17:40:33 [INFO] __main__:   Validation progress: 240/284
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=f7a50cce9716dc9c — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=548a18e36bac368f — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=87500826fa84ce35 — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=9111d01500a3e7ea — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=cfd9af4b3dc5f5b5 — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=efaea03000200e5a — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=a32e2f898a1bd47b — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=30c626638b1311d3 — accepted as VALID
+2026-08-25 17:40:33 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=8227c5ace9397c42 — accepted as VALID
+2026-08-25 17:40:34 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=a4490a1581b2d14d — accepted as VALID
+2026-08-25 17:40:34 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=594ef06036966377 — accepted as VALID
+2026-08-25 17:40:35 [INFO] __main__:   Validation progress: 260/284
+2026-08-25 17:40:35 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-intern-immediate-j — accepted as VALID
+2026-08-25 17:40:35 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/internship-ui-ux-designer-surat-o — accepted as VALID
+2026-08-25 17:40:35 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-designer-intern-kolkata/han — accepted as VALID
+2026-08-25 17:40:35 [INFO] link_validator: Validator: Job board link https://in.indeed.com/viewjob?jk=d5ca1f23a3f3a618 — accepted as VALID
+2026-08-25 17:40:37 [INFO] __main__:   Validation progress: 280/284
+2026-08-25 17:40:37 [INFO] link_validator: Validator: Job board link https://www.shine.com/jobs/ui-ux-creative-designer-hyderabad — accepted as VALID
+2026-08-25 17:40:37 [INFO] __main__:   Valid: 147 | Invalid: 137 | Expired: 0
+2026-08-25 17:40:37 [INFO] __main__: Step 5: Storing valid jobs in database...
+2026-08-25 17:40:39 [INFO] __main__:   New jobs stored: 147 | Duplicates skipped: 0
+2026-08-25 17:40:39 [INFO] __main__: Step 6: Generating HTML dashboard...
+2026-08-25 17:40:39 [INFO] dashboard_generator: Generating dashboard with 447 jobs...
+2026-08-25 17:40:39 [INFO] dashboard_generator: Dashboard generated: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:40:39 [INFO] __main__:   Dashboard: D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:40:39 [INFO] db_manager: Run 10 finished: {'jobs_crawled': 669, 'jobs_validated': 147, 'jobs_rejected': 522, 'duplicates_removed': 0, 'expired_rejected': 0, 'new_jobs_added': 147, 'errors': 0}
+2026-08-25 17:40:39 [INFO] __main__: ======================================================================
+2026-08-25 17:40:39 [INFO] __main__:   RUN COMPLETE
+2026-08-25 17:40:39 [INFO] __main__:   Runtime: 603.7s
+2026-08-25 17:40:39 [INFO] __main__:   Jobs Crawled:        669
+2026-08-25 17:40:39 [INFO] __main__:   Jobs Validated:      147
+2026-08-25 17:40:39 [INFO] __main__:   New Jobs Added:      147
+2026-08-25 17:40:39 [INFO] __main__:   Duplicates Removed:  0
+2026-08-25 17:40:39 [INFO] __main__:   Expired Rejected:    0
+2026-08-25 17:40:39 [INFO] __main__:   Invalid Rejected:    522
+2026-08-25 17:40:39 [INFO] __main__:   Errors:              0
+2026-08-25 17:40:39 [INFO] __main__:   Dashboard:           D:\ai\tracker\UI-UX-Job_Hunt\jobs_dashboard.html
+2026-08-25 17:40:39 [INFO] __main__: ======================================================================

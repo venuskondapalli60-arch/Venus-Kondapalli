@@ -78,6 +78,7 @@ class NaukriScraper(BaseScraper):
     def _fetch_api_page(self, keyword: str, location: str,
                         page: int = 1) -> List[Dict]:
         """Fetch one page from Naukri API."""
+        clean_kw = re.sub(r"[^\w\s-]", "", keyword).strip().replace(" ", "-")
         params = {
             "noOfResults": 20,
             "urlType": "search_by_key_loc",
@@ -87,7 +88,7 @@ class NaukriScraper(BaseScraper):
             "pageNo": page,
             "sort": "1",       # Sort by date (newest first)
             "bucketId": "1",
-            "seoKey": f"{keyword.replace(' ', '-')}-jobs-in-{location}",
+            "seoKey": f"{clean_kw}-jobs-in-{location}",
             "src": "jobsearchDesk",
             "latLong": "",
         }
@@ -95,9 +96,11 @@ class NaukriScraper(BaseScraper):
         headers = self._get_headers({
             "appid": "109",
             "systemid": "Naukri",
-            "Accept": "application/json",
+            "clientid": "d3452f1002c3a525732847e196e6856d",
+            "gid": "LOCATION,INDUSTRY,EDUCATION",
+            "Accept": "application/json, text/plain, */*",
             "Content-Type": "application/json",
-            "Referer": "https://www.naukri.com/",
+            "Referer": f"https://www.naukri.com/{clean_kw}-jobs-in-{location}",
         })
 
         resp = self._get(self.API_URL, params=params, headers=headers)

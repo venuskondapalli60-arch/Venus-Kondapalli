@@ -20,6 +20,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import config
 from config import (
     RESUME_PROFILE,
     ALL_RESUME_KEYWORDS,
@@ -408,6 +409,38 @@ class ScoringEngine:
         exp_score = round(exp_score, 1)
         domain_score = round(domain_score, 1)
 
+        # Check if job is eligible for score bypass (e.g. Naukri / Indeed jobs with matching title & location)
+        source_name = str(job.get("source", "")).lower()
+        is_bypassed = False
+        bypass_reason = ""
+
+        if source_name in ["naukri", "indeed", "linkedin", "foundit", "glassdoor"] or "naukri" in source_name or "indeed" in source_name:
+            # Criteria: role match >= 60.0, valid target location, and final score < MIN_MATCH_SCORE (60.0)
+            if role_score >= 60.0 and final_score < config.MIN_MATCH_SCORE:
+                loc_lower = location.lower() if location else ""
+                preferred_locations = ["hyderabad", "bangalore", "bengaluru", "remote", "india"]
+                loc_match = any(pl in loc_lower for pl in preferred_locations) or not location
+
+                wrong_roles = ["software engineer", "qa engineer", "backend", "devops", "data scientist"]
+                title_lower = title.lower()
+                no_wrong_role = not any(wr in title_lower for wr in wrong_roles)
+
+                if loc_match and no_wrong_role:
+                    is_bypassed = True
+                    final_score = 65.0  # Elevate score to pass 60.0 threshold
+                    bypass_reason = "Bypassed: Role & Location Match"
+                    logger.info(
+                        f"SCORE BYPASS granted for {job.get('source')} job '{title}' @ '{job.get('company')}': "
+                        f"elevated score to {final_score}% ({bypass_reason})"
+                    )
+
+        score_breakdown_str = (
+            f"Role:{role_score} Skill:{skill_score} "
+            f"Tool:{tool_score} Exp:{exp_score} Domain:{domain_score}"
+        )
+        if is_bypassed:
+            score_breakdown_str += f" | {bypass_reason}"
+
         result = dict(job)
         result.update({
             "match_score": final_score,
@@ -416,10 +449,8 @@ class ScoringEngine:
             "tool_match": tool_score,
             "experience_match": exp_score,
             "domain_match": domain_score,
-            "score_breakdown": (
-                f"Role:{role_score} Skill:{skill_score} "
-                f"Tool:{tool_score} Exp:{exp_score} Domain:{domain_score}"
-            ),
+            "is_bypassed": is_bypassed,
+            "score_breakdown": score_breakdown_str,
         })
 
         logger.debug(

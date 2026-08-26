@@ -27,6 +27,12 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+try:
+    from curl_cffi import requests as c_requests
+    HAS_CURL_CFFI = True
+except ImportError:
+    HAS_CURL_CFFI = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -85,29 +91,44 @@ class BaseScraper(ABC):
     def _get(self, url: str, params: Dict = None, headers: Dict = None,
              timeout: int = None) -> Optional[requests.Response]:
         """
-        Perform a GET request with error handling.
+        Perform a GET request with error handling and browser TLS impersonation.
         Returns Response or None on failure.
         """
         try:
             time.sleep(random.uniform(0.5, config.RATE_LIMIT_DELAY))
-            resp = self.session.get(
-                url,
-                params=params,
-                headers=headers or self._get_headers(),
-                timeout=timeout or config.REQUEST_TIMEOUT,
-                allow_redirects=True,
-            )
+            req_headers = headers or self._get_headers()
+
+            if HAS_CURL_CFFI:
+                resp = c_requests.get(
+                    url,
+                    params=params,
+                    headers=headers,  # Only pass custom headers if explicitly provided
+                    timeout=timeout or config.REQUEST_TIMEOUT,
+                    allow_redirects=True,
+                    impersonate="chrome",
+                    verify=False,
+                )
+            else:
+                resp = self.session.get(
+                    url,
+                    params=params,
+                    headers=headers or self._get_headers(),
+                    timeout=timeout or config.REQUEST_TIMEOUT,
+                    allow_redirects=True,
+                )
+
             if resp.status_code == 200:
                 return resp
             elif resp.status_code == 429:
-                logger.warning(f"Rate limited by {url[:50]}. Sleeping 30s...")
-                time.sleep(30)
+                logger.warning(f"Rate limited by {url[:50]}. Sleeping 15s...")
+                time.sleep(15)
                 return None
             else:
                 logger.debug(f"HTTP {resp.status_code} from {url[:60]}")
                 return None
-        except requests.exceptions.Timeout:
-            logger.warning(f"Timeout: {url[:60]}")
+        except Exception as e:
+            logger.debug(f"Fetch error for {url[:60]}: {e}")
+            return None
             return None
         except requests.exceptions.ConnectionError:
             logger.warning(f"Connection error: {url[:60]}")

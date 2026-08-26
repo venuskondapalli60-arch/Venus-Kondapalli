@@ -71,7 +71,8 @@ class DashboardGenerator:
             j.get("location", "").split(",")[0].strip()
             for j in all_jobs if j.get("location")
         ))
-        sources = sorted(set(j.get("source", "") for j in all_jobs if j.get("source")))
+        default_sources = ["LinkedIn", "Indeed", "Glassdoor", "Shine", "Naukri", "Foundit", "Wellfound", "Instahyre", "TimesJobs", "Company Pages"]
+        sources = sorted(set(default_sources) | set(j.get("source", "") for j in all_jobs if j.get("source")))
 
         company_options = "\n".join(f'<option value="{c}">{c}</option>' for c in companies)
         location_options = "\n".join(f'<option value="{l}">{l}</option>' for l in locations)
@@ -426,6 +427,8 @@ document.addEventListener('DOMContentLoaded', () => {{
         else:
             score_cls, score_lbl = "orange", "Good Match"
 
+        is_bypassed   = job.get("is_bypassed", False) or "Bypassed" in str(job.get("score_breakdown", ""))
+        bypass_badge  = '<span class="badge-bypassed" title="Score bypassed based on role & location match">BYPASSED</span>' if is_bypassed else ""
         new_badge     = '<span class="badge-new">NEW</span>' if is_new else ""
         highlight_cls = "highlight" if highlight else ""
         new_cls       = "is-new" if is_new else ""
@@ -444,6 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {{
             <div class="card-top">
                 <div class="card-title-wrap">
                     {new_badge}
+                    {bypass_badge}
                     <h3 class="card-title">{title}</h3>
                 </div>
                 <div class="score-ring score-{score_cls}">
@@ -805,6 +809,15 @@ body {
     padding: 2px 9px; border-radius: 20px; letter-spacing: 0.8px;
     text-transform: uppercase; margin-bottom: 5px;
     animation: glow-new 1.8s ease-in-out infinite alternate;
+}
+.badge-bypassed {
+    display: inline-block;
+    background: rgba(167, 139, 250, 0.18);
+    color: #c4b5fd;
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    font-size: 0.6rem; font-weight: 700;
+    padding: 2px 8px; border-radius: 20px; letter-spacing: 0.6px;
+    text-transform: uppercase; margin-bottom: 5px; margin-left: 4px;
 }
 @keyframes glow-new {
     from { box-shadow: 0 0 6px rgba(34,211,160,.5); }
