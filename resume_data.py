@@ -1,0 +1,6 @@
+from config import (
+    RESUME_PROFILE,
+    ALL_RESUME_KEYWORDS,
+    HIGH_WEIGHT_KEYWORDS,
+    MEDIUM_WEIGHT_KEYWORDS,
+)

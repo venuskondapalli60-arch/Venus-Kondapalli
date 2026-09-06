@@ -448,8 +448,9 @@ T.run("Database: get_top_match_jobs (min_score filter)", _test_db_get_top_match_
 
 def _test_scoring_init():
     from engines.scoring_engine import ScoringEngine
+    import config
     s = ScoringEngine()
-    assert s.years_exp == 4
+    assert s.years_exp == config.RESUME_PROFILE.get("years_of_experience", 13)
     assert len(s.skill_keywords) > 0
     assert len(s.tool_keywords) > 0
     assert len(s.domain_keywords) > 0
@@ -531,13 +532,13 @@ def _test_scoring_experience_match():
     from engines.scoring_engine import ScoringEngine
     s = ScoringEngine()
 
-    # Exact match (4 years)
-    score = s._score_experience_match("UX Designer", "4 years of experience required")
-    assert score == 100.0, f"Exact 4yr match → expected 100, got {score}"
+    # Exact match
+    score = s._score_experience_match("UX Designer", f"{s.years_exp} years of experience required")
+    assert score == 100.0, f"Exact match → expected 100, got {score}"
 
-    # Close match (3 years)
-    score = s._score_experience_match("UX Designer", "3 years of experience required")
-    assert score >= 80, f"3yr match → expected ≥80, got {score}"
+    # Close match
+    score = s._score_experience_match("UX Designer", f"{max(1, s.years_exp - 1)} years of experience required")
+    assert score >= 80, f"Close match → expected ≥80, got {score}"
 
     # Junior role — overqualified
     score = s._score_experience_match("Junior UX Designer", "entry level position")
@@ -1218,16 +1219,18 @@ def _test_scraper_instances():
     from scrapers.wellfound_scraper import WellfoundScraper
     from scrapers.instahyre_scraper import InstahyreScraper
     from scrapers.company_pages_scraper import CompanyPagesScraper
+    from scrapers.arbeitsagentur_scraper import ArbeitsagenturScraper
+    from scrapers.german_portals_scraper import GermanPortalsScraper
 
     for cls in [NaukriScraper, LinkedInScraper, IndeedScraper, FounditScraper,
                 GlassdoorScraper, WellfoundScraper, InstahyreScraper,
-                CompanyPagesScraper]:
+                CompanyPagesScraper, ArbeitsagenturScraper, GermanPortalsScraper]:
         obj = cls()
         assert obj.session is not None, f"{cls.__name__} session is None"
         assert isinstance(obj.existing_urls, set)
         assert isinstance(obj.existing_job_ids, set)
 
-T.run("Scrapers: All 8 scrapers instantiate without error", _test_scraper_instances)
+T.run("Scrapers: All scrapers instantiate without error", _test_scraper_instances)
 
 
 def _test_scraper_set_existing_data():

@@ -29,6 +29,8 @@ from scoring_engine import ScoringEngine
 from dashboard_generator import DashboardGenerator
 
 # ── Scrapers ──────────────────────────────────────────────────────────────────
+from scrapers.arbeitsagentur_scraper import ArbeitsagenturScraper
+from scrapers.german_portals_scraper import GermanPortalsScraper
 from scrapers.naukri_scraper import NaukriScraper
 from scrapers.linkedin_scraper import LinkedInScraper
 from scrapers.indeed_scraper import IndeedScraper
@@ -81,16 +83,18 @@ logger = logging.getLogger(__name__)
 # SCRAPER REGISTRY
 # ─────────────────────────────────────────────────────────────────────────────
 SCRAPER_REGISTRY = {
-    "company_pages": CompanyPagesScraper,   # Priority 1
-    "linkedin":      LinkedInScraper,        # Priority 2
-    "naukri":        NaukriScraper,          # Priority 3
-    "wellfound":     WellfoundScraper,       # Priority 4
-    "indeed":        IndeedScraper,          # Priority 5
-    "foundit":       FounditScraper,         # Priority 6
-    "glassdoor":     GlassdoorScraper,       # Priority 7
-    "instahyre":     InstahyreScraper,       # Priority 8
-    "shine":         ShineScraper,           # Priority 9
-    "timesjobs":     TimesJobsScraper,       # Priority 10
+    "arbeitsagentur": ArbeitsagenturScraper, # Priority 1: German Federal Agency
+    "company_pages":  CompanyPagesScraper,   # Priority 2: German & Global Tech Careers
+    "linkedin":       LinkedInScraper,       # Priority 3: Germany & Worldwide
+    "german_portals": GermanPortalsScraper,  # Priority 4: Connecticum, Jobrapido, etc.
+    "indeed":         IndeedScraper,         # Priority 5: Indeed Germany (de.indeed.com)
+    "wellfound":      WellfoundScraper,      # Priority 6
+    "glassdoor":      GlassdoorScraper,      # Priority 7: Glassdoor Germany
+    "naukri":         NaukriScraper,         # Priority 8
+    "foundit":        FounditScraper,        # Priority 9
+    "instahyre":      InstahyreScraper,      # Priority 10
+    "shine":          ShineScraper,          # Priority 11
+    "timesjobs":      TimesJobsScraper,      # Priority 12
 }
 
 

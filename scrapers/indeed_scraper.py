@@ -23,14 +23,19 @@ class IndeedScraper(BaseScraper):
     """Scrapes UI/UX job listings from Indeed India."""
 
     SOURCE_NAME = "Indeed"
-    BASE_URL = "https://in.indeed.com/jobs"
+    BASE_URL_IN = "https://in.indeed.com/jobs"
+    BASE_URL_DE = "https://de.indeed.com/jobs"
 
-    # Generated dynamically from config.ALL_SEARCH_KEYWORDS × primary locations
+    GERMAN_LOCATIONS = {"germany", "berlin", "munich", "münchen", "frankfurt", "hamburg"}
+
+    # Generated dynamically from target keywords × target locations
     @property
     def SEARCH_QUERIES(self):
-        locations = ["Hyderabad, Telangana", "Bangalore, Karnataka", "Remote"]
-        # Clean terms (replace / with space) for Indeed search engine
-        keywords = ["UI UX Designer", "UX Designer", "UI Designer", "Product Designer", "Senior UX Designer", "Interaction Designer", "Visual Designer"]
+        locations = ["Germany", "Berlin", "Munich", "Remote", "Hyderabad", "Bangalore"]
+        keywords = [
+            "Product Manager", "Product Designer", "UI UX Designer",
+            "Senior UX Designer", "Lead Product Designer", "UX Researcher",
+        ]
         return [
             (kw, loc)
             for kw in keywords
@@ -57,8 +62,8 @@ class IndeedScraper(BaseScraper):
             "l": location,
             "start": start,
         }
-
-        resp = self._get(self.BASE_URL, params=params)
+        base_url = self.BASE_URL_DE if location.lower() in self.GERMAN_LOCATIONS else self.BASE_URL_IN
+        resp = self._get(base_url, params=params)
         if not resp:
             return []
 

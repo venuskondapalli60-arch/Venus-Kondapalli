@@ -55,10 +55,10 @@ class WellfoundScraper(BaseScraper):
         for kw in config.ALL_SEARCH_KEYWORDS:
             slug = kw.lower().replace(" ", "-").replace("/", "-")
             search_urls.append(f"{base}?role={slug}&location=india")
-        # Add city-specific for top roles
-        for role in ["designer", "ux-designer", "product-designer"]:
-            for city in ["hyderabad", "bangalore"]:
-                search_urls.append(f"{base}?role={role}&location={city}")
+        # Add location-specific queries for top roles
+        for role in ["product-manager", "designer", "ux-designer", "product-designer", "lead-designer"]:
+            for loc in ["germany", "berlin", "remote", "hyderabad", "bangalore"]:
+                search_urls.append(f"{base}?role={role}&location={loc}")
 
         for url in search_urls:
             jobs = self._scrape_page(url)

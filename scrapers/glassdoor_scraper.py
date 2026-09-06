@@ -28,15 +28,18 @@ class GlassdoorScraper(BaseScraper):
 
     @property
     def SEARCH_QUERIES(self):
-        locations = ["Hyderabad, Telangana, India", "Bangalore, Karnataka, India", "India"]
+        locations = ["Germany", "Berlin, Germany", "Munich, Germany", "Hyderabad, Telangana, India", "Bangalore, Karnataka, India"]
         return [
             (kw, loc)
-            for kw in config.ALL_SEARCH_KEYWORDS
+            for kw in config.SEARCH_KEYWORDS
             for loc in locations
         ]
 
     # Glassdoor location IDs
     LOCATION_IDS = {
+        "Germany": "96",
+        "Berlin, Germany": "2622109",
+        "Munich, Germany": "2626374",
         "Hyderabad, Telangana, India": "2940586",
         "Bangalore, Karnataka, India": "2211",
         "India": "115",

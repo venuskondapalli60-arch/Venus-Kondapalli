@@ -31,12 +31,15 @@ class LinkedInScraper(BaseScraper):
     # Public search page
     SEARCH_URL = "https://www.linkedin.com/jobs/search/"
 
-    # GeoIDs for Indian cities
+    # GeoIDs for German and Indian locations
     GEO_IDS = {
+        "Germany": "101282230",
+        "Berlin": "106967730",
+        "Munich": "100477049",
+        "Frankfurt": "104990346",
+        "Remote": "",
         "Hyderabad": "105556991",
         "Bangalore": "105214831",
-        "India": "102713980",
-        "Remote": "",
     }
 
     def scrape(self) -> List[Dict]:
@@ -69,6 +72,8 @@ class LinkedInScraper(BaseScraper):
             "start": start,
             "count": 25,
         }
+        if location.lower() == "remote":
+            params["f_WT"] = "2"
 
         headers = self._get_headers({
             "Referer": "https://www.linkedin.com/jobs/search/",

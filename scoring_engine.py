@@ -46,15 +46,19 @@ WEIGHTS = {
 ROLE_KEYWORDS = {
     # Exact / near-exact matches → high score
     "high": [
+        "product manager", "lead product manager", "technical product manager",
         "ui/ux designer", "ui ux designer", "uiux designer",
         "ux designer", "ui designer", "product designer",
+        "senior product designer", "lead product designer", "staff product designer",
         "senior ux designer", "senior ui designer", "senior ui/ux",
-        "lead ux designer", "lead ui designer",
+        "lead ux designer", "lead ui designer", "staff ux designer",
         "interaction designer", "experience designer",
         "user experience designer", "user interface designer",
+        "ui/ux design expert", "enterprise ux designer", "servicenow ux",
     ],
     # Good matches
     "medium": [
+        "product lead", "head of ux", "head of design",
         "ux researcher", "ui researcher", "ux consultant",
         "visual designer", "web designer", "digital designer",
         "design lead", "design system designer", "ux strategist",
@@ -72,7 +76,7 @@ ROLE_KEYWORDS = {
 
 # Experience level keywords
 EXPERIENCE_KEYWORDS = {
-    "senior": ["senior", "sr.", "lead", "principal", "staff", "head of"],
+    "senior": ["senior", "sr.", "lead", "principal", "staff", "head of", "director"],
     "mid": ["mid", "mid-level", "intermediate", "associate"],
     "junior": ["junior", "jr.", "entry", "fresher", "trainee", "intern"],
 }
@@ -188,8 +192,8 @@ class ScoringEngine:
         # Penalty for clearly wrong roles
         wrong_roles = [
             "software engineer", "data scientist", "backend developer",
-            "frontend developer", "devops", "qa engineer", "project manager",
-            "business analyst", "marketing manager", "sales",
+            "frontend developer", "devops", "qa engineer",
+            "business analyst", "sales executive",
         ]
         for wrong in wrong_roles:
             if wrong in title_norm:
@@ -383,9 +387,13 @@ class ScoringEngine:
 
         # Location bonus
         location_bonus = 0.0
+        target_locations = [
+            "germany", "deutschland", "berlin", "munich", "münchen", "frankfurt", "hamburg",
+            "europe", "eu", "hyderabad", "bangalore", "remote", "bengaluru", "india"
+        ]
         if location:
             loc_lower = location.lower()
-            for preferred_loc in ["hyderabad", "bangalore", "remote", "bengaluru"]:
+            for preferred_loc in target_locations:
                 if preferred_loc in loc_lower:
                     location_bonus = 3.0
                     break
@@ -409,16 +417,16 @@ class ScoringEngine:
         exp_score = round(exp_score, 1)
         domain_score = round(domain_score, 1)
 
-        # Check if job is eligible for score bypass (e.g. Naukri / Indeed jobs with matching title & location)
-        source_name = str(job.get("source", "")).lower()
+        # Check if job is eligible for score bypass (e.g. valid job with matching role & target location)
         is_bypassed = False
         bypass_reason = ""
 
-        if source_name in ["naukri", "indeed", "linkedin", "foundit", "glassdoor"] or "naukri" in source_name or "indeed" in source_name:
-            # Criteria: role match >= 60.0, valid target location, and final score < MIN_MATCH_SCORE (60.0)
-            if role_score >= 60.0 and final_score < config.MIN_MATCH_SCORE:
+        if role_score >= 60.0 and final_score < config.MIN_MATCH_SCORE:
                 loc_lower = location.lower() if location else ""
-                preferred_locations = ["hyderabad", "bangalore", "bengaluru", "remote", "india"]
+                preferred_locations = [
+                    "germany", "deutschland", "berlin", "munich", "münchen", "frankfurt",
+                    "hamburg", "europe", "hyderabad", "bangalore", "bengaluru", "remote", "india"
+                ]
                 loc_match = any(pl in loc_lower for pl in preferred_locations) or not location
 
                 wrong_roles = ["software engineer", "qa engineer", "backend", "devops", "data scientist"]
