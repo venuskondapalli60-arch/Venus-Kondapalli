@@ -224,6 +224,11 @@ class JobSearchPipeline:
                 stats=self.stats,
                 run_id=run_id,
             )
+            try:
+                import shutil
+                shutil.copyfile(dashboard_path, os.path.join(config.BASE_DIR, "index.html"))
+            except Exception as e:
+                logger.warning(f"Could not copy to index.html: {e}")
             logger.info(f"  Dashboard: {dashboard_path}")
 
         except Exception as e:
@@ -410,6 +415,11 @@ def regenerate_dashboard():
     stats = db.get_last_run_stats() or {}
 
     path = dashboard.generate(jobs=jobs, stats=stats, run_id=0)
+    try:
+        import shutil
+        shutil.copyfile(path, os.path.join(config.BASE_DIR, "index.html"))
+    except Exception as e:
+        logger.warning(f"Could not copy to index.html: {e}")
     logger.info(f"Dashboard regenerated: {path}")
     return path
 

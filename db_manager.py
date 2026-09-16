@@ -317,12 +317,14 @@ class DatabaseManager:
 
     # ── Query Methods ─────────────────────────────────────────────────────────
 
-    def get_jobs_for_dashboard(self, min_score: float = 70.0) -> List[Dict]:
+    def get_jobs_for_dashboard(self, min_score: float = None, max_days: int = 30) -> List[Dict]:
         """
-        Return all VALID jobs within the last 7 days, above min_score,
+        Return all VALID jobs within the last max_days (default 30 days), above min_score,
         sorted by match_score DESC, then posted_date DESC.
         """
-        cutoff = (datetime.now() - timedelta(days=config.MAX_DAYS_OLD)).strftime(
+        if min_score is None:
+            min_score = config.MIN_MATCH_SCORE
+        cutoff = (datetime.now() - timedelta(days=max_days)).strftime(
             "%Y-%m-%d"
         )
         try:

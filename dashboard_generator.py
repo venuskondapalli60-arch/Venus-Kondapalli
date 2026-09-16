@@ -44,14 +44,6 @@ class DashboardGenerator:
         with open(config.DASHBOARD_FILE, "w", encoding="utf-8") as f:
             f.write(html)
 
-        # Mirror to index.html for web server support
-        index_file = os.path.join(config.BASE_DIR, "index.html")
-        try:
-            with open(index_file, "w", encoding="utf-8") as f:
-                f.write(html)
-        except Exception as e:
-            logger.warning(f"Could not mirror to index.html: {e}")
-
         logger.info(f"Dashboard generated: {config.DASHBOARD_FILE}")
         return config.DASHBOARD_FILE
 
