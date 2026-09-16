@@ -2,6 +2,9 @@
 __pycache__/
 *.pyc
 logs/*.log
+*.db-wal
+*.db-shm
 uv
 uvx
 .DS_Store
+
