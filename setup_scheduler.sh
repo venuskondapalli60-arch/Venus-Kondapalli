@@ -46,7 +46,7 @@ case "$1" in
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
-        <integer>9</integer>
+        <integer>10</integer>
         <key>Minute</key>
         <integer>0</integer>
     </dict>
@@ -65,7 +65,7 @@ EOF
         launchctl load "$PLIST_PATH"
 
         echo "✅ Scheduler installed and loaded successfully!"
-        echo "   Schedule: Daily at 09:00 AM"
+        echo "   Schedule: Daily at 10:00 AM"
         echo "   Script:   $DIR/run_job_search.sh"
         echo "   Logs:     $DIR/logs/"
         ;;
