@@ -117,7 +117,10 @@ class JobSearchPipeline:
         self.validator = LinkValidator()
         self.scorer = ScoringEngine()
         self.dashboard = DashboardGenerator()
-        self.sources = sources or list(SCRAPER_REGISTRY.keys())
+        default_sources = [
+            "arbeitsagentur", "company_pages", "linkedin", "german_portals", "indeed", "glassdoor", "wellfound"
+        ]
+        self.sources = sources or default_sources
 
         # Stats tracking
         self.stats = {
@@ -129,6 +132,24 @@ class JobSearchPipeline:
             "new_jobs_added": 0,
             "errors": 0,
         }
+
+    def _filter_german_jobs(self, jobs: List[Dict]) -> List[Dict]:
+        """Keep only jobs located in Germany and exclude any Indian locations."""
+        german_kw = getattr(config, "GERMAN_LOCATION_KEYWORDS", ["germany", "deutschland", "berlin", "munich", "frankfurt", "hamburg"])
+        indian_kw = getattr(config, "INDIAN_LOCATION_KEYWORDS", [
+            "india", "bangalore", "bengaluru", "hyderabad", "mumbai", "pune", "delhi",
+            "noida", "gurgaon", "gurugram", "chennai", "ahmedabad", "kolkata"
+        ])
+
+        filtered = []
+        for j in jobs:
+            loc = (j.get("location") or "").lower()
+            src = (j.get("source") or "").lower()
+            if any(k in loc for k in indian_kw):
+                continue
+            if "bundesagentur" in src or "german" in src or any(k in loc for k in german_kw):
+                filtered.append(j)
+        return filtered
 
     def run(self) -> Dict:
         """Execute the full pipeline. Returns run statistics."""
@@ -151,8 +172,9 @@ class JobSearchPipeline:
             # ── Step 2: Scrape all sources ────────────────────────────────────
             logger.info("Step 2: Scraping job listings from all sources...")
             all_raw_jobs = self._run_scrapers(existing_urls, existing_job_ids)
+            all_raw_jobs = self._filter_german_jobs(all_raw_jobs)
             self.stats["jobs_crawled"] = len(all_raw_jobs)
-            logger.info(f"  Total raw jobs collected: {len(all_raw_jobs)}")
+            logger.info(f"  Total German jobs collected: {len(all_raw_jobs)}")
 
             if not all_raw_jobs:
                 logger.warning("No jobs collected from any source. Check network/scraper logs.")

@@ -25,12 +25,40 @@ SEARCH_LOCATIONS = [
     "Munich",
     "Frankfurt",
     "Hamburg",
-    "Remote",
-    "Europe",
-    "Hyderabad",
-    "Bangalore",
-    "India",
+    "Cologne",
+    "Stuttgart",
+    "Düsseldorf",
+    "Deutschland",
 ]
+
+# Germany Location Keywords for Filtering & Identification
+GERMAN_LOCATION_KEYWORDS = [
+    "germany", "deutschland", "berlin", "munich", "münchen", "frankfurt", "hamburg",
+    "cologne", "köln", "stuttgart", "düsseldorf", "dusseldorf", "dortmund", "essen",
+    "leipzig", "bremen", "dresden", "hannover", "nürnberg", "nuremberg", "duisburg",
+    "bochum", "wuppertal", "bielefeld", "bonn", "münster", "karlsruhe", "mannheim",
+    "augsburg", "wiesbaden", "gelsenkirchen", "mönchengladbach", "braunschweig",
+    "chemnitz", "kiel", "aachen", "halle", "magdeburg", "freiburg", "krefeld",
+    "lübeck", "oberhausen", "erfurt", "mainz", "rostock", "kassel", "hagen",
+    "hamm", "saarbrücken", "mülheim", "potsdam", "ludwigshafen", "oldenburg",
+    "leverkusen", "osnabrück", "solingen", "heidelberg", "herne", "neuss",
+    "darmstadt", "paderborn", "regensburg", "ingolstadt", "würzburg", "fürth",
+    "wolfsburg", "offenbach", "ulm", "heilbronn", "pforzheim", "göttingen",
+    "bottrop", "trier", "recklinghausen", "reutlingen", "bremerhaven", "koblenz",
+    "bergisch gladbach", "jena", "remscheid", "erlangen", "moers", "siegen",
+    "hildesheim", "salzgitter", "bavaria", "bayern", "baden-württemberg", "hessen",
+    "hesse", "nordrhein-westfalen", "north rhine-westphalia", "sachsen", "saxony",
+    "niedersachsen", "lower saxony", "thüringen", "thuringia", "rheinland-pfalz",
+    "rhineland-palatinate", "brandenburg", "saarland", "schleswig-holstein",
+    "mecklenburg-vorpommern", "sachsen-anhalt", "saxony-anhalt"
+]
+
+INDIAN_LOCATION_KEYWORDS = [
+    "india", "bangalore", "bengaluru", "hyderabad", "mumbai", "pune", "delhi",
+    "noida", "gurgaon", "gurugram", "chennai", "ahmedabad", "kolkata", "karnataka",
+    "telangana", "maharashtra", "haryana", "tamil nadu", "gujarat", "uttar pradesh"
+]
+
 MAX_DAYS_OLD = 7
 MIN_MATCH_SCORE = 60
 MAX_WORKERS = 8
@@ -228,15 +256,10 @@ COMPANY_CAREER_PAGES = [
     {"company": "Personio",       "url": "https://www.personio.com/careers/"},
     {"company": "HelloFresh",     "url": "https://careers.hellofresh.com/global/en"},
     {"company": "Siemens",        "url": "https://jobs.siemens.com/"},
-    # Enterprise & Global Ecosystem
+    # Enterprise & Global Ecosystem hiring in Germany
     {"company": "ServiceNow",    "url": "https://careers.servicenow.com/"},
     {"company": "Salesforce",    "url": "https://careers.salesforce.com/"},
     {"company": "NTT DATA",      "url": "https://careers.services.global.ntt/"},
-    # India Tech Hubs
-    {"company": "Flipkart",      "url": "https://www.flipkartcareers.com/#!/joblist"},
-    {"company": "Swiggy",        "url": "https://careers.swiggy.com/#careers"},
-    {"company": "Freshworks",    "url": "https://www.freshworks.com/company/careers/"},
-    {"company": "Razorpay",      "url": "https://razorpay.com/jobs/"},
 ]
 
 # ─────────────────────────────────────────────

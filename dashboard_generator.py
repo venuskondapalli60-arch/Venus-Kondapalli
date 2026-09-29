@@ -57,13 +57,20 @@ class DashboardGenerator:
         jobs_json = jobs_json.replace("</SCRIPT>", r"<\/SCRIPT>")
 
         companies = sorted(set(j.get("company", "") for j in all_jobs if j.get("company")))
+
+        indian_kw = getattr(config, "INDIAN_LOCATION_KEYWORDS", [
+            "india", "bangalore", "bengaluru", "hyderabad", "mumbai", "pune", "delhi",
+            "noida", "gurgaon", "gurugram", "chennai", "ahmedabad", "kolkata"
+        ])
+
         locations = sorted(set(
             j.get("location", "").split(",")[0].strip()
             for j in all_jobs if j.get("location")
+            and not any(k in (j.get("location") or "").lower() for k in indian_kw)
         ))
         default_sources = [
             "Bundesagentur für Arbeit", "LinkedIn", "Indeed", "Glassdoor",
-            "Shine", "Naukri", "Foundit", "Wellfound", "Instahyre", "Company Career Pages"
+            "Company Career Pages", "German Job Portals", "Wellfound"
         ]
         sources = sorted(set(default_sources) | set(j.get("source", "") for j in all_jobs if j.get("source")))
 
@@ -71,12 +78,11 @@ class DashboardGenerator:
         cand_title = config.RESUME_PROFILE.get("title", "Product Manager & UI UX Design Expert")
         cand_exp = f"{config.RESUME_PROFILE.get('years_of_experience', 13)}+ Years"
 
-        german_jobs_count = sum(
-            1 for j in all_jobs
-            if any(loc in (j.get("location") or "").lower()
-                   for loc in ["germany", "deutschland", "berlin", "munich", "münchen", "frankfurt", "hamburg", "cologne", "köln", "stuttgart", "düsseldorf"])
-            or j.get("source") == "Bundesagentur für Arbeit"
-        )
+        berlin_count = sum(1 for j in all_jobs if "berlin" in (j.get("location") or "").lower())
+        munich_count = sum(1 for j in all_jobs if any(m in (j.get("location") or "").lower() for m in ["munich", "münchen"]))
+        frankfurt_count = sum(1 for j in all_jobs if "frankfurt" in (j.get("location") or "").lower())
+        hamburg_count = sum(1 for j in all_jobs if "hamburg" in (j.get("location") or "").lower())
+
 
         return f"""<!DOCTYPE html>
 <html lang="en">
@@ -120,15 +126,19 @@ class DashboardGenerator:
         <div class="header-stats">
             <div class="stat-pill" onclick="switchView('open')">
                 <span class="stat-num" id="statOpen">{len(all_jobs)}</span>
-                <span class="stat-lbl">Open Jobs</span>
+                <span class="stat-lbl">German Openings</span>
             </div>
             <div class="stat-pill" onclick="switchView('top')">
                 <span class="stat-num" id="statTop">{len(top_jobs)}</span>
                 <span class="stat-lbl">70%+ Matches</span>
             </div>
-            <div class="stat-pill" onclick="filterByGermany()">
-                <span class="stat-num" id="statGermany">{german_jobs_count}</span>
-                <span class="stat-lbl">Germany Openings</span>
+            <div class="stat-pill" onclick="filterByCity('Berlin')">
+                <span class="stat-num" id="statBerlin">{berlin_count}</span>
+                <span class="stat-lbl">Berlin</span>
+            </div>
+            <div class="stat-pill" onclick="filterByCity('Munich')">
+                <span class="stat-num" id="statMunich">{munich_count}</span>
+                <span class="stat-lbl">Munich</span>
             </div>
             <div class="stat-pill stat-applied" onclick="switchView('applied')">
                 <span class="stat-num" id="statApplied">0</span>
@@ -177,7 +187,7 @@ class DashboardGenerator:
         </div>
 
         <div class="selects-row">
-            {self._make_dropdown("locationFilter", "📍 All Locations", [("", "All Locations"), ("Germany", "🇩🇪 Germany (All)"), ("Berlin", "Berlin"), ("Munich", "Munich / München"), ("Frankfurt", "Frankfurt"), ("Hamburg", "Hamburg"), ("Remote", "🌐 Remote / Worldwide")] + [(l, l) for l in locations if l not in ["Berlin", "Munich", "Frankfurt", "Hamburg", "Remote", "Germany"]])}
+            {self._make_dropdown("locationFilter", "📍 All German Locations", [("", "All German Locations"), ("Berlin", "Berlin"), ("Munich", "Munich / München"), ("Frankfurt", "Frankfurt am Main"), ("Hamburg", "Hamburg"), ("Cologne", "Cologne / Köln"), ("Düsseldorf", "Düsseldorf"), ("Stuttgart", "Stuttgart"), ("Karlsruhe", "Karlsruhe")] + [(l, l) for l in locations if l not in ["Berlin", "Munich", "München", "Frankfurt", "Hamburg", "Cologne", "Köln", "Düsseldorf", "Stuttgart", "Karlsruhe", "Germany", "Deutschland"]])}
             {self._make_dropdown("companyFilter", "🏢 All Companies", [("", "All Companies")] + [(c, c) for c in companies])}
             {self._make_dropdown("sourceFilter", "🔗 All Sources", [("", "All Sources")] + [(s, s) for s in sources])}
             {self._make_dropdown("scoreFilter", "⭐ All Scores", [("0","All Scores (60%+)"),("75","75%+ Elite"),("70","70%+ Top Tier"),("65","65%+ Strong")])}
@@ -401,8 +411,14 @@ function updateBadges() {{
     if (elStatTop) elStatTop.textContent = topCount;
     if (elTabTop) elTabTop.textContent = topCount;
 
-    const elStatDe = document.getElementById('statGermany');
-    if (elStatDe) elStatDe.textContent = deCount;
+    const elStatBerlin = document.getElementById('statBerlin');
+    if (elStatBerlin) elStatBerlin.textContent = unappliedOpen.filter(j => (j.location || '').toLowerCase().includes('berlin')).length;
+
+    const elStatMunich = document.getElementById('statMunich');
+    if (elStatMunich) elStatMunich.textContent = unappliedOpen.filter(j => {{
+        const l = (j.location || '').toLowerCase();
+        return l.includes('munich') || l.includes('münchen');
+    }}).length;
 
     const elStatApp = document.getElementById('statApplied');
     const elTabApp = document.getElementById('tabCountApplied');
@@ -462,10 +478,22 @@ function switchView(viewName) {{
     window.scrollTo({{ top: 0, behavior: 'smooth' }});
 }}
 
+function filterByCity(cityName) {{
+    switchView('open');
+    const opt = document.querySelector(`#locationFilter-panel [data-val="${{cityName}}"]`);
+    if (opt) {{
+        selectDd('locationFilter', cityName, opt);
+    }} else {{
+        document.getElementById('locationFilter').value = cityName;
+        document.getElementById('locationFilter-lbl').textContent = '📍 ' + cityName;
+        applyFilters();
+    }}
+}}
+
 function filterByGermany() {{
     switchView('open');
-    const opt = document.querySelector('#locationFilter-panel [data-val="Germany"]');
-    if (opt) selectDd('locationFilter', 'Germany', opt);
+    const opt = document.querySelector('#locationFilter-panel [data-val=""]');
+    if (opt) selectDd('locationFilter', '', opt);
 }}
 
 // ── Application Tracking Actions ─────────────────────────────────────────────
