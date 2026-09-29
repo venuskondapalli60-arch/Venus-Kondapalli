@@ -188,6 +188,7 @@ class DashboardGenerator:
 
         <div class="selects-row">
             {self._make_dropdown("locationFilter", "📍 All German Locations", [("", "All German Locations"), ("Berlin", "Berlin"), ("Munich", "Munich / München"), ("Frankfurt", "Frankfurt am Main"), ("Hamburg", "Hamburg"), ("Cologne", "Cologne / Köln"), ("Düsseldorf", "Düsseldorf"), ("Stuttgart", "Stuttgart"), ("Karlsruhe", "Karlsruhe")] + [(l, l) for l in locations if l not in ["Berlin", "Munich", "München", "Frankfurt", "Hamburg", "Cologne", "Köln", "Düsseldorf", "Stuttgart", "Karlsruhe", "Germany", "Deutschland"]])}
+            {self._make_dropdown("freshnessFilter", "📅 Any Time", [("", "📅 Any Time"), ("1", "⚡ Today / 24h"), ("3", "🔥 Last 3 Days"), ("7", "✨ Last 7 Days"), ("14", "🗓️ Last 14 Days"), ("30", "📆 Last 30 Days")])}
             {self._make_dropdown("companyFilter", "🏢 All Companies", [("", "All Companies")] + [(c, c) for c in companies])}
             {self._make_dropdown("sourceFilter", "🔗 All Sources", [("", "All Sources")] + [(s, s) for s in sources])}
             {self._make_dropdown("scoreFilter", "⭐ All Scores", [("0","All Scores (60%+)"),("75","75%+ Elite"),("70","70%+ Top Tier"),("65","65%+ Strong")])}
@@ -299,13 +300,21 @@ const ALL_JOBS = {jobs_json};
             const minScore = parseFloat(document.getElementById('scoreFilter').value) || 0;
             const sortBy   = document.getElementById('sortBy').value || 'score';
             const hideDismissed = document.getElementById('hideDismissedToggle').checked;
+            const freshness = document.getElementById('freshnessFilter') ? document.getElementById('freshnessFilter').value : '';
+            const maxDays  = freshness ? parseInt(freshness, 10) : 0;
 
-            const hasActiveFilters = search || company || location || source || minScore > 0;
+            const hasActiveFilters = search || company || location || source || minScore > 0 || maxDays > 0;
             const ind = document.getElementById('filterActiveBadge');
             if (ind) ind.style.display = hasActiveFilters ? 'inline-block' : 'none';
 
             const clearBtn = document.getElementById('clearSearchBtn');
             if (clearBtn) clearBtn.style.display = search ? 'inline-block' : 'none';
+
+            // Reference date for freshness calculation: today's date, or latest job date if offline/historical
+            const nowStr = new Date().toISOString().split('T')[0];
+            const maxJobDateStr = ALL_JOBS.reduce((max, j) => (j.posted_date && j.posted_date > max) ? j.posted_date : max, '');
+            const refDateStr = (ALL_JOBS.some(j => j.posted_date === nowStr)) ? nowStr : (maxJobDateStr || nowStr);
+            const refDate = new Date(refDateStr + 'T00:00:00');
 
             let filtered = ALL_JOBS.filter(j => {{
                 const jid = String(j.job_id);
@@ -316,6 +325,14 @@ const ALL_JOBS = {jobs_json};
 
                 // View constraint (if top tab active)
                 if (currentView === 'top' && (j.match_score || 0) < 70) return false;
+
+                // Freshness filter constraint
+                if (maxDays > 0) {{
+                    if (!j.posted_date) return false;
+                    const jobDate = new Date(j.posted_date + 'T00:00:00');
+                    const diffDays = Math.round((refDate - jobDate) / (1000 * 60 * 60 * 24));
+                    if (diffDays < 0 || diffDays > maxDays) return false;
+                }}
 
                 const t = (j.title || '').toLowerCase();
                 const c = (j.company || '').toLowerCase();
@@ -796,6 +813,8 @@ document.addEventListener('click', e => {{
 
 function resetFilters() {{
     document.getElementById('searchInput').value = '';
+    const freshOpt = document.querySelector('#freshnessFilter-panel [data-val=""]');
+    if (freshOpt) selectDd('freshnessFilter', '', freshOpt);
     selectDd('locationFilter', '', document.querySelector('#locationFilter-panel [data-val=""]'));
     selectDd('companyFilter', '', document.querySelector('#companyFilter-panel [data-val=""]'));
     selectDd('sourceFilter', '', document.querySelector('#sourceFilter-panel [data-val=""]'));

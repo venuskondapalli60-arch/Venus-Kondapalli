@@ -662,6 +662,25 @@ body {
     </div>
 </div>
             
+<div class="cdd" id="freshnessFilter-wrap">
+    <button type="button" class="cdd-btn" onclick="toggleDd('freshnessFilter')">
+        <span class="cdd-lbl" id="freshnessFilter-lbl">📅 Any Time</span>
+        <svg class="cdd-arrow" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <input type="hidden" id="freshnessFilter" value="">
+    <div class="cdd-panel" id="freshnessFilter-panel">
+        <div class="cdd-opt" data-val="" onclick="selectDd('freshnessFilter','', this)">📅 Any Time</div>
+<div class="cdd-opt" data-val="1" onclick="selectDd('freshnessFilter','1', this)">⚡ Today / 24h</div>
+<div class="cdd-opt" data-val="3" onclick="selectDd('freshnessFilter','3', this)">🔥 Last 3 Days</div>
+<div class="cdd-opt" data-val="7" onclick="selectDd('freshnessFilter','7', this)">✨ Last 7 Days</div>
+<div class="cdd-opt" data-val="14" onclick="selectDd('freshnessFilter','14', this)">🗓️ Last 14 Days</div>
+<div class="cdd-opt" data-val="30" onclick="selectDd('freshnessFilter','30', this)">📆 Last 30 Days</div>
+
+    </div>
+</div>
+            
 <div class="cdd" id="companyFilter-wrap">
     <button type="button" class="cdd-btn" onclick="toggleDd('companyFilter')">
         <span class="cdd-lbl" id="companyFilter-lbl">🏢 All Companies</span>
@@ -1003,7 +1022,7 @@ body {
                     <input type="checkbox" id="hideDismissedToggle" checked onchange="applyFilters()">
                     <span>Hide dismissed jobs</span>
                 </label>
-                <div class="timestamp-tag">🕐 September 29, 2026 at 08:30 PM</div>
+                <div class="timestamp-tag">🕐 September 29, 2026 at 08:37 PM</div>
             </div>
         </div>
     </div>
@@ -11499,13 +11518,21 @@ const ALL_JOBS = [{"id": 869, "job_id": "linkedin_4369171307", "title": "(Senior
             const minScore = parseFloat(document.getElementById('scoreFilter').value) || 0;
             const sortBy   = document.getElementById('sortBy').value || 'score';
             const hideDismissed = document.getElementById('hideDismissedToggle').checked;
+            const freshness = document.getElementById('freshnessFilter') ? document.getElementById('freshnessFilter').value : '';
+            const maxDays  = freshness ? parseInt(freshness, 10) : 0;
 
-            const hasActiveFilters = search || company || location || source || minScore > 0;
+            const hasActiveFilters = search || company || location || source || minScore > 0 || maxDays > 0;
             const ind = document.getElementById('filterActiveBadge');
             if (ind) ind.style.display = hasActiveFilters ? 'inline-block' : 'none';
 
             const clearBtn = document.getElementById('clearSearchBtn');
             if (clearBtn) clearBtn.style.display = search ? 'inline-block' : 'none';
+
+            // Reference date for freshness calculation: today's date, or latest job date if offline/historical
+            const nowStr = new Date().toISOString().split('T')[0];
+            const maxJobDateStr = ALL_JOBS.reduce((max, j) => (j.posted_date && j.posted_date > max) ? j.posted_date : max, '');
+            const refDateStr = (ALL_JOBS.some(j => j.posted_date === nowStr)) ? nowStr : (maxJobDateStr || nowStr);
+            const refDate = new Date(refDateStr + 'T00:00:00');
 
             let filtered = ALL_JOBS.filter(j => {
                 const jid = String(j.job_id);
@@ -11516,6 +11543,14 @@ const ALL_JOBS = [{"id": 869, "job_id": "linkedin_4369171307", "title": "(Senior
 
                 // View constraint (if top tab active)
                 if (currentView === 'top' && (j.match_score || 0) < 70) return false;
+
+                // Freshness filter constraint
+                if (maxDays > 0) {
+                    if (!j.posted_date) return false;
+                    const jobDate = new Date(j.posted_date + 'T00:00:00');
+                    const diffDays = Math.round((refDate - jobDate) / (1000 * 60 * 60 * 24));
+                    if (diffDays < 0 || diffDays > maxDays) return false;
+                }
 
                 const t = (j.title || '').toLowerCase();
                 const c = (j.company || '').toLowerCase();
@@ -11996,6 +12031,8 @@ document.addEventListener('click', e => {
 
 function resetFilters() {
     document.getElementById('searchInput').value = '';
+    const freshOpt = document.querySelector('#freshnessFilter-panel [data-val=""]');
+    if (freshOpt) selectDd('freshnessFilter', '', freshOpt);
     selectDd('locationFilter', '', document.querySelector('#locationFilter-panel [data-val=""]'));
     selectDd('companyFilter', '', document.querySelector('#companyFilter-panel [data-val=""]'));
     selectDd('sourceFilter', '', document.querySelector('#sourceFilter-panel [data-val=""]'));
